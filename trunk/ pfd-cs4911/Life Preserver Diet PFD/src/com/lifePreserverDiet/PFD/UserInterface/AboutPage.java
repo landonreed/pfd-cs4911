@@ -1,10 +1,9 @@
 package com.lifePreserverDiet.PFD.UserInterface;
 
-import com.lifePreserverDiet.PFD.R;
-import com.lifePreserverDiet.PFD.R.layout;
-
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.lifePreserverDiet.PFD.R;
 
 public class AboutPage extends Activity {
     /** Called when the activity is first created. */
