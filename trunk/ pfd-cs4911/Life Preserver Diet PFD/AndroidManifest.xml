@@ -24,6 +24,7 @@
         <activity android:name=".UserInterface.Pages.Book" />
         <activity android:name=".UserInterface.Pages.About" />
         <activity android:name=".UserInterface.Pages.Contact" />
+        <activity android:name=".UserInterface.TestDatabaseActivity" />
     </application>
 
 </manifest>

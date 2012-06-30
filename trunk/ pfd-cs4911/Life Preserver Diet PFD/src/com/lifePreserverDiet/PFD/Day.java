@@ -3,28 +3,33 @@ package com.lifePreserverDiet.PFD;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 public class Day {
-
 	private long id; // db column id
 	private Date date;
 	private int wholeGrains, dairy, meatBeans, fruit, veggies, extra, exercise;
 
 	@Override
 	public String toString() {
-		return new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm:ss.SSS a").format(date);
+		//return new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm:ss.SSS a").format(date);
+		return date.toString();
 	}
 	
 	public Date getDate(){ return date; }
 	public void setDate(String date){
-		try{
+		/*try{
 			this.date = new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm:ss.SSS a").parse(date);
-		}catch (ParseException e){
+		}catch(ParseException e){
+			e.printStackTrace();
+		}*/
+
+		try{
+			this.date = new SimpleDateFormat("EEE MMMM dd HH:mm:ss zzz yyyy").parse(date);
+		}catch(ParseException e){
 			e.printStackTrace();
 		}
 	}
-
+	
 	public long getId(){ return id; }
 	public void setId(long id){ this.id = id; }
 	
