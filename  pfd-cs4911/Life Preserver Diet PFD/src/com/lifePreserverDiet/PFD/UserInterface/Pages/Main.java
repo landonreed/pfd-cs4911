@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.lifePreserverDiet.PFD.R;
+import com.lifePreserverDiet.PFD.UserInterface.TestDatabaseActivity;
 
 public class Main extends Activity {
 
@@ -38,5 +39,10 @@ public class Main extends Activity {
 		Intent intent = new Intent(this, Contact.class);
 		startActivity(intent);
 	}
+    
+    public void test_database(View v) {
+    	Intent intent = new Intent(this, TestDatabaseActivity.class);
+    	startActivity(intent);
+    }
 	
 }

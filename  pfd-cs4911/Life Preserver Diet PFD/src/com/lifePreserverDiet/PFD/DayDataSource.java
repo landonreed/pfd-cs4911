@@ -46,16 +46,17 @@ public class DayDataSource {
 			int fruit, int veggies, int extra, int exercise)
 	{
 		ContentValues values = new ContentValues();
-		
-		values.put(MySQLiteHelper.COLUMN_DATE, 
-				new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm:ss.SSS a").format(date));
-		values.put(MySQLiteHelper.COLUMN_WHOLEGRAINS, ((Integer)wholeGrains).toString());
-		values.put(MySQLiteHelper.COLUMN_DAIRY, ((Integer)dairy).toString());
-		values.put(MySQLiteHelper.COLUMN_MEATBEANS, ((Integer)meatBeans).toString());
-		values.put(MySQLiteHelper.COLUMN_FRUIT, ((Integer)fruit).toString());
-		values.put(MySQLiteHelper.COLUMN_VEGGIES, ((Integer)veggies).toString());
-		values.put(MySQLiteHelper.COLUMN_EXTRA, ((Integer)extra).toString());
-		values.put(MySQLiteHelper.COLUMN_EXERCISE, ((Integer)exercise).toString());
+
+		values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
+		//values.put(MySQLiteHelper.COLUMN_DATE, 
+				//new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm:ss.SSS a").format(date));
+		values.put(MySQLiteHelper.COLUMN_WHOLEGRAINS, wholeGrains);
+		values.put(MySQLiteHelper.COLUMN_DAIRY, dairy);
+		values.put(MySQLiteHelper.COLUMN_MEATBEANS, meatBeans);
+		values.put(MySQLiteHelper.COLUMN_FRUIT, fruit);
+		values.put(MySQLiteHelper.COLUMN_VEGGIES, veggies);
+		values.put(MySQLiteHelper.COLUMN_EXTRA, extra);
+		values.put(MySQLiteHelper.COLUMN_EXERCISE, exercise);
 		
 		long insertId = database.insert(MySQLiteHelper.TABLE_DAYS, null,
 				values);
@@ -75,8 +76,8 @@ public class DayDataSource {
 	 * Removes a Day from the table
 	 */
 	public void deleteDay(Day day) {
-		long id = day.getId();		
-		System.out.println("Day deleted with id: " + id);		
+		long id = day.getId();
+		System.out.println("Day deleted with id: " + id);
 		database.delete(MySQLiteHelper.TABLE_DAYS, MySQLiteHelper.COLUMN_ID
 				+ " = " + id, null);
 	}

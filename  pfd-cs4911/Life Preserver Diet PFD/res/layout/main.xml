@@ -40,4 +40,11 @@
         android:onClick="contact">
     </Button>
     
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Test Database"
+        android:onClick="test_database">
+    </Button>
+    
 </LinearLayout>
