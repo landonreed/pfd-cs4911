@@ -13,38 +13,55 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class DayDataSource {
 
-	/** Database fields */
+	/** Database */
 	private SQLiteDatabase database;
+	
+	/** Database manager */
 	private MySQLiteHelper dbHelper;
-	private String[] allColumns = { 
+	
+	/** Array of table columns */
+	private String[] allColumns = {
 			MySQLiteHelper.COLUMN_ID,
 			MySQLiteHelper.COLUMN_DATE,
 			MySQLiteHelper.COLUMN_WHOLEGRAINS,
 			MySQLiteHelper.COLUMN_DAIRY,
 			MySQLiteHelper.COLUMN_MEATBEANS,
 			MySQLiteHelper.COLUMN_FRUIT,
+			MySQLiteHelper.COLUMN_VEGGIES,
 			MySQLiteHelper.COLUMN_EXTRA,
 			MySQLiteHelper.COLUMN_EXERCISE
 	};
 
+	/**
+	 * Creates a new database manager.
+	 * 
+	 * @param context to use to open or create the database
+	 */
 	public DayDataSource(Context context) {
 		dbHelper = new MySQLiteHelper(context);
 	}
 
+	/**
+	 * Opens a new database connection.
+	 */
 	public void open() throws SQLException {
 		database = dbHelper.getWritableDatabase();
 	}
 
+	/**
+	 * Closes the database connection.
+	 */
 	public void close() {
 		dbHelper.close();
 	}
 	
 	/**
-	 * Inserts a new Day into the table
+	 * Inserts a new Day into the table and returns the Day object.
 	 */
 	public Day createDay(Date date, int wholeGrains, int dairy, int meatBeans,
 			int fruit, int veggies, int extra, int exercise)
 	{
+		/** Build value set for SQL query. */
 		ContentValues values = new ContentValues();
 
 		values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
@@ -57,18 +74,20 @@ public class DayDataSource {
 		values.put(MySQLiteHelper.COLUMN_VEGGIES, veggies);
 		values.put(MySQLiteHelper.COLUMN_EXTRA, extra);
 		values.put(MySQLiteHelper.COLUMN_EXERCISE, exercise);
-		
+				
+		/** Perform table insert and get the row id. */
 		long insertId = database.insert(MySQLiteHelper.TABLE_DAYS, null,
 				values);
 		
+		/** Get a cursor to the inserted row. */
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_DAYS,
 				allColumns, MySQLiteHelper.COLUMN_ID + " = " + insertId, null,
 				null, null, null);
 		
+		/** Close the cursor and return the resulting Day object. */
 		cursor.moveToFirst();
 		Day newDay = cursorToDay(cursor);
-		cursor.close();
-		
+		cursor.close();		
 		return newDay;
 	}
 
@@ -83,7 +102,8 @@ public class DayDataSource {
 	}
 
 	/**
-	 * Returns a list of all Days contained in the table
+	 * 
+	 * @return a list of all Days contained in the table
 	 */
 	public List<Day> getAllDays() {
 		List<Day> days = new ArrayList<Day>();
@@ -103,7 +123,10 @@ public class DayDataSource {
 	}
 
 	/**
-	 * Returns the table row pointed to by the given cursor as a Day object
+	 * Returns a Day object whose fields match the given cursor's columns.
+	 * 
+	 * @param cursor The cursor pointing to the table row containing our desired data
+	 * @return A Day object whose fields match the cursor's columns
 	 */
 	private Day cursorToDay(Cursor cursor) {
 		Day day = new Day();
