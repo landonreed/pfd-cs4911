@@ -7,9 +7,10 @@
     
     <Button
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Personal Flotation Device"
-        android:onClick="personalFlotationDevice">
+        android:onClick="personalFlotationDevice"
+        android:background="@drawable/redbutton">
     </Button>
     
     <Button
