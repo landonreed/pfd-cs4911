@@ -42,6 +42,5 @@ public class Main extends Activity {
     public void test_database(View v) {
     	Intent intent = new Intent(this, TestDatabaseActivity.class);
     	startActivity(intent);
-    }
-	
+    }	
 }
