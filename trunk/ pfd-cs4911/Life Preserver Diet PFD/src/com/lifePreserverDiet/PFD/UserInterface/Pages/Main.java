@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.lifePreserverDiet.PFD.R;
-import com.lifePreserverDiet.PFD.UserInterface.TestDatabaseActivity;
 
 public class Main extends Activity {
 

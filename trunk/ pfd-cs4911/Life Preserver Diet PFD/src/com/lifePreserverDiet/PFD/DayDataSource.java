@@ -1,6 +1,5 @@
 package com.lifePreserverDiet.PFD;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -56,17 +55,25 @@ public class DayDataSource {
 	}
 	
 	/**
-	 * Inserts a new Day into the table and returns the Day object.
+	 * Inserts a new Day into the the table.
+	 * 
+	 * @param date of this day
+	 * @param wholeGrains share amount entered for this day
+	 * @param dairy share amount entered for this day
+	 * @param meatBeans share amount entered for this day
+	 * @param fruit share amount entered for this day
+	 * @param veggies share amount entered for this day
+	 * @param extra share amount entered for this day
+	 * @param exercise share amount entered for this day
+	 * @return The Day object
 	 */
 	public Day createDay(Date date, int wholeGrains, int dairy, int meatBeans,
 			int fruit, int veggies, int extra, int exercise)
 	{
-		/** Build value set for SQL query. */
+		/* Build value set for SQL query. */
 		ContentValues values = new ContentValues();
 
 		values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
-		//values.put(MySQLiteHelper.COLUMN_DATE, 
-				//new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm:ss.SSS a").format(date));
 		values.put(MySQLiteHelper.COLUMN_WHOLEGRAINS, wholeGrains);
 		values.put(MySQLiteHelper.COLUMN_DAIRY, dairy);
 		values.put(MySQLiteHelper.COLUMN_MEATBEANS, meatBeans);
@@ -75,16 +82,16 @@ public class DayDataSource {
 		values.put(MySQLiteHelper.COLUMN_EXTRA, extra);
 		values.put(MySQLiteHelper.COLUMN_EXERCISE, exercise);
 				
-		/** Perform table insert and get the row id. */
+		/* Perform table insert and get the row id. */
 		long insertId = database.insert(MySQLiteHelper.TABLE_DAYS, null,
 				values);
 		
-		/** Get a cursor to the inserted row. */
+		/* Get a cursor to the inserted row. */
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_DAYS,
 				allColumns, MySQLiteHelper.COLUMN_ID + " = " + insertId, null,
 				null, null, null);
 		
-		/** Close the cursor and return the resulting Day object. */
+		/* Close the cursor and return the resulting Day object. */
 		cursor.moveToFirst();
 		Day newDay = cursorToDay(cursor);
 		cursor.close();		
@@ -92,7 +99,9 @@ public class DayDataSource {
 	}
 
 	/**
-	 * Removes a Day from the table
+	 * Removes a Day from the table.
+	 * 
+	 * @param day The day to remove
 	 */
 	public void deleteDay(Day day) {
 		long id = day.getId();

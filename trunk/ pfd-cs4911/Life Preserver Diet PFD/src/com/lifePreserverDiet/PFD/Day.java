@@ -5,24 +5,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Day {
-	private long id; // db column id
+	/** Database column id */
+	private long id;
 	private Date date;
 	private int wholeGrains, dairy, meatBeans, fruit, veggies, extra, exercise;
 
 	@Override
 	public String toString() {
-		//return new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm:ss.SSS a").format(date);
 		return date.toString();
 	}
 	
 	public Date getDate(){ return date; }
 	public void setDate(String date){
-		/*try{
-			this.date = new SimpleDateFormat("EEEE, dd MMMM yyyy, hh:mm:ss.SSS a").parse(date);
-		}catch(ParseException e){
-			e.printStackTrace();
-		}*/
-
 		try{
 			this.date = new SimpleDateFormat("EEE MMMM dd HH:mm:ss zzz yyyy").parse(date);
 		}catch(ParseException e){

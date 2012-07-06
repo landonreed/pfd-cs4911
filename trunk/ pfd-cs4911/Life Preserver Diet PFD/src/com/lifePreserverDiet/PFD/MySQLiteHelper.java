@@ -17,9 +17,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			COLUMN_EXTRA = "extra",
 			COLUMN_EXERCISE = "exercise",
 			DATABASE_NAME = "days.db";
+	
 	private static final int DATABASE_VERSION = 1;
 	
-	// Database creation sql statement
 	private static final String DATABASE_CREATE = "create table " + TABLE_DAYS
 			+ "("
 			+ COLUMN_ID + " integer primary key autoincrement, "
