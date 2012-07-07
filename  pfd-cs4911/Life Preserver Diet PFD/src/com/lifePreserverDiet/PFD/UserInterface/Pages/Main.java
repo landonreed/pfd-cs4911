@@ -42,5 +42,12 @@ public class Main extends Activity {
     public void test_database(View v) {
     	Intent intent = new Intent(this, TestDatabaseActivity.class);
     	startActivity(intent);
-    }	
+    }
+    
+    public void graph_view(View v) {
+    	Intent intent = new Intent(this, GraphViewDemo.class);
+		intent.putExtra("type", "bar");
+		//intent.putExtra("type", "line");
+    	startActivity(intent);
+    }
 }
