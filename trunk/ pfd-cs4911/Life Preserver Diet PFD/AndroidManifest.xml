@@ -26,6 +26,7 @@
         <activity android:name=".UserInterface.Pages.About" />
         <activity android:name=".UserInterface.Pages.Contact" />
         <activity android:name=".UserInterface.Pages.TestDatabaseActivity" />
+        <activity android:name=".UserInterface.Pages.GraphViewDemo" />
     </application>
 
 </manifest>
