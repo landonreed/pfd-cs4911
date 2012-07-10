@@ -2,59 +2,146 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="center_horizontal"
     android:background="@drawable/background"
+    android:gravity="center_horizontal"
     android:orientation="vertical" >
-    
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="145dp"
+        android:paddingTop="38dp"
+        android:src="@drawable/logo_2" >
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="20dp" >
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/icon_pfd" >
+        </ImageView>
+
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:padding="0dp"
+            android:background="@drawable/button_selector_white"
+            android:onClick="personalFlotationDevice"
+            android:text="PFD" >
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="5dp" >
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/icon_history" >
+        </ImageView>
+
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:padding="0dp"
+            android:background="@drawable/button_selector_red"
+            android:onClick="captainsLog"
+            android:text="Chart your History" >
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="5dp" >
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/icon_about" >
+        </ImageView>
+
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:padding="0dp"
+            android:background="@drawable/button_selector_white"
+            android:onClick="about"
+            android:text="About the Book" >
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="5dp" >
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/icon_book" >
+        </ImageView>
+
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:padding="0dp"
+            android:background="@drawable/button_selector_red"
+            android:onClick="book"
+            android:text="Buy the Book" >
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="5dp" >
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:paddingRight="5dp"
+            android:src="@drawable/icon_contact" >
+        </ImageView>
+
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="45dp"
+            android:padding="0dp"
+            android:background="@drawable/button_selector_white"
+            android:onClick="contact"
+            android:text="Contact Us" >
+        </Button>
+    </LinearLayout>
+
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="PFD"
-        android:onClick="personalFlotationDevice">
-    </Button>
-    
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Chart your History"
-        android:onClick="captainsLog">
-    </Button>
-    
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="About the Diet"
-        android:onClick="about">
-    </Button>
-    
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Buy the Book"
-        android:onClick="book">
-    </Button>
-    
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Contact Us"
-        android:onClick="contact">
-    </Button>
-    
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:onClick="test_database"
         android:text="Test Database"
-        android:visibility="gone" 
-        android:onClick="test_database">
+        android:visibility="gone" >
     </Button>
-    
+
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:onClick="graph_view"
         android:text="Test Graph View"
-        android:visibility="gone" 
-        android:onClick="graph_view">
+        android:visibility="gone" >
     </Button>
-    
+
 </LinearLayout>
