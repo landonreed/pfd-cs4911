@@ -20,7 +20,7 @@ public class Main extends Activity {
 	}
 	
 	public void captainsLog(View v) {
-		Intent intent = new Intent(this, CaptainsLog.class);
+		Intent intent = new Intent(this, ChartHistory.class);
 		startActivity(intent);
 	}
 	
