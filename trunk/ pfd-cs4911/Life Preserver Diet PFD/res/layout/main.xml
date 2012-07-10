@@ -3,41 +3,41 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center_horizontal"
+    android:background="@drawable/background"
     android:orientation="vertical" >
     
     <Button
         android:layout_width="fill_parent"
-        android:layout_height="40dp"
-        android:text="Personal Flotation Device"
-        android:onClick="personalFlotationDevice"
-        android:background="@drawable/redbutton">
+        android:layout_height="wrap_content"
+        android:text="PFD"
+        android:onClick="personalFlotationDevice">
     </Button>
     
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Captain's Log"
+        android:text="Chart your History"
         android:onClick="captainsLog">
     </Button>
     
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Book"
-        android:onClick="book">
-    </Button>
-    
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="About"
+        android:text="About the Diet"
         android:onClick="about">
     </Button>
     
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Contact"
+        android:text="Buy the Book"
+        android:onClick="book">
+    </Button>
+    
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact Us"
         android:onClick="contact">
     </Button>
     
@@ -45,6 +45,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Test Database"
+        android:visibility="gone" 
         android:onClick="test_database">
     </Button>
     
@@ -52,6 +53,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Test Graph View"
+        android:visibility="gone" 
         android:onClick="graph_view">
     </Button>
     
