@@ -178,13 +178,13 @@ public class PFDShareDialog extends Activity {
 		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_wholegrains_share3);
 		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_wholegrains_male);
 		
-		if(count > 1) {
+		if(count > 0) {
 			share1.setChecked(true);
 		}
-		if(count > 2) {
+		if(count > 1) {
 			share2.setChecked(true);
 		}
-		if(count > 3) {
+		if(count > 2) {
 			share3.setChecked(true);
 		}
 	}
