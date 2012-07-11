@@ -9,7 +9,7 @@ public class ChartHistory extends Activity {
 
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
-		setContentView(R.layout.chart_history);
+		setContentView(R.layout.page_chart_history);
 	}
 
 }

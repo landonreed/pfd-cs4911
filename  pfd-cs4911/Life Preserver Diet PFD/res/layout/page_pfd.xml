@@ -162,6 +162,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:checked="true"
         android:text="I am a female."
         android:textColor="@android:color/black" />
 

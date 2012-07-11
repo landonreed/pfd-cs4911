@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/icon_pfd_wholegrains" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="Whole Grains"
+        android:textSize="23sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="~100 calories" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Foods made primarily of: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="barley, buckwheat, whole grain corn, whole oats, whole rye and whole wheat. (Look for “100 percent whole wheat”)" />
+
+    <CheckBox
+        android:id="@+id/dialog_checkBox_pfd_wholegrains_share1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:button="@android:drawable/btn_radio"
+        android:text="Share 1" />
+
+    <CheckBox
+        android:id="@+id/dialog_checkBox_pfd_wholegrains_share2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:button="@android:drawable/btn_radio"
+        android:text="Share 2" />
+
+    <CheckBox
+        android:id="@+id/dialog_checkBox_pfd_wholegrains_share3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:button="@android:drawable/btn_radio"
+        android:text="Share 3" />
+
+    <CheckBox
+        android:id="@+id/dialog_checkBox_pfd_wholegrains_male"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:button="@android:drawable/btn_radio"
+        android:text="Share 4" />
+
+</LinearLayout>

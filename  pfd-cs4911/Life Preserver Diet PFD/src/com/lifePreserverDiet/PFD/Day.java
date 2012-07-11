@@ -10,6 +10,17 @@ public class Day {
 	private Date date;
 	private int wholeGrains, dairy, meatBeans, fruit, veggies, extra, exercise;
 
+	public Day() {
+		date = new Date();
+		wholeGrains = 0;
+		dairy = 0;
+		meatBeans = 0;
+		fruit = 0;
+		veggies = 0;
+		extra = 0;
+		exercise = 0;
+	}
+	
 	@Override
 	public String toString() {
 		return date.toString();
