@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/icon_pfd_exercise" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="Exercise"
+        android:textSize="23sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="There is a share for exercise on your PFD every day. That one share is just as important as the food shares. Any amount counts. It’s OK to start out slow. You will pick up momentum as you go." />
+
+    <CheckBox
+        android:id="@+id/dialog_checkBox_pfd_exercise_share1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:button="@android:drawable/btn_radio"
+        android:text="Share 1" />
+
+    <CheckBox
+        android:id="@+id/dialog_checkBox_pfd_exercise_male"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:button="@android:drawable/btn_radio"
+        android:text="Share 2" />
+
+</LinearLayout>

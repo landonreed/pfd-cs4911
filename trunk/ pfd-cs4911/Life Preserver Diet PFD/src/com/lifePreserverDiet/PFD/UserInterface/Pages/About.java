@@ -9,6 +9,6 @@ public class About extends Activity {
 
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
-		setContentView(R.layout.about_diet);
+		setContentView(R.layout.page_about_diet);
 	}
 }

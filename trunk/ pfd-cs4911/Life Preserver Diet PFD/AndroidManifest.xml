@@ -28,6 +28,9 @@
         <activity android:name=".UserInterface.Pages.Contact" />
         <activity android:name=".UserInterface.Pages.TestDatabaseActivity" />
         <activity android:name=".UserInterface.Pages.GraphViewDemo" />
+        <activity android:name=".UserInterface.Dialogs.PFDShareDialog"
+            android:label="Personal Food-Tracking Device"
+            android:theme="@android:style/Theme.Dialog"/>
     </application>
 
 </manifest>

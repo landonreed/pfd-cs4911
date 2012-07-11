@@ -31,7 +31,7 @@ public class GraphViewDemo extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.graphs);
+		setContentView(R.layout.test_graphs);
 
 		GraphViewData[] actualData = new GraphViewData[] {
 				new GraphViewData(0, 0.0d) // need to create a point for the origin
