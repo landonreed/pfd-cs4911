@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/icon_pfd_dairy" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="Dairy"
+        android:textSize="23sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="~100 calories" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Foods include: "
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="7dp"
+        android:text="Milk, yogurt and cheese."/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:text="In general, the denser the dairy product, the smaller the share size. Milk gives you the largest serving size, at 1 cup for 1 share. What a deal!"/>
+
+    <CheckBox
+        android:id="@+id/dialog_checkBox_pfd_dairy_share1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:button="@android:drawable/btn_radio"
+        android:text="Share 1" />
+
+    <CheckBox
+        android:id="@+id/dialog_checkBox_pfd_dairy_share2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:button="@android:drawable/btn_radio"
+        android:text="Share 2" />
+
+    <CheckBox
+        android:id="@+id/dialog_checkBox_pfd_dairy_share3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:button="@android:drawable/btn_radio"
+        android:text="Share 3" />
+
+    <CheckBox
+        android:id="@+id/dialog_checkBox_pfd_dairy_male"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:button="@android:drawable/btn_radio"
+        android:text="Share 4" />
+
+</LinearLayout>
