@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background3"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="300dp"
+                android:src="@drawable/book_image" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="The Life Preserver Diet"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:text="       The Life Preserver Diet offers a lifeline to those struggling with their weight. As the first book to package easy-to-follow tips and guidelines with an online food-tracking aid, The Life Preserver Diet:"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:paddingLeft="30dp"
+                android:text="•informs you of the common challenges to healthy eating"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:paddingLeft="30dp"
+                android:text="•offers constructive guidelines for losing weight while following a nutritionist-designed program"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:paddingLeft="30dp"
+                android:text="•instructs you in keeping track of meals with the Personal Food-Tracking Device® (PFD)"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:paddingLeft="30dp"
+                android:text="•entertains with an upbeat narrative tone and colorful, real-life anecdotes"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="You’ll learn causes of weight gain and how to resist them, tips for incorporating healthy eating and lifestyle changes into your daily routine, and tricks for keeping momentum. Best yet, you’ll have fun reading the book and making positive changes toward a happier, healthier you!"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

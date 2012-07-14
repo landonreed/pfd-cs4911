@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background3"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView_pfd_flotationDevice"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Personal Flotation Device"
+        android:textColor="@android:color/black"
+        android:textSize="23dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView_pfd_foodTrackingDevice"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView_pfd_flotationDevice"
+        android:gravity="center"
+        android:paddingBottom="15dp"
+        android:text="Personal Food-Tracking Device"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:layout_centerHorizontal="true"
+        android:id="@+id/frameLayout_pfd_wheel"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@id/textView_pfd_foodTrackingDevice"
+        android:background="@drawable/wheel" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="35dp"
+            android:paddingTop="162dp" >
+
+            <ImageView
+                android:id="@+id/imageView_pfd_extra"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="test"
+                android:src="@drawable/icon_pfd_extra" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingTop="98dp" >
+
+            <ImageView
+                android:id="@+id/imageView_pfd_vegetables"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="test"
+                android:src="@drawable/icon_pfd_vegetables" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:paddingTop="32dp" >
+
+            <ImageView
+                android:id="@+id/imageView_pfd_dairy"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="test"
+                android:src="@drawable/icon_pfd_dairy" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="94dp"
+            android:paddingTop="5dp" >
+
+            <ImageView
+                android:id="@+id/imageView_pfd_meatandbeans"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="test"
+                android:src="@drawable/icon_pfd_meatandbeans" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="159dp"
+            android:paddingTop="38dp" >
+
+            <ImageView
+                android:id="@+id/imageView_pfd_fruits"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="test"
+                android:src="@drawable/icon_pfd_fruits" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="185dp"
+            android:paddingTop="94dp" >
+
+            <ImageView
+                android:id="@+id/imageView_pfd_wholegrains"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="test"
+                android:src="@drawable/icon_pfd_wholegrains" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="163dp"
+            android:paddingTop="156dp" >
+
+            <ImageView
+                android:id="@+id/imageView_pfd_exercise"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="test"
+                android:src="@drawable/icon_pfd_exercise" />
+        </FrameLayout>
+    </FrameLayout>
+
+    <TextView
+        android:paddingTop="30dp"
+        android:layout_below="@id/frameLayout_pfd_wheel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Tap a food group to check in your shares."
+        android:textColor="@android:color/black" />
+
+    <CheckBox
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:checked="true"
+        android:text="I am a female."
+        android:textColor="@android:color/black" />
+
+</RelativeLayout>
