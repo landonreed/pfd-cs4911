@@ -16,6 +16,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			COLUMN_VEGGIES = "veggies",
 			COLUMN_EXTRA = "extra",
 			COLUMN_EXERCISE = "exercise",
+			COLUMN_EXERCISE_MINUTES = "exercise_minutes",
 			DATABASE_NAME = "days.db";
 	
 	private static final int DATABASE_VERSION = 1;
@@ -30,7 +31,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			+ COLUMN_FRUIT + " integer, "
 			+ COLUMN_VEGGIES + " integer, "
 			+ COLUMN_EXTRA + " integer, "
-			+ COLUMN_EXERCISE + " integer "
+			+ COLUMN_EXERCISE + " text, "
+			+ COLUMN_EXERCISE_MINUTES + " integer "
 			+ ");";
 
 	public MySQLiteHelper(Context context) {
