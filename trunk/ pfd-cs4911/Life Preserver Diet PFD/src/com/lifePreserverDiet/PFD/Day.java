@@ -8,7 +8,11 @@ public class Day {
 	/** Database column id */
 	private long id;
 	private Date date;
-	private int wholeGrains, dairy, meatBeans, fruit, veggies, extra, exercise;
+	private int wholeGrains, dairy, meatBeans, fruit, veggies, extra;
+	
+	private boolean exercise;
+	
+	private int exercise_minutes;
 
 	public Day() {
 		date = new Date();
@@ -18,7 +22,9 @@ public class Day {
 		fruit = 0;
 		veggies = 0;
 		extra = 0;
-		exercise = 0;
+		
+		exercise = false;
+		exercise_minutes = 0;
 	}
 	
 	@Override
@@ -56,6 +62,9 @@ public class Day {
 	public int getExtra(){ return extra; }
 	public void setExtra(int extra){ this.extra = extra; }
 	
-	public int getExercise(){ return exercise; }
-	public void setExercise(int exercise){ this.exercise = exercise; }
+	public boolean getExercise(){ return exercise; }
+	public void setExercise(boolean exercise){ this.exercise = exercise; }
+	
+	public int getExerciseMinutes(){ return exercise_minutes; }
+	public void setExerciseMinutes(int exerciseMinutes){ this.exercise_minutes = exerciseMinutes; }
 }
