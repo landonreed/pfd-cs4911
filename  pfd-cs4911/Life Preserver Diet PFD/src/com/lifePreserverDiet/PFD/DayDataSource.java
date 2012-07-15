@@ -28,7 +28,8 @@ public class DayDataSource {
 			MySQLiteHelper.COLUMN_FRUIT,
 			MySQLiteHelper.COLUMN_VEGGIES,
 			MySQLiteHelper.COLUMN_EXTRA,
-			MySQLiteHelper.COLUMN_EXERCISE
+			MySQLiteHelper.COLUMN_EXERCISE,
+			MySQLiteHelper.COLUMN_EXERCISE_MINUTES
 	};
 
 	/**
@@ -68,7 +69,7 @@ public class DayDataSource {
 	 * @return The Day object
 	 */
 	public Day createDay(Date date, int wholeGrains, int dairy, int meatBeans,
-			int fruit, int veggies, int extra, int exercise)
+			int fruit, int veggies, int extra, boolean exercise, int exercise_minutes)
 	{
 		/* Build value set for SQL query. */
 		ContentValues values = new ContentValues();
@@ -80,7 +81,8 @@ public class DayDataSource {
 		values.put(MySQLiteHelper.COLUMN_FRUIT, fruit);
 		values.put(MySQLiteHelper.COLUMN_VEGGIES, veggies);
 		values.put(MySQLiteHelper.COLUMN_EXTRA, extra);
-		values.put(MySQLiteHelper.COLUMN_EXERCISE, exercise);
+		values.put(MySQLiteHelper.COLUMN_EXERCISE, String.valueOf(exercise));
+		values.put(MySQLiteHelper.COLUMN_EXERCISE_MINUTES, exercise_minutes);
 				
 		/* Perform table insert and get the row id. */
 		long insertId = database.insert(MySQLiteHelper.TABLE_DAYS, null,
@@ -147,7 +149,8 @@ public class DayDataSource {
 		day.setFruit(cursor.getInt(5));
 		day.setVeggies(cursor.getInt(6));
 		day.setExtra(cursor.getInt(7));
-		day.setExerciseMinutes(cursor.getInt(8));
+		day.setExercise( Boolean.getBoolean(cursor.getString(8)) );
+		day.setExerciseMinutes(cursor.getInt(9));
 		return day;
 	}
 }

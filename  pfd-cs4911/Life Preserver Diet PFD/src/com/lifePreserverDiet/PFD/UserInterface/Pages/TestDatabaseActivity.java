@@ -142,11 +142,14 @@ public class TestDatabaseActivity extends ListActivity {
 		case R.id.add:			
 			// random share values
 			int wholeGrains = 0, dairy = 0, meatBeans = 0, fruit = 0, veggies = 0,
-					extra = 0, exercise = 0;
-			int[] shares = {wholeGrains, dairy, meatBeans, fruit, veggies, extra, exercise};
+					extra = 0, exercise_minutes = 0;
+			int[] shares = {wholeGrains, dairy, meatBeans, fruit, veggies,
+					extra, exercise_minutes};
 			for(int i=0; i<shares.length; i++){
 				shares[i] = (int) (Math.random() * 4);
 			}
+			
+			boolean exercise = (exercise_minutes > 0) ? true : false;
 			
 			// random date
 			java.util.Date date = new java.util.Date(); 
@@ -154,7 +157,7 @@ public class TestDatabaseActivity extends ListActivity {
 			
 			// create new day
 			day = datasource.createDay(date, wholeGrains, dairy, meatBeans,
-					fruit, veggies, extra, exercise);
+					fruit, veggies, extra, exercise, exercise_minutes);
 			
 			// save new day to database
 			adapter.add(day);
