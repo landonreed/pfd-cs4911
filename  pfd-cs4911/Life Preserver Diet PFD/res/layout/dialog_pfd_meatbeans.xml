@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
@@ -15,6 +16,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
         android:text="Meat &amp; Beans"
+        android:textColor="@android:color/black"
         android:textSize="23sp"
         android:textStyle="bold" />
 
@@ -22,47 +24,121 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
-        android:text="~100 calories" />
+        android:text="~100 calories"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Foods in this Category: "
+        android:textColor="@android:color/black"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
-        android:text="Meat (especially lean meats, such as poultry and fish), legumes such as beans or lentils, eggs, soy protein, peanut butter" />
+        android:text="Meat (especially lean meats, such as poultry and fish), legumes such as beans or lentils, eggs, soy protein, peanut butter"
+        android:textColor="@android:color/black" />
 
-    <CheckBox
-        android:id="@+id/dialog_checkBox_pfd_meatbeans_share1"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:button="@android:drawable/btn_radio"
-        android:text="Share 1" />
+        android:gravity="center"
+        android:weightSum="1.0" >
 
-    <CheckBox
-        android:id="@+id/dialog_checkBox_pfd_meatbeans_share2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:button="@android:drawable/btn_radio"
-        android:text="Share 2" />
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:orientation="vertical" >
 
-    <CheckBox
-        android:id="@+id/dialog_checkBox_pfd_meatbeans_share3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:button="@android:drawable/btn_radio"
-        android:text="Share 3" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:paddingTop="5dp"
+                android:text="Daily Shares"
+                android:textColor="@android:color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" >
+            </TextView>
 
-    <CheckBox
-        android:id="@+id/dialog_checkBox_pfd_meatbeans_male"
-        android:visibility="gone"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:button="@android:drawable/btn_radio"
-        android:text="Share 4" />
+            <TextView
+                android:id="@+id/dialog_textView_pfd_meatbeans_shares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:text="##"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:textStyle="bold" >
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="@android:color/black" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:paddingTop="5dp"
+                android:text="Your Shares"
+                android:textColor="@android:color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" >
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="5dp" >
+
+                <ImageView
+                    android:id="@+id/dialog_imageView_pfd_meatbeans_downShares"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:onClick="decrementShares"
+                    android:clickable="true"
+                    android:src="@drawable/button_selector_down" >
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/dialog_editText_pfd_meatbeans_shares"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" >
+                </TextView>
+
+                <ImageView
+                    android:id="@+id/dialog_imageView_pfd_meatbeans_upShares"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:onClick="incrementShares"
+                    android:clickable="true"
+                    android:src="@drawable/button_selector_up" >
+                </ImageView>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

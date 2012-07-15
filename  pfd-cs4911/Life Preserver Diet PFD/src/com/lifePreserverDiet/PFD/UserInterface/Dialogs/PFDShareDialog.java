@@ -1,8 +1,11 @@
 package com.lifePreserverDiet.PFD.UserInterface.Dialogs;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.lifePreserverDiet.PFD.Day;
 import com.lifePreserverDiet.PFD.R;
@@ -12,6 +15,8 @@ public class PFDShareDialog extends Activity {
 	
 	Day day;
 	int id;
+	
+	TextView shares;
 	
 	public void onCreate(Bundle b) {
 		super.onCreate(b);
@@ -48,144 +53,104 @@ public class PFDShareDialog extends Activity {
 	private void dairy() {
 		setContentView(R.layout.dialog_pfd_dairy);
 		
+		((TextView) findViewById(R.id.dialog_textView_pfd_dairy_shares)).setText("3");
+		
+		shares = (TextView) findViewById(R.id.dialog_editText_pfd_dairy_shares);
+		
 		int count = day.getDairy();
 		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_dairy_share1);
-		CheckBox share2 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_dairy_share2);
-		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_dairy_share3);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_dairy_male);
-
-		if(count > 0) {
-			share1.setChecked(true);
-		}
-		if(count > 1) {
-			share2.setChecked(true);
-		}
-		if(count > 2) {
-			share3.setChecked(true);
-		}
-	}
-
-	private void exercise() {
-		setContentView(R.layout.dialog_pfd_exercise);
+		shares.setText(count + "");
 		
-		int count = day.getExercise();
-		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_exercise_share1);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_exercise_male);
-		
-		if(count > 0) {
-			share1.setChecked(true);
-		}
+		updateTextColor(count);
 	}
 
 	private void extra() {
 		setContentView(R.layout.dialog_pfd_extra);
 		
+		((TextView) findViewById(R.id.dialog_textView_pfd_extra_shares)).setText("3");
+		
+		shares = (TextView) findViewById(R.id.dialog_editText_pfd_extra_shares);
+		
 		int count = day.getExtra();
 		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_extra_share1);
-		CheckBox share2 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_extra_share2);
-		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_extra_share3);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_extra_male);
-
-		if(count > 0) {
-			share1.setChecked(true);
-		}
-		if(count > 1) {
-			share2.setChecked(true);
-		}
-		if(count > 2) {
-			share3.setChecked(true);
-		}
+		shares.setText(count + "");
+		
+		updateTextColor(count);
 	}
 
 	private void fruits() {
 		setContentView(R.layout.dialog_pfd_fruit);
 		
+		((TextView) findViewById(R.id.dialog_textView_pfd_fruit_shares)).setText("3");
+		
+		shares = (TextView) findViewById(R.id.dialog_editText_pfd_fruit_shares);
+		
 		int count = day.getFruit();
 		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_fruit_share1);
-		CheckBox share2 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_fruit_share2);
-		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_fruit_share3);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_fruit_male);
-
-		if(count > 0) {
-			share1.setChecked(true);
-		}
-		if(count > 1) {
-			share2.setChecked(true);
-		}
-		if(count > 2) {
-			share3.setChecked(true);
-		}
+		shares.setText(count + "");
+		
+		updateTextColor(count);
 	}
 
 	private void veggies() {
 		setContentView(R.layout.dialog_pfd_veggies);
 		
-		int count = day.getVeggies();
+		((TextView) findViewById(R.id.dialog_textView_pfd_veggies_shares)).setText("4");
 		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_veggies_share1);
-		CheckBox share2 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_veggies_share2);
-		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_veggies_share3);
-		CheckBox share4 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_veggies_share4);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_veggies_male);
-
-		if(count > 0) {
-			share1.setChecked(true);
-		}
-		if(count > 1) {
-			share2.setChecked(true);
-		}
-		if(count > 2) {
-			share3.setChecked(true);
-		}
-		if(count > 3) {
-			share4.setChecked(true);
-		}
+		shares = (TextView) findViewById(R.id.dialog_editText_pfd_veggies_shares);
 		
+		int count = day.getVeggies();	
+		
+		shares.setText(count + "");	
+		
+		updateTextColor(count);
 	}
 
 	private void meatbeans() {
 		setContentView(R.layout.dialog_pfd_meatbeans);
 		
+		((TextView) findViewById(R.id.dialog_textView_pfd_meatbeans_shares)).setText("3");
+		
+		shares = (TextView) findViewById(R.id.dialog_editText_pfd_meatbeans_shares);
+		
 		int count = day.getMeatBeans();
 		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_meatbeans_share1);
-		CheckBox share2 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_meatbeans_share2);
-		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_meatbeans_share3);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_meatbeans_male);
-
-		if(count > 0) {
-			share1.setChecked(true);
-		}
-		if(count > 1) {
-			share2.setChecked(true);
-		}
-		if(count > 2) {
-			share3.setChecked(true);
-		}
+		shares.setText(count + "");
+		
+		updateTextColor(count);
 	}
 
 	private void wholegrains() {
 		setContentView(R.layout.dialog_pfd_wholegrains);
 		
+		((TextView) findViewById(R.id.dialog_textView_pfd_wholegrains_shares)).setText("3");
+		
+		shares = (TextView) findViewById(R.id.dialog_editText_pfd_wholegrains_shares);
+		
 		int count = day.getWholeGrains();
 		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_wholegrains_share1);
-		CheckBox share2 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_wholegrains_share2);
-		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_wholegrains_share3);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_wholegrains_male);
+		shares.setText(count + "");
 		
-		if(count > 0) {
-			share1.setChecked(true);
+		updateTextColor(count);
+	}
+
+	private void exercise() {
+		setContentView(R.layout.dialog_pfd_exercise);
+		
+		boolean exercised = day.getExercise();
+		
+		if(exercised) {
+			((CheckBox) findViewById(R.id.dialog_checkBox_pfd_exercise)).setChecked(true);
 		}
-		if(count > 1) {
-			share2.setChecked(true);
-		}
-		if(count > 2) {
-			share3.setChecked(true);
+		
+		int count = day.getExerciseMinutes();
+		
+		shares = (TextView) findViewById(R.id.dialog_editText_pfd_exercise_minutes);
+		
+		shares.setText(count + "");
+		
+		if(count > 0) {			
+			shares.setTextColor(Color.GREEN);
 		}
 	}
 	
@@ -218,166 +183,122 @@ public class PFDShareDialog extends Activity {
 	}
 
 	private void updateDairy() {
-		int count = 0;
-		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_dairy_share1);
-		CheckBox share2 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_dairy_share2);
-		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_dairy_share3);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_dairy_male);
-
-		if(share1.isChecked()) {
-			count++;
-		}
-		if(share2.isChecked()) {
-			count++;
-		}
-		if(share3.isChecked()) {
-			count++;
-		}
-		if(male.isChecked()) {
-			count++;
-		}
+		int count = Integer.parseInt(shares.getText().toString());
 		
 		day.setDairy(count);
 	}
 
 	private void updateExtra() {
-		int count = 0;
-		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_extra_share1);
-		CheckBox share2 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_extra_share2);
-		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_extra_share3);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_extra_male);
-
-		if(share1.isChecked()) {
-			count++;
-		}
-		if(share2.isChecked()) {
-			count++;
-		}
-		if(share3.isChecked()) {
-			count++;
-		}
-		if(male.isChecked()) {
-			count++;
-		}
+		int count = Integer.parseInt(shares.getText().toString());
 		
 		day.setExtra(count);
 	}
 
-	private void updateExercise() {
-		int count = 0;
-		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_exercise_share1);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_exercise_male);
-
-		if(share1.isChecked()) {
-			count++;
-		}
-		if(male.isChecked()) {
-			count++;
-		}
-		
-		day.setExercise(count);
-	}
-
 	private void updateFruits() {
-		int count = 0;
-		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_fruit_share1);
-		CheckBox share2 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_fruit_share2);
-		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_fruit_share3);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_fruit_male);
+		int count = Integer.parseInt(shares.getText().toString());
 
-		if(share1.isChecked()) {
-			count++;
-		}
-		if(share2.isChecked()) {
-			count++;
-		}
-		if(share3.isChecked()) {
-			count++;
-		}
-		if(male.isChecked()) {
-			count++;
-		}		
-		
 		day.setFruit(count);
 	}
 
 	private void updateMeatBeans() {
-		int count = 0;
-		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_meatbeans_share1);
-		CheckBox share2 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_meatbeans_share2);
-		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_meatbeans_share3);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_meatbeans_male);
+		int count = Integer.parseInt(shares.getText().toString());
 
-		if(share1.isChecked()) {
-			count++;
-		}
-		if(share2.isChecked()) {
-			count++;
-		}
-		if(share3.isChecked()) {
-			count++;
-		}
-		if(male.isChecked()) {
-			count++;
-		}
 		day.setMeatBeans(count);
 	}
 
 	private void updateVeggies() {
-		int count = 0;
-		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_veggies_share1);
-		CheckBox share2 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_veggies_share2);
-		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_veggies_share3);
-		CheckBox share4 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_veggies_share4);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_veggies_male);
+		int count = Integer.parseInt(shares.getText().toString());
 
-		if(share1.isChecked()) {
-			count++;
-		}
-		if(share2.isChecked()) {
-			count++;
-		}
-		if(share3.isChecked()) {
-			count++;
-		}
-		if(share4.isChecked()) {
-			count++;
-		}
-		if(male.isChecked()) {
-			count++;
-		}
-		
 		day.setVeggies(count);
 	}
 
 	private void updateWholeGrains() {
-		int count = 0;
-		
-		CheckBox share1 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_wholegrains_share1);
-		CheckBox share2 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_wholegrains_share2);
-		CheckBox share3 = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_wholegrains_share3);
-		CheckBox male = (CheckBox) this.findViewById(R.id.dialog_checkBox_pfd_wholegrains_male);
+		int count = Integer.parseInt(shares.getText().toString());
 
-		if(share1.isChecked()) {
-			count++;
-		}
-		if(share2.isChecked()) {
-			count++;
-		}
-		if(share3.isChecked()) {
-			count++;
-		}
-		if(male.isChecked()) {
-			count++;
+		day.setWholeGrains(count);
+	}
+
+	private void updateExercise() {
+		int count = Integer.parseInt(shares.getText().toString());
+
+		day.setExerciseMinutes(count);
+		
+		if(((CheckBox) findViewById(R.id.dialog_checkBox_pfd_exercise)).isChecked()) {
+			day.setExercise(true);
+		} else {
+			day.setExercise(false);
 		}
 		
-		day.setWholeGrains(count);
+		if(count == 0) {
+			day.setExercise(false);
+		}
+	}
+	
+	public void incrementShares(View v) {
+		int num_shares = Integer.parseInt(shares.getText().toString());
+		num_shares++;		
+		shares.setText(num_shares + "");
+		
+		updateTextColor(num_shares);
+	}
+	
+	public void decrementShares(View v) {
+		int num_shares = Integer.parseInt(shares.getText().toString());
+		num_shares--;
+		
+		if(num_shares < 0) {
+			num_shares = 0;
+		}
+		
+		shares.setText(num_shares + "");
+		
+		updateTextColor(num_shares);
+	}
+	
+	private void updateTextColor(int num_shares) {		
+		if(id != R.id.imageView_pfd_vegetables) {
+			if(num_shares == 3) {
+				shares.setTextColor(Color.GREEN);
+			} else if (num_shares > 3) {
+				shares.setTextColor(Color.RED);
+			} else {
+				shares.setTextColor(Color.BLACK);
+			}
+		} else {
+			if(num_shares == 4) {
+				shares.setTextColor(Color.GREEN);
+			} else if (num_shares > 4) {
+				shares.setTextColor(Color.RED);
+			} else {
+				shares.setTextColor(Color.BLACK);
+			}
+		}
+	}
+	
+	public void incrementExercise(View v) {
+		int num_shares = Integer.parseInt(shares.getText().toString());
+		num_shares+=5;		
+		shares.setText(num_shares + "");
+		
+		((CheckBox) findViewById(R.id.dialog_checkBox_pfd_exercise)).setChecked(true);
+		
+		shares.setTextColor(Color.GREEN);
+	}
+	
+	public void decrementExercise(View v) {
+		int num_shares = Integer.parseInt(shares.getText().toString());
+		num_shares-=5;
+		
+		if(num_shares <= 0) {
+			num_shares = 0;				
+			((CheckBox) findViewById(R.id.dialog_checkBox_pfd_exercise)).setChecked(false);		
+			shares.setTextColor(Color.BLACK);
+		} else {					
+			((CheckBox) findViewById(R.id.dialog_checkBox_pfd_exercise)).setChecked(true);
+			shares.setTextColor(Color.GREEN);
+		}
+		
+		shares.setText(num_shares + "");
 	}
 
 }

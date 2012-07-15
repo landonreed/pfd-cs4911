@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
@@ -15,6 +16,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
         android:text="Exercise"
+        android:textColor="@android:color/black"
         android:textSize="23sp"
         android:textStyle="bold" />
 
@@ -22,21 +24,108 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
-        android:text="There is a share for exercise on your PFD every day. That one share is just as important as the food shares. Any amount counts. It’s OK to start out slow. You will pick up momentum as you go." />
+        android:text="There is a share for exercise on your PFD every day. That one share is just as important as the food shares. Any amount counts. It’s OK to start out slow. You will pick up momentum as you go."
+        android:textColor="@android:color/black" />
 
-    <CheckBox
-        android:id="@+id/dialog_checkBox_pfd_exercise_share1"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:button="@android:drawable/btn_radio"
-        android:text="Share 1" />
+        android:gravity="center"
+        android:weightSum="1.0" >
 
-    <CheckBox
-        android:id="@+id/dialog_checkBox_pfd_exercise_male"
-        android:visibility="gone"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:button="@android:drawable/btn_radio"
-        android:text="Share 2" />
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="5dp" >
+
+            <CheckBox
+                android:id="@+id/dialog_checkBox_pfd_exercise"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:button="@android:drawable/btn_radio"
+                android:text="I exercised today!"
+                android:textColor="@android:color/black"
+                android:textSize="17sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="@android:color/black" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:paddingTop="5dp"
+                android:text="How Long?"
+                android:textColor="@android:color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" >
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="5dp" >
+
+                <ImageView
+                    android:id="@+id/dialog_imageView_pfd_dairy_downShares"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:clickable="true"
+                    android:onClick="decrementExercise"
+                    android:src="@drawable/button_selector_down" >
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/dialog_editText_pfd_exercise_minutes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="4dp"
+                    android:paddingBottom="5dp"
+                    android:text="0"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:text=" min"
+                    android:paddingRight="4dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" >
+                </TextView>
+
+                <ImageView
+                    android:id="@+id/dialog_imageView_pfd_dairy_upShares"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:clickable="true"
+                    android:onClick="incrementExercise"
+                    android:src="@drawable/button_selector_up" >
+                </ImageView>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

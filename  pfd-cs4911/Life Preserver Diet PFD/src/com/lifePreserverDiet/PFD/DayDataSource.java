@@ -147,7 +147,7 @@ public class DayDataSource {
 		day.setFruit(cursor.getInt(5));
 		day.setVeggies(cursor.getInt(6));
 		day.setExtra(cursor.getInt(7));
-		day.setExercise(cursor.getInt(8));
+		day.setExerciseMinutes(cursor.getInt(8));
 		return day;
 	}
 }
