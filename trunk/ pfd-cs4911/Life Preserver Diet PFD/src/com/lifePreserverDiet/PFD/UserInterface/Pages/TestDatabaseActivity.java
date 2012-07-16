@@ -48,7 +48,7 @@ public class TestDatabaseActivity extends ListActivity {
 		
 		///////////////////////////////////////////////////////////////////////////////////
 
-		/*
+		
 		
         // initialize our XYPlot reference:
 		mySimpleXYPlot = (XYPlot) findViewById(R.id.mySimpleXYPlot);
@@ -61,7 +61,9 @@ public class TestDatabaseActivity extends ListActivity {
                 1072915200, // 2004
                 1104537600  // 2005
         };
+        
         // create our series from our array of nums:
+        // SimpleXYSeries(x list, y list, graph title)
         XYSeries series2 = new SimpleXYSeries(
                 Arrays.asList(years),
                 Arrays.asList(numSightings),
@@ -92,7 +94,7 @@ public class TestDatabaseActivity extends ListActivity {
  
         		// LineAndPointFormatter(line color, point color, fill color)
         LineAndPointFormatter formatter  = 
-        		new LineAndPointFormatter(Color.rgb(0, 0,0), Color.BLUE, Color.RED);
+        		new LineAndPointFormatter(Color.rgb(0,0,0), Color.BLUE, Color.RED);
         formatter.setFillPaint(lineFill);
         mySimpleXYPlot.getGraphWidget().setPaddingRight(2);
         mySimpleXYPlot.addSeries(series2, formatter);
@@ -127,7 +129,7 @@ public class TestDatabaseActivity extends ListActivity {
         // by default, AndroidPlot displays developer guides to aid in laying out your plot.
         // To get rid of them call disableAllMarkup():
         mySimpleXYPlot.disableAllMarkup();
-        */
+        
 		
 
 		//startGraphActivity(GraphViewDemo.class);
@@ -139,15 +141,18 @@ public class TestDatabaseActivity extends ListActivity {
 		Day day = null;
 
 		switch (view.getId()) {
-		case R.id.add:			
+		case R.id.add:
 			// random share values
-			int wholeGrains = 0, dairy = 0, meatBeans = 0, fruit = 0, veggies = 0,
-					extra = 0, exercise_minutes = 0;
-			int[] shares = {wholeGrains, dairy, meatBeans, fruit, veggies,
-					extra, exercise_minutes};
-			for(int i=0; i<shares.length; i++){
-				shares[i] = (int) (Math.random() * 4);
-			}
+			int[] shares = new int[7];
+			for (int i=0; i<shares.length; i++)
+				shares[i] = (int) (Math.random() * 4 + 1);
+			int wholeGrains = shares[0];
+			int dairy = shares[1];
+			int meatBeans = shares[2];
+			int fruit = shares[3];
+			int veggies = shares[4];
+			int extra = shares[5];
+			int exercise_minutes = shares[6];
 			
 			boolean exercise = (exercise_minutes > 0) ? true : false;
 			

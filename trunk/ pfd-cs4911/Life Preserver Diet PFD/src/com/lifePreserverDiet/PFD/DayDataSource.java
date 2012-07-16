@@ -96,7 +96,7 @@ public class DayDataSource {
 		/* Close the cursor and return the resulting Day object. */
 		cursor.moveToFirst();
 		Day newDay = cursorToDay(cursor);
-		cursor.close();		
+		cursor.close();
 		return newDay;
 	}
 
@@ -141,6 +141,10 @@ public class DayDataSource {
 	 */
 	private Day cursorToDay(Cursor cursor) {
 		Day day = new Day();
+		
+		//for (int i = 0; i<cursor.getColumnCount(); i++)
+			//System.out.println(cursor.getString(i));
+		
 		day.setId(cursor.getLong(0));
 		day.setDate(cursor.getString(1));
 		day.setWholeGrains(cursor.getInt(2));
