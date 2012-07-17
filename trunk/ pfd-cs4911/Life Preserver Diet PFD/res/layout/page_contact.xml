@@ -5,78 +5,95 @@
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background3" >
+        android:layout_height="fill_parent"
+        android:background="@drawable/background3"
+        android:orientation="vertical" >
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content" >
 
-            <ImageView
-                android:layout_width="250dp"
-                android:layout_height="195dp"
-                android:padding="10dp"
-                android:src="@drawable/marcia" >
-            </ImageView>
-
-            <TextView
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="Talk With a Pro!"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" >
-            </TextView>
+                android:gravity="center"
+                android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="Registered dietitian Marcia Berlin, R.D., L.D. wants to help you get back to a happier, healthier you! She is available for online consultations via Skype or telephone."
-                android:textColor="@android:color/black" >
-            </TextView>
+                <ImageView
+                    android:layout_width="250dp"
+                    android:layout_height="195dp"
+                    android:padding="10dp"
+                    android:src="@drawable/marcia" >
+                </ImageView>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Your first 10-minute consultation is free! (Subsequent consultations are billed at $8 per 10 minutes, or $48 per hour.)"
-                android:textColor="@android:color/black" >
-            </TextView>
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:text="Talk With a Pro!"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" >
+                </TextView>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:onClick="email"
-                android:paddingBottom="10dp"
-                android:text="Arrange for your phone or video consultation now."
-                android:textColor="@color/blue"
-                android:textStyle="bold" >
-            </TextView>
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Registered dietitian Marcia Berlin, R.D., L.D. is available for online consultations via Skype or telephone."
+                    android:textColor="@android:color/black" >
+                </TextView>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Note: Skype is a free online video calling program. You must sign up for Skype and have access to a web camera to use it."
-                android:textColor="@android:color/black" >
-            </TextView>
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text=" Your first 10-minute consultation is free! (Subsequent consultations are billed at $8 per 10 minutes, or $48 per hour.)"
+                    android:textColor="@android:color/black" >
+                </TextView>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:onClick="skype"
-                android:paddingBottom="10dp"
-                android:text="Sign up for Skype."
-                android:textColor="@color/blue"
-                android:textStyle="bold" >
-            </TextView>
-        </LinearLayout>
-    </ScrollView>
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:onClick="email"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Arrange for your phone or video consultation now."
+                    android:textColor="@color/blue"
+                    android:textStyle="bold" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Note: Skype is a free online video-calling program. It requires a camera to use."
+                    android:textColor="@android:color/black" >
+                </TextView>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:onClick="skype"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Sign up for Skype."
+                    android:textColor="@color/blue"
+                    android:textStyle="bold" >
+                </TextView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
 </LinearLayout>
