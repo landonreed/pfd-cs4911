@@ -38,7 +38,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
-        android:text="Anything that doesn’t fall into any of the other categories — any grains that aren’t whole grains (the processed, white stuff), sweets and snacks."
+        android:text="Anything that doesn’t fall into any of the other categories — any grains that aren’t whole grains, sweets and snacks."
         android:textColor="@android:color/black" />
 
     <LinearLayout

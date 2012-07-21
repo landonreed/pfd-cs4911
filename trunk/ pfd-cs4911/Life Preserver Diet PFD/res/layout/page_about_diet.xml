@@ -74,7 +74,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="4dp"
-                android:paddingLeft="30dp"
+                android:paddingLeft="40dp"
                 android:text="•instructs you in keeping track of meals with the Personal Food-Tracking Device® (PFD)"
                 android:textColor="@android:color/black" />
 
@@ -82,7 +82,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="4dp"
-                android:paddingLeft="30dp"
+                android:paddingLeft="40dp"
                 android:text="•entertains with an upbeat narrative tone and colorful, real-life anecdotes"
                 android:textColor="@android:color/black" />
 
