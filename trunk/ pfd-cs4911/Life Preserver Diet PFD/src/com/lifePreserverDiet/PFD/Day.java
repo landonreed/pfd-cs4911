@@ -33,9 +33,14 @@ public class Day {
 	}
 	
 	public Date getDate(){ return date; }
-	public void setDate(String date){
+	public void setDate(String dateString){
 		try{
-			this.date = new SimpleDateFormat("EEE MMMM dd HH:mm:ss zzz yyyy").parse(date);
+			date = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(dateString);
+			
+			System.out.println("dateString == date.toString(): " + 
+					dateString.equals(date.toString()));
+			
+			//date = new SimpleDateFormat().parse(dateString);
 		}catch(ParseException e){
 			e.printStackTrace();
 		}

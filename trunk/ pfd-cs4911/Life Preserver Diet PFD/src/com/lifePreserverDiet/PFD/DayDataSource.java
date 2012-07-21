@@ -157,4 +157,24 @@ public class DayDataSource {
 		day.setExerciseMinutes(cursor.getInt(9));
 		return day;
 	}
+	
+	/**
+	 * Returns the Day object from the db matching the given date.
+	 * 
+	 * @param date The date of the Day we want to get
+	 * @return the Day object from the db matching the given date
+	 */
+	public Day getDay(Date date){
+		Cursor cursor = database.query(MySQLiteHelper.TABLE_DAYS,
+				allColumns, MySQLiteHelper.COLUMN_DATE + " = '" + date.toString() + "'",
+				null, null, null, null);
+		
+		if (cursor.getCount() < 1)
+			return null;
+		
+		cursor.moveToFirst();
+		Day day = cursorToDay(cursor);
+		cursor.close();
+		return day;
+	}
 }
