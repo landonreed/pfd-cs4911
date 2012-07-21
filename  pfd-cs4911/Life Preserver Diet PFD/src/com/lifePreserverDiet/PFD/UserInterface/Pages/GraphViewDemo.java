@@ -1,5 +1,6 @@
 package com.lifePreserverDiet.PFD.UserInterface.Pages;
 
+import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -58,34 +59,49 @@ public class GraphViewDemo extends ListActivity {
 
 		GraphViewData[] actualData;
 		
+		System.out.println(getListAdapter().getCount());
+		
 		if(getListAdapter().getCount() > 0){
+			//Day day = (Day) getListAdapter().getItem(0);
 			
-		Day day = (Day) getListAdapter().getItem(0);
-		int[] shares = {0, day.getWholeGrains(), day.getDairy(), day.getMeatBeans(),
-				day.getFruit(), day.getVeggies(), day.getExtra(), day.getExerciseMinutes()};		
-		
-		actualData = new GraphViewData[ shares.length ];
-		for (int i = 0; i < shares.length; i++){
-			actualData[i] = new GraphViewData(i, Integer.valueOf(shares[i]).doubleValue() );
-			System.out.println("share value: " + shares[i]);
+			// Getting the date of the first Day in the db
+			Date date = ((Day) getListAdapter().getItem(0)).getDate();
+			
+			// Getting the Day matching the date. So for a history page,
+			// the user's chosen date gets passed in instead.
+			Day day = datasource.getDay(date);
+
+			// Creating plot data
+			// x = share type in the shares array (so x = 2 = dairy)
+			// y = share amount
+			int[] shares = new int[8];
+			if(day != null){
+				shares = new int[] {0, day.getWholeGrains(), day.getDairy(),
+						day.getMeatBeans(), day.getFruit(), day.getVeggies(),
+						day.getExtra(), day.getExerciseMinutes()};
+			}
+			else{
+				// all 0's if we ask for data for a non-existing Day
+				for (int i = 0; i < shares.length; i++)
+					shares[i] = 0;
+			}
+			
+			// Put data into GraphViewData array
+			actualData = new GraphViewData[shares.length];
+			for (int i = 0; i < actualData.length; i++){
+				actualData[i] = new GraphViewData(i, Integer.valueOf(shares[i]).doubleValue());
+				//System.out.println("share value: " + shares[i]);
+			}
 		}
-		
-		}
+		// Default data if the db is empty
 		else{
-		
-		actualData = new GraphViewData[] {
-				new GraphViewData(0, 0.0d) // need to create a point for the origin
-				, new GraphViewData(1, 2.0d)
-				, new GraphViewData(2, 1.5d)
-				, new GraphViewData(2.5, 3.0d) // another frequency
-				, new GraphViewData(3, 2.5d)
-				, new GraphViewData(4, 6.0d)
-				, new GraphViewData(5, 3.0d)
-				, new GraphViewData(12, 2.3d) // point beyond viewpoint (to test scrolling)
-		};
-		
+			actualData = new GraphViewData[ 4 ];
+			for (int i = 1; i < actualData.length; i++)
+				actualData[i] = new GraphViewData(1, 1.0d);
+			actualData[0] = new GraphViewData(0, 0.0d);
 		}
 
+		/*
 		GraphViewData[] idealData = new GraphViewData[] {
 				new GraphViewData(0, 0.0d) // need to create a point for the origin
 				, new GraphViewData(1, 3.0d)
@@ -95,7 +111,7 @@ public class GraphViewDemo extends ListActivity {
 				, new GraphViewData(4, 7.0d)
 				, new GraphViewData(5, 5.0d)
 				, new GraphViewData(12, 2.6d) // point beyond viewpoint (to test scrolling)
-		};
+		};*/
 		
 		// graph with dynamically generated horizontal and vertical labels
 		GraphView graphView;
@@ -117,7 +133,8 @@ public class GraphViewDemo extends ListActivity {
 			}
 		};*/
 		
-		// add the data
+		
+		// Add the data
 		//graphView.addSeries(new GraphViewSeries("Target",
 			//	new GraphViewStyle(Color.rgb(150, 62, 35), 3), idealData));
 		graphView.addSeries(new GraphViewSeries("Actual", null, actualData));
@@ -132,7 +149,7 @@ public class GraphViewDemo extends ListActivity {
 		
 		// legend
 		graphView.setShowLegend(true);
-		graphView.setLegendAlign(LegendAlign.BOTTOM);  
+		graphView.setLegendAlign(LegendAlign.BOTTOM);
 		graphView.setLegendWidth(100);
 
 		LinearLayout layout = (LinearLayout) findViewById(R.id.graph1);
