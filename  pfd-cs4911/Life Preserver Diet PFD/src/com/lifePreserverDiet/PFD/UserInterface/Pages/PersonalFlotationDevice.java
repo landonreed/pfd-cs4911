@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.lifePreserverDiet.PFD.R;
-import com.lifePreserverDiet.PFD.UserInterface.LifePreserverDietPFD;
+import com.lifePreserverDiet.PFD.UserInterface.LifePreserverDiet;
 import com.lifePreserverDiet.PFD.UserInterface.Dialogs.PFDShareDialog;
 
 public class PersonalFlotationDevice extends Activity {
@@ -25,7 +25,7 @@ public class PersonalFlotationDevice extends Activity {
 	public void onPause() {
 		super.onPause();
 		
-		LifePreserverDietPFD app = (LifePreserverDietPFD) this.getApplication();
+		LifePreserverDiet app = (LifePreserverDiet) this.getApplication();
 		app.updateDay();
 	}
 

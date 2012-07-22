@@ -1,11 +1,11 @@
-package com.lifePreserverDiet.PFD;
+package com.lifePreserverDiet.PFD.Utilities;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class MySQLiteHelper extends SQLiteOpenHelper{
+public class SQLiteDatabaseHelper extends SQLiteOpenHelper{
 	public static final String TABLE_DAYS = "days",
 			COLUMN_ID = "_id",
 			COLUMN_DATE = "date",
@@ -35,7 +35,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 			+ COLUMN_EXERCISE_MINUTES + " integer "
 			+ ");";
 
-	public MySQLiteHelper(Context context) {
+	public SQLiteDatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
@@ -46,7 +46,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper{
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		Log.w(MySQLiteHelper.class.getName(),
+		Log.w(SQLiteDatabaseHelper.class.getName(),
 				"Upgrading database from version " + oldVersion + " to "
 						+ newVersion + ", which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_DAYS);
