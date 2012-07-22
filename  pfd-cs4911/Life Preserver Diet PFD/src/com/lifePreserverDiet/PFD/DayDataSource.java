@@ -74,7 +74,10 @@ public class DayDataSource {
 		/* Build value set for SQL query. */
 		ContentValues values = new ContentValues();
 
-		values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
+		String dateString = new java.text.SimpleDateFormat("EEE MMM dd yyyy").format(date);
+		
+	    //values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
+		values.put(MySQLiteHelper.COLUMN_DATE, dateString);
 		values.put(MySQLiteHelper.COLUMN_WHOLEGRAINS, wholeGrains);
 		values.put(MySQLiteHelper.COLUMN_DAIRY, dairy);
 		values.put(MySQLiteHelper.COLUMN_MEATBEANS, meatBeans);
@@ -165,8 +168,11 @@ public class DayDataSource {
 	 * @return the Day object from the db matching the given date
 	 */
 	public Day getDay(Date date){
+		String dateString = new java.text.SimpleDateFormat("EEE MMM dd yyyy").format(date);
+		
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_DAYS,
-				allColumns, MySQLiteHelper.COLUMN_DATE + " = '" + date.toString() + "'",
+				//allColumns, MySQLiteHelper.COLUMN_DATE + " = '" + date.toString() + "'",
+				allColumns, MySQLiteHelper.COLUMN_DATE + " = '" + dateString + "'",
 				null, null, null, null);
 		
 		if (cursor.getCount() < 1)
@@ -176,5 +182,29 @@ public class DayDataSource {
 		Day day = cursorToDay(cursor);
 		cursor.close();
 		return day;
+	}
+	
+	public boolean updateDay(Date date, int wholeGrains, int dairy, int meatBeans,
+			int fruit, int veggies, int extra, boolean exercise, int exercise_minutes){
+		ContentValues values = new ContentValues();
+		
+		String dateString = new java.text.SimpleDateFormat("EEE MMM dd yyyy").format(date);
+		
+		values.put(MySQLiteHelper.COLUMN_DATE, dateString);
+		//values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
+		values.put(MySQLiteHelper.COLUMN_WHOLEGRAINS, wholeGrains);
+		values.put(MySQLiteHelper.COLUMN_DAIRY, dairy);
+		values.put(MySQLiteHelper.COLUMN_MEATBEANS, meatBeans);
+		values.put(MySQLiteHelper.COLUMN_FRUIT, fruit);
+		values.put(MySQLiteHelper.COLUMN_VEGGIES, veggies);
+		values.put(MySQLiteHelper.COLUMN_EXTRA, extra);
+		values.put(MySQLiteHelper.COLUMN_EXERCISE, String.valueOf(exercise));
+		values.put(MySQLiteHelper.COLUMN_EXERCISE_MINUTES, exercise_minutes);
+		
+		int rowsChanged = database.update(MySQLiteHelper.TABLE_DAYS, values,
+				MySQLiteHelper.COLUMN_DATE + " = '" + dateString + "'", null);
+				//MySQLiteHelper.COLUMN_DATE + " = '" + date.toString() + "'", null);
+		
+		return (rowsChanged > 0) ? true : false;
 	}
 }
