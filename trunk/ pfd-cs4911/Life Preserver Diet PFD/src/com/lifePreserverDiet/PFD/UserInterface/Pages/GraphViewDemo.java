@@ -21,8 +21,8 @@ import com.jjoe64.graphview.GraphView.LegendAlign;
 import com.jjoe64.graphview.LineGraphView;
 
 import com.lifePreserverDiet.PFD.Day;
-import com.lifePreserverDiet.PFD.DayDataSource;
 import com.lifePreserverDiet.PFD.R;
+import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
 
 /**
  * GraphViewDemo creates some dummy data to demonstrate the GraphView component.

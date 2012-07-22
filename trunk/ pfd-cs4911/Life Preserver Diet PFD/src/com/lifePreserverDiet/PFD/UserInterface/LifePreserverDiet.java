@@ -6,9 +6,9 @@ import java.util.List;
 import android.app.Application;
 
 import com.lifePreserverDiet.PFD.Day;
-import com.lifePreserverDiet.PFD.DayDataSource;
+import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
 
-public class LifePreserverDietPFD extends Application {
+public class LifePreserverDiet extends Application {
 	private Day day;
 	
 	private DayDataSource dataSource;

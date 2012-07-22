@@ -16,8 +16,8 @@ import com.androidplot.series.XYSeries;
 import com.androidplot.xy.*;
 
 import com.lifePreserverDiet.PFD.Day;
-import com.lifePreserverDiet.PFD.DayDataSource;
 import com.lifePreserverDiet.PFD.R;
+import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
  
 import java.text.*;
 import java.util.Arrays;

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.lifePreserverDiet.PFD.Day;
 import com.lifePreserverDiet.PFD.R;
-import com.lifePreserverDiet.PFD.UserInterface.LifePreserverDietPFD;
+import com.lifePreserverDiet.PFD.UserInterface.LifePreserverDiet;
 
 public class PFDShareDialog extends Activity {
 	
@@ -21,7 +21,7 @@ public class PFDShareDialog extends Activity {
 	public void onCreate(Bundle b) {
 		super.onCreate(b);
 		//
-		LifePreserverDietPFD application = (LifePreserverDietPFD) this.getApplication();
+		LifePreserverDiet application = (LifePreserverDiet) this.getApplication();
 		day = application.getDay();
 		//
 		id = this.getIntent().getIntExtra("id", R.id.imageView_pfd_dairy);
