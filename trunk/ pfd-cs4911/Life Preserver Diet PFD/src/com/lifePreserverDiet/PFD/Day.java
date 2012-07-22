@@ -35,12 +35,11 @@ public class Day {
 	public Date getDate(){ return date; }
 	public void setDate(String dateString){
 		try{
-			date = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(dateString);
+			//date = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(dateString);
+			date = new SimpleDateFormat("EEE MMM dd yyyy").parse(dateString);
 			
-			System.out.println("dateString == date.toString(): " + 
-					dateString.equals(date.toString()));
-			
-			//date = new SimpleDateFormat().parse(dateString);
+			//System.out.println("dateString == date.toString(): " + 
+					//dateString.equals(date.toString()));
 		}catch(ParseException e){
 			e.printStackTrace();
 		}
