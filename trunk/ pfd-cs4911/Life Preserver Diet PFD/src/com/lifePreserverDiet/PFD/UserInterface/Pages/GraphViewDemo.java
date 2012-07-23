@@ -43,11 +43,11 @@ public class GraphViewDemo extends ListActivity {
 		// Calendar gives Sun - Sat as 1 - 7, so we get Mon - Sat first
 		// and then find the next Sun
 		for (int i = 1; i < dates.length + 1; i++){
-			if(i == d.getDay())
+			if(d.getDay() + 1 == i)
 				dates[i-1] = d;
 			else{
 				Date d1 = new Date();
-				d1.setTime( d.getTime() - (d.getDay() - i)*(24*60*60*1000) );
+				d1.setTime( d.getTime() - (d.getDay() + 1 - i)*(24*60*60*1000) );
 				dates[i-1] = d1;
 			}
 		}
@@ -83,7 +83,7 @@ public class GraphViewDemo extends ListActivity {
 		}
 
 		for (int i = 1; i < dates.length + 1; i++){
-			if(i == d.getDate())
+			if(d.getDate() == i)
 				dates[i-1] = d;
 			else{
 				Date d1 = new Date();
@@ -131,17 +131,17 @@ public class GraphViewDemo extends ListActivity {
 		//int[] shares = new int[8];
 
 		//Date[] dates = new Date[7];
-		Date[] dates = getWeek(date);
-		//Date[] dates = getMonth(date);
+		//Date[] dates = getWeek(date);
+		Date[] dates = getMonth(date);
 		
 		//GraphViewData[][] data = new GraphViewData[shares.length][dates.length];
-		GraphViewData[] wholeGrains = new GraphViewData[dates.length + 1];
-		GraphViewData[] dairy = new GraphViewData[dates.length + 1];
-		GraphViewData[] meatBeans = new GraphViewData[dates.length + 1];
-		GraphViewData[] fruits = new GraphViewData[dates.length + 1];
-		GraphViewData[] veggies = new GraphViewData[dates.length + 1];
-		GraphViewData[] extra = new GraphViewData[dates.length + 1];
-		GraphViewData[] exercise = new GraphViewData[dates.length + 1];
+		GraphViewData[] wholeGrains = new GraphViewData[dates.length];
+		GraphViewData[] dairy = new GraphViewData[dates.length];
+		GraphViewData[] meatBeans = new GraphViewData[dates.length];
+		GraphViewData[] fruits = new GraphViewData[dates.length];
+		GraphViewData[] veggies = new GraphViewData[dates.length];
+		GraphViewData[] extra = new GraphViewData[dates.length];
+		GraphViewData[] exercise = new GraphViewData[dates.length];
 		
 		if(getListAdapter().getCount() > 0){
 			//Day day = (Day) getListAdapter().getItem(0);
@@ -176,10 +176,12 @@ public class GraphViewDemo extends ListActivity {
 			
 			//dates = getMonth(date);
 			//dates = getWeek(date);
-			wholeGrains[0] = dairy[0] = meatBeans[0] = fruits[0] =
-					veggies[0] = extra[0] = exercise[0] = new GraphViewData(0, 0.0d);
-			for (int j = 1; j < dates.length + 1; j++){
-				Day d = datasource.getDay(dates[j-1]);
+			
+			//wholeGrains[0] = dairy[0] = meatBeans[0] = fruits[0] =
+					//veggies[0] = extra[0] = exercise[0] = new GraphViewData(0, 0.0d);
+			
+			for (int j = 0; j < wholeGrains.length; j++){
+				Day d = datasource.getDay(dates[j]);
 				//System.out.println("day object for " + dates[j-1] + ": " + d);
 				if(d != null){
 					//shares = new int[] {0, d.getWholeGrains(), d.getDairy(),
@@ -261,46 +263,9 @@ public class GraphViewDemo extends ListActivity {
 			title = monday + " to " + sunday;
 		}
 		else{
-			String month = "";
-			switch(dates[0].getMonth()){
-			case Calendar.JANUARY:
-				month = "January";
-				break;
-			case Calendar.FEBRUARY:
-				month = "February";
-				break;
-			case Calendar.MARCH:
-				month = "March";
-				break;
-			case Calendar.APRIL:
-				month = "April";
-				break;
-			case Calendar.MAY:
-				month = "May";
-				break;
-			case Calendar.JUNE:
-				month = "June";
-				break;
-			case Calendar.JULY:
-				month = "July";
-				break;
-			case Calendar.AUGUST:
-				month = "August";
-				break;
-			case Calendar.SEPTEMBER:
-				month = "September";
-				break;
-			case Calendar.OCTOBER:
-				month = "October";
-				break;
-			case Calendar.NOVEMBER:
-				month = "November";
-				break;
-			case Calendar.DECEMBER:
-				month = "December";
-				break;
-			}
-			title = month + ", " + (dates[0].getYear() + 1900);
+			String[] months = new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+				"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+			title = months[ dates[0].getMonth() ] + ", " + (dates[0].getYear() + 1900);
 		}
 		
 		GraphView graphView;
@@ -354,7 +319,7 @@ public class GraphViewDemo extends ListActivity {
 		graphView.addSeries(new GraphViewSeries("Exercise",
 				new GraphViewStyle(Color.LTGRAY, 3), exercise));
 		
-		graphView.setViewPort(0.0, dates.length + (int)Math.ceil((1/4.0)*dates.length));
+		//graphView.setViewPort(0.0, dates.length + (int)Math.ceil((1/4.0)*dates.length));
 		graphView.setManualYAxisBounds(8, 0);
 		//graphView.setScrollable(true);
 		//graphView.setScalable(true);
@@ -363,9 +328,9 @@ public class GraphViewDemo extends ListActivity {
 		graphView.setLegendAlign(LegendAlign.MIDDLE);
 		//graphView.setLegendWidth(dates.length); //100);
 		
-		String[] horlabels = new String[dates.length + 1];
+		String[] horlabels = new String[dates.length];
 		for (int i = 0; i < horlabels.length; i++)
-			horlabels[i] = Integer.valueOf(i).toString();
+			horlabels[i] = Integer.valueOf(dates[i].getDate()).toString();
 		graphView.setHorizontalLabels(horlabels);
 
 		LinearLayout layout = (LinearLayout) findViewById(R.id.graph1);
@@ -424,6 +389,13 @@ public class GraphViewDemo extends ListActivity {
 			
 			date.setMonth(Calendar.JULY);
 			date.setYear(2012 - 1900);
+
+			while(datasource.find(date)){
+				date = new java.util.Date();
+				date.setTime((long) (date.getTime()*Math.random()));
+				date.setMonth(Calendar.JULY);
+				date.setYear(2012 - 1900);
+			}
 			
 			// create new day
 			day = datasource.createDay(date, wholeGrains, dairy, meatBeans,

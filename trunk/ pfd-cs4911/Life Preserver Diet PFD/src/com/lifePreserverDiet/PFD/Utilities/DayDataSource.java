@@ -33,6 +33,9 @@ public class DayDataSource {
 			SQLiteDatabaseHelper.COLUMN_EXERCISE,
 			SQLiteDatabaseHelper.COLUMN_EXERCISE_MINUTES
 	};
+	
+	private java.text.SimpleDateFormat myFormat =
+			new java.text.SimpleDateFormat("EEE MMM dd yyyy");
 
 	/**
 	 * Creates a new database manager.
@@ -69,7 +72,7 @@ public class DayDataSource {
 		/* Build value set for SQL query. */
 		ContentValues values = new ContentValues();
 
-		String dateString = new java.text.SimpleDateFormat("EEE MMM dd yyyy").format(day.getDate());
+		String dateString = myFormat.format(day.getDate());
 		
 	    //values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
 		values.put(SQLiteDatabaseHelper.COLUMN_DATE, dateString);
@@ -109,7 +112,7 @@ public class DayDataSource {
 		/* Build value set for SQL query. */
 		ContentValues values = new ContentValues();
 
-		String dateString = new java.text.SimpleDateFormat("EEE MMM dd yyyy").format(day.getDate());
+		String dateString = myFormat.format(day.getDate());
 		
 	    //values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
 		values.put(SQLiteDatabaseHelper.COLUMN_DATE, dateString);
@@ -157,7 +160,7 @@ public class DayDataSource {
 		/* Build value set for SQL query. */
 		ContentValues values = new ContentValues();
 
-		String dateString = new java.text.SimpleDateFormat("EEE MMM dd yyyy").format(date);
+		String dateString = myFormat.format(date);
 		
 	    //values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
 		values.put(SQLiteDatabaseHelper.COLUMN_DATE, dateString);
@@ -251,7 +254,7 @@ public class DayDataSource {
 	 * @return the Day object from the db matching the given date
 	 */
 	public Day getDay(Date date){
-		String dateString = new java.text.SimpleDateFormat("EEE MMM dd yyyy").format(date);
+		String dateString = myFormat.format(date);
 		
 		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_DAYS,
 				//allColumns, MySQLiteHelper.COLUMN_DATE + " = '" + date.toString() + "'",
@@ -270,7 +273,7 @@ public class DayDataSource {
 	public boolean updateDay(Day day){
 		ContentValues values = new ContentValues();
 		
-		String dateString = new java.text.SimpleDateFormat("EEE MMM dd yyyy").format(day.getDate());
+		String dateString = myFormat.format(day.getDate());
 		
 		values.put(SQLiteDatabaseHelper.COLUMN_DATE, dateString);
 		//values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
@@ -294,7 +297,7 @@ public class DayDataSource {
 			int fruit, int veggies, int extra, boolean exercise, int exercise_minutes){
 		ContentValues values = new ContentValues();
 		
-		String dateString = new java.text.SimpleDateFormat("EEE MMM dd yyyy").format(date);
+		String dateString = myFormat.format(date);
 		
 		values.put(SQLiteDatabaseHelper.COLUMN_DATE, dateString);
 		//values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
@@ -313,4 +316,15 @@ public class DayDataSource {
 		
 		return (rowsChanged > 0) ? true : false;
 	}
+	
+	public boolean find(Date date){
+		String dateString = myFormat.format(date);
+		
+		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_DAYS,
+				allColumns, SQLiteDatabaseHelper.COLUMN_DATE + " = '" + dateString + "'",
+				null, null, null, null);
+		
+		return cursor.getCount() > 0;
+	}
+	
 }
