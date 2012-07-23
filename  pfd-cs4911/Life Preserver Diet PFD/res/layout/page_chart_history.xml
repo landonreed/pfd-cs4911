@@ -6,15 +6,21 @@
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
+    <!-- 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Chart your History!"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black" /> -->
     
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent"
 		android:layout_height="250dip"
 		android:id="@+id/graph5" />
+	
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="150dip"
+		android:id="@+id/graph6" />
 
 </LinearLayout>

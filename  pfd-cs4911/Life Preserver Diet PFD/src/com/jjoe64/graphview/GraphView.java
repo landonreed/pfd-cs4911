@@ -22,6 +22,7 @@ import com.jjoe64.graphview.compatible.ScaleGestureDetector;
  * Use {@link LineGraphView} for creating a line chart.
  *
  * @author jjoe64 - jonas gehring - http://www.jjoe64.com
+ * @author Lamine Sissoko (display changes)
  *
  * Copyright (C) 2011 Jonas Gehring
  * Licensed under the GNU Lesser General Public License (LGPL)
@@ -103,12 +104,14 @@ abstract public class GraphView extends LinearLayout {
 					paint.setTextAlign(Align.RIGHT);
 				if (i==0)
 					paint.setTextAlign(Align.LEFT);
-				paint.setColor(paintColor); //Color.WHITE);
+				//paint.setColor(Color.WHITE);
+				paint.setColor(paintColor);
 				paint.setTextSize(defaultFontHt);
 				canvas.drawText(horlabels[i], x, height - 4, paint);
 			}
 
 			paint.setTextAlign(Align.CENTER);
+			paint.setTextSize(defaultFontHt * 1.2f);
 			canvas.drawText(title, (graphwidth / 2) + horstart, border - 4, paint);
 
 			if (maxY != minY) {
@@ -270,9 +273,11 @@ abstract public class GraphView extends LinearLayout {
 			int vers = verlabels.length - 1;
 			for (int i = 0; i < verlabels.length; i++) {
 				float y = ((graphheight / vers) * i) + border;
-				paint.setColor(paintColor); //Color.WHITE);
+				//paint.setColor(Color.WHITE);
+				paint.setColor(paintColor);
 				paint.setTextSize(defaultFontHt);
-				canvas.drawText(verlabels[i], 0, y, paint);
+				//canvas.drawText(verlabels[i], 0, y, paint);
+				canvas.drawText(verlabels[i], border - 5, y, paint);
 			}
 		}
 	}
@@ -374,7 +379,7 @@ abstract public class GraphView extends LinearLayout {
 		float lTop;
 		switch (legendAlign) {
 		case TOP:
-			lTop = 10;
+			lTop = 10 + 10; ////////
 			break;
 		case MIDDLE:
 			lTop = height/2 - legendHeight/2;
@@ -384,13 +389,16 @@ abstract public class GraphView extends LinearLayout {
 		}
 		float lRight = lLeft+legendWidth;
 		float lBottom = lTop+legendHeight;
+		paint.setColor(0xffeeeeee);
+		paint.setAlpha(180);
 		canvas.drawRoundRect(new RectF(lLeft, lTop, lRight, lBottom), 8, 8, paint);
 
 		for (int i=0; i<graphSeries.size(); i++) {
 			paint.setColor(graphSeries.get(i).style.color);
 			canvas.drawRect(new RectF(lLeft+5, lTop+5+(i*(shapeSize+5)), lLeft+5+shapeSize, lTop+((i+1)*(shapeSize+5))), paint);
 			if (graphSeries.get(i).description != null) {
-				paint.setColor(paintColor); //Color.WHITE);
+				//paint.setColor(Color.WHITE);
+				paint.setColor(paintColor);
 				paint.setTextSize(defaultFontHt);
 				paint.setTextAlign(Align.LEFT);
 				canvas.drawText(graphSeries.get(i).description, lLeft+5+shapeSize+5, lTop+shapeSize+(i*(shapeSize+5)), paint);
