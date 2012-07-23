@@ -37,11 +37,12 @@ public class GraphViewDemo extends ListActivity {
 	private DayDataSource datasource;
 	
 	private Date[] getWeek(Date d){
-		d.setTime(d.getTime() - 24*60*60*1000);
+		//d.setTime(d.getTime() - 24*60*60*1000);
 		Date[] dates = new Date[7];
+		
 		// Calendar gives Sun - Sat as 1 - 7, so we get Mon - Sat first
 		// and then find the next Sun
-		for (int i = 1; i < 8; i++){
+		for (int i = 1; i < dates.length + 1; i++){
 			if(i == d.getDay())
 				dates[i-1] = d;
 			else{
@@ -52,10 +53,49 @@ public class GraphViewDemo extends ListActivity {
 		}
 
 		// Make sure the dates are actually a Mon - Sun set
-		System.out.println();
-		for (int i = 0; i < 7; i++)
-			System.out.println((dates[i].getDay() + 1 == (i+1)%7+1) + ", " + dates[i]);
-		System.out.println();
+		System.out.println("");
+		for (int i = 0; i < dates.length; i++)
+			System.out.println((dates[i].getDay() + 1 == (i+1)%dates.length+1) + ", " + dates[i]);
+		System.out.println("");
+		
+		return dates;
+	}
+
+	private Date[] getMonth(Date d){
+		// Calendar.JANUARY = 0
+		Date[] dates;
+		switch (d.getMonth()){
+		case Calendar.JANUARY:
+		case Calendar.MARCH:
+		case Calendar.MAY:
+		case Calendar.JULY:
+		case Calendar.AUGUST:
+		case Calendar.OCTOBER:
+		case Calendar.DECEMBER:
+			dates = new Date[31];
+			break;
+		case Calendar.FEBRUARY:
+			dates = new Date[28];
+			break;
+		default:
+			dates = new Date[30];
+			break;
+		}
+
+		for (int i = 1; i < dates.length + 1; i++){
+			if(i == d.getDate())
+				dates[i-1] = d;
+			else{
+				Date d1 = new Date();
+				d1.setTime( d.getTime() - (d.getDate() - i)*(24*60*60*1000) );
+				dates[i-1] = d1;
+			}
+		}
+		
+		System.out.println("");
+		for (int i = 0; i < dates.length; i++)
+			System.out.println((dates[i].getDate() == i+1) + ", " + dates[i]);
+		System.out.println("");
 		
 		return dates;
 	}
@@ -82,25 +122,39 @@ public class GraphViewDemo extends ListActivity {
 		
 		///////////////////////////////////////////////////////////////////////////////////
 
-		//System.out.println(getListAdapter().getCount());
+		System.out.println("#days in db: " + getListAdapter().getCount());
 
-		GraphViewData[] actualData = new GraphViewData[4];
-		int[] shares = new int[8];
-		Date[] dates = new Date[7];
-		GraphViewData[][] data = new GraphViewData[dates.length][shares.length];
+		Date date = ((Day) getListAdapter().getItem(0)).getDate();
+		System.out.println("chosen date: " + date);
+
+		//GraphViewData[] actualData = new GraphViewData[4];
+		//int[] shares = new int[8];
+
+		//Date[] dates = new Date[7];
+		Date[] dates = getWeek(date);
+		//Date[] dates = getMonth(date);
+		
+		//GraphViewData[][] data = new GraphViewData[shares.length][dates.length];
+		GraphViewData[] wholeGrains = new GraphViewData[dates.length + 1];
+		GraphViewData[] dairy = new GraphViewData[dates.length + 1];
+		GraphViewData[] meatBeans = new GraphViewData[dates.length + 1];
+		GraphViewData[] fruits = new GraphViewData[dates.length + 1];
+		GraphViewData[] veggies = new GraphViewData[dates.length + 1];
+		GraphViewData[] extra = new GraphViewData[dates.length + 1];
+		GraphViewData[] exercise = new GraphViewData[dates.length + 1];
 		
 		if(getListAdapter().getCount() > 0){
 			//Day day = (Day) getListAdapter().getItem(0);
 			
 			// Getting the date of the first Day in the db
-			Date date = ((Day) getListAdapter().getItem(0)).getDate();
+			//Date date = ((Day) getListAdapter().getItem(0)).getDate();
 			
 			//System.out.println(date);
 			//System.out.println(new java.text.SimpleDateFormat("EEE MMM dd yyyy").format(date));
 			
 			// Getting the Day matching the date. So for a history page,
 			// the user's chosen date gets passed in instead.
-			Day day = datasource.getDay(date);
+			//Day day = datasource.getDay(date);
 
 			//System.out.println("day is tue: " + (day.getDate().getDay() + 1 == Calendar.TUESDAY));
 			//System.out.println("day is wed: " + (day.getDate().getDay() + 1 == Calendar.WEDNESDAY));
@@ -120,21 +174,43 @@ public class GraphViewDemo extends ListActivity {
 			}
 			 */
 			
-			dates = getWeek(date);
-			for (int j = 0; j < dates.length; j++){
-				Day d = datasource.getDay(dates[j]);
+			//dates = getMonth(date);
+			//dates = getWeek(date);
+			wholeGrains[0] = dairy[0] = meatBeans[0] = fruits[0] =
+					veggies[0] = extra[0] = exercise[0] = new GraphViewData(0, 0.0d);
+			for (int j = 1; j < dates.length + 1; j++){
+				Day d = datasource.getDay(dates[j-1]);
+				//System.out.println("day object for " + dates[j-1] + ": " + d);
 				if(d != null){
-					shares = new int[] {0, d.getWholeGrains(), d.getDairy(),
-							d.getMeatBeans(), d.getFruit(), d.getVeggies(),
-							d.getExtra(), d.getExerciseMinutes()};
+					//shares = new int[] {0, d.getWholeGrains(), d.getDairy(),
+						//d.getMeatBeans(), d.getFruit(), d.getVeggies(),
+						//d.getExtra(), d.getExerciseMinutes()};
+					wholeGrains[j] = new GraphViewData(j,
+							Integer.valueOf( d.getWholeGrains() ).doubleValue());
+					dairy[j] = new GraphViewData(j,
+							Integer.valueOf( d.getDairy() ).doubleValue());
+					meatBeans[j] = new GraphViewData(j,
+							Integer.valueOf( d.getMeatBeans() ).doubleValue());
+					fruits[j] = new GraphViewData(j,
+							Integer.valueOf( d.getFruit() ).doubleValue());
+					veggies[j] = new GraphViewData(j,
+							Integer.valueOf( d.getVeggies() ).doubleValue());
+					extra[j] = new GraphViewData(j,
+							Integer.valueOf( d.getExtra() ).doubleValue());
+					exercise[j] = new GraphViewData(j,
+							Integer.valueOf( d.getExerciseMinutes() ).doubleValue());
 				}
-				else
-					shares = new int[] {0, 0, 0, 0, 0, 0, 0, 0};
+				else{
+					//shares = new int[] {0, 0, 0, 0, 0, 0, 0, 0};
+					wholeGrains[j] = dairy[j] = meatBeans[j] = fruits[j] =
+							veggies[j] = extra[j] = exercise[j] = new GraphViewData(j, 0.0d);
+				}
 				
-				for (int i = 0; i < shares.length; i++){
-					data[j][i] = new GraphViewData(i, Integer.valueOf(shares[i]).doubleValue());
+				//for (int i = 0; i < shares.length; i++){
+					//data[j][i] = new GraphViewData(i, Integer.valueOf(shares[i]).doubleValue());
+					//data[i][j] = new GraphViewData(j, Integer.valueOf(shares[i]).doubleValue());
 					//System.out.println("share value: " + shares[i]);
-				}
+				//}
 			}
 			
 			// Put data into GraphViewData array
@@ -147,16 +223,21 @@ public class GraphViewDemo extends ListActivity {
 		}
 		// Default data if the db is empty
 		else{
-			
+			/*
 			actualData = new GraphViewData[shares.length];
 			for (int i = 1; i < actualData.length; i++)
 				actualData[i] = new GraphViewData(i, 1.0d);
 			actualData[0] = new GraphViewData(0, 0.0d);
-			
+			*/
+			/*
 			data = new GraphViewData[1][shares.length];
 			for (int i = 1; i < shares.length; i++)
 				data[0][i] = new GraphViewData(i, 1.0d);
-			data[0][0] = new GraphViewData(0, 0.0d);
+			data[0][0] = new GraphViewData(0, 0.0d);*/
+			for (int j = 0; j < dates.length; j++){
+				wholeGrains[j] = dairy[j] = meatBeans[j] = fruits[j] =
+						veggies[j] = extra[j] = exercise[j] = new GraphViewData(j, 1.0d);
+			}
 		}
 
 		/*
@@ -172,11 +253,61 @@ public class GraphViewDemo extends ListActivity {
 		};*/
 		
 		// graph with dynamically generated horizontal and vertical labels
+		String title = "";
+		
+		if (dates.length == 7){
+			String monday = new java.text.SimpleDateFormat("MMM dd, yyyy").format(dates[0]);
+			String sunday = new java.text.SimpleDateFormat("MMM dd, yyyy").format(dates[6]);
+			title = monday + " to " + sunday;
+		}
+		else{
+			String month = "";
+			switch(dates[0].getMonth()){
+			case Calendar.JANUARY:
+				month = "January";
+				break;
+			case Calendar.FEBRUARY:
+				month = "February";
+				break;
+			case Calendar.MARCH:
+				month = "March";
+				break;
+			case Calendar.APRIL:
+				month = "April";
+				break;
+			case Calendar.MAY:
+				month = "May";
+				break;
+			case Calendar.JUNE:
+				month = "June";
+				break;
+			case Calendar.JULY:
+				month = "July";
+				break;
+			case Calendar.AUGUST:
+				month = "August";
+				break;
+			case Calendar.SEPTEMBER:
+				month = "September";
+				break;
+			case Calendar.OCTOBER:
+				month = "October";
+				break;
+			case Calendar.NOVEMBER:
+				month = "November";
+				break;
+			case Calendar.DECEMBER:
+				month = "December";
+				break;
+			}
+			title = month + ", " + (dates[0].getYear() + 1900);
+		}
+		
 		GraphView graphView;
 		if (getIntent().getStringExtra("type").equals("bar"))
-			graphView = new BarGraphView(this, "Graph Title");
+			graphView = new BarGraphView(this, title);
 		else
-			graphView = new LineGraphView(this, "Graph Title");
+			graphView = new LineGraphView(this, title);
 		
 		// Add the data
 		
@@ -186,23 +317,56 @@ public class GraphViewDemo extends ListActivity {
 		
 		
 		// Add the data
-		String[] seriesTitles = new String[] { "Whole Grains", "Dairy",
-				"Meat/Beans", "Fruit", "Veggies", "Extra", "Exercise" };
-		Color[] seriesColors = new Color[seriesTitles.length];
-		for (int i = 0; i < data.length; i++){
-			int c = Color.rgb((int)(Math.random()*256), (int)(Math.random()*256),
-					(int)(Math.random()*256));
-			graphView.addSeries( new GraphViewSeries(
-					seriesTitles[i], new GraphViewStyle(c, 3), data[i]) );
-		}
+		//String[] seriesTitles = new String[] { "Whole Grains", "Dairy",
+				//"Meat/Beans", "Fruit", "Veggies", "Extra", "Exercise" };
 		
-		graphView.setViewPort(0, shares.length + 2);
+		//System.out.println("data.length: " + data.length);
+		
+		//for (int j = 0; j < data.length; j++)
+			//for (int k = 0; k < shares.length; k++)
+				//System.out.println("data[" + j + "]: " + data[j]);
+		//System.out.println("haha");
+		
+		/*
+		for (int j = 0; j < data.length; j++){ // shares
+			GraphViewData[] s = new GraphViewData[data[0].length];
+		for (int i = 0; i < s.length; i++){ // days
+			s[i] = data[j][i];
+		}
+		int c = Color.rgb((int)(Math.random()*256), (int)(Math.random()*256),
+				(int)(Math.random()*256));
+		graphView.addSeries( new GraphViewSeries(
+				seriesTitles[j], new GraphViewStyle(c, 3), s) ); //data[j]) );
+		}*/
+		
+		graphView.addSeries(new GraphViewSeries("Whole Grains",
+				new GraphViewStyle(Color.RED, 3), wholeGrains));
+		graphView.addSeries(new GraphViewSeries("Dairy",
+				new GraphViewStyle(Color.BLUE, 3), dairy));
+		graphView.addSeries(new GraphViewSeries("Meat/Beans",
+				new GraphViewStyle(Color.CYAN, 3), meatBeans));
+		graphView.addSeries(new GraphViewSeries("Fruit",
+				new GraphViewStyle(Color.MAGENTA, 3), fruits));
+		graphView.addSeries(new GraphViewSeries("Veggies",
+				new GraphViewStyle(Color.GREEN, 3), veggies));
+		graphView.addSeries(new GraphViewSeries("Extra",
+				new GraphViewStyle(Color.YELLOW, 3), extra));
+		graphView.addSeries(new GraphViewSeries("Exercise",
+				new GraphViewStyle(Color.LTGRAY, 3), exercise));
+		
+		graphView.setViewPort(0.0, dates.length + (int)Math.ceil((1/4.0)*dates.length));
 		graphView.setManualYAxisBounds(8, 0);
 		//graphView.setScrollable(true);
 		//graphView.setScalable(true);
+		//graphView.setBackgroundDrawable(null);
 		graphView.setShowLegend(true);
-		graphView.setLegendAlign(LegendAlign.BOTTOM);
-		//graphView.setLegendWidth(100);
+		graphView.setLegendAlign(LegendAlign.MIDDLE);
+		//graphView.setLegendWidth(dates.length); //100);
+		
+		String[] horlabels = new String[dates.length + 1];
+		for (int i = 0; i < horlabels.length; i++)
+			horlabels[i] = Integer.valueOf(i).toString();
+		graphView.setHorizontalLabels(horlabels);
 
 		LinearLayout layout = (LinearLayout) findViewById(R.id.graph1);
 		//layout.removeAllViews(); // replace old graph with new one
@@ -243,7 +407,7 @@ public class GraphViewDemo extends ListActivity {
 			// random share values
 			int[] shares = new int[7];
 			for (int i=0; i<shares.length; i++)
-				shares[i] = (int) (Math.random() * 4 + 1);
+				shares[i] = (int) (Math.random() * 6 + 1);
 			int wholeGrains = shares[0];
 			int dairy = shares[1];
 			int meatBeans = shares[2];
@@ -259,7 +423,7 @@ public class GraphViewDemo extends ListActivity {
 			date.setTime((long) (date.getTime()*Math.random()));
 			
 			date.setMonth(Calendar.JULY);
-			date.setYear(2012);
+			date.setYear(2012 - 1900);
 			
 			// create new day
 			day = datasource.createDay(date, wholeGrains, dairy, meatBeans,
