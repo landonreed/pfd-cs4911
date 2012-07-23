@@ -22,18 +22,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textView_pfd_flotationDevice"
         android:gravity="center"
-        android:paddingBottom="15dp"
+        android:paddingBottom="10dp"
         android:text="Personal Food-Tracking Device"
         android:textColor="@android:color/black"
         android:textSize="18dp"
         android:textStyle="bold" />
 
     <FrameLayout
-        android:layout_centerHorizontal="true"
         android:id="@+id/frameLayout_pfd_wheel"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_below="@id/textView_pfd_foodTrackingDevice"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/wheel" >
 
         <FrameLayout
@@ -150,13 +150,353 @@
     </FrameLayout>
 
     <TextView
-        android:paddingTop="30dp"
-        android:layout_below="@id/frameLayout_pfd_wheel"
+        android:id="@+id/textView_pfd_directions"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/frameLayout_pfd_wheel"
         android:gravity="center"
+        android:paddingTop="10dp"
         android:text="Tap a food group to check in your shares."
         android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textView_pfd_sharesText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView_pfd_directions"
+        android:gravity="center"
+        android:paddingBottom="2dp"
+        android:paddingTop="9dp"
+        android:text="Remaining Shares"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView_pfd_sharesText"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:weightSum="1" >
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="@android:color/black" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".31"
+            android:background="@android:color/white"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:text="Meats &amp; Beans"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:text="Dairy"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:paddingLeft="4dp"
+                android:text="Veggies"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:text="Extra"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="@android:color/black" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".17"
+            android:background="@android:color/white"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/textView_pfd_shares_meatbeans"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0/3"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/textView_pfd_shares_dairy"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0/3"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/textView_pfd_shares_veggies"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="0/4"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/textView_pfd_shares_extra"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0/3"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="@android:color/black" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".31"
+            android:background="@android:color/white"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:paddingLeft="4dp"
+                android:text="Fruits"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:text="Whole Grains"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:text="Exercised"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="22dp"
+                android:text="-how long?"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="@android:color/black" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".17"
+            android:background="@android:color/white"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/textView_pfd_shares_fruit"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="0/3"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/textView_pfd_shares_wholeGrains"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0/3"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/textView_pfd_shares_exercise"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="N"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/textView_pfd_shares_exerciseMinutes"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0 min"
+                android:textColor="@android:color/black" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@android:color/black" >
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="@android:color/black" >
+        </TextView>
+    </LinearLayout>
 
     <CheckBox
         android:layout_width="fill_parent"

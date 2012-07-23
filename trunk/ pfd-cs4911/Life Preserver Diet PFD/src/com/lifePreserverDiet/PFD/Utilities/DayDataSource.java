@@ -239,7 +239,7 @@ public class DayDataSource {
 		day.setFruit(cursor.getInt(5));
 		day.setVeggies(cursor.getInt(6));
 		day.setExtra(cursor.getInt(7));
-		day.setExercise( Boolean.getBoolean(cursor.getString(8)) );
+		day.setExercise( cursor.getString(8).equals("true") );
 		day.setExerciseMinutes(cursor.getInt(9));
 		return day;
 	}
