@@ -179,7 +179,7 @@ public class ChartHistory extends Activity {
 				}
 				else{
 					wholeGrains[j] = dairy[j] = meatBeans[j] = fruits[j] =
-							veggies[j] = extra[j] = exercise[j] = new GraphViewData(j, 0.0d);
+						veggies[j] = extra[j] = exercise[j] = new GraphViewData(j, 0.0d);
 				}
 			}
 		}
@@ -187,14 +187,14 @@ public class ChartHistory extends Activity {
 		else{
 			for (int j = 0; j < dates.length; j++){
 				wholeGrains[j] = dairy[j] = meatBeans[j] = fruits[j] =
-						veggies[j] = extra[j] = exercise[j] = new GraphViewData(j, 1.0d);
+					veggies[j] = extra[j] = exercise[j] = new GraphViewData(j, 1.0d);
 			}
 		}
 
 		String title = "";
 		if (dates.length == 7){
 			java.text.SimpleDateFormat myFormat =
-					new java.text.SimpleDateFormat("MMM dd, yyyy");
+					new java.text.SimpleDateFormat("EEE, MMM dd, yyyy");
 			String monday = myFormat.format(dates[0]);
 			String sunday = myFormat.format(dates[6]);
 			title = monday + " to " + sunday;
@@ -222,7 +222,7 @@ public class ChartHistory extends Activity {
 		graphView.addSeries(new GraphViewSeries("Veggies",
 				new GraphViewStyle(Color.GREEN, 3), veggies));
 		graphView.addSeries(new GraphViewSeries("Extra",
-				new GraphViewStyle(Color.YELLOW, 3), extra));
+				new GraphViewStyle(0xffaabbcc, 3), extra));
 		
 		final int yUpperBound = 16;
 		graphView.setManualYAxisBounds(yUpperBound - 1, 0);
@@ -246,23 +246,45 @@ public class ChartHistory extends Activity {
 		
 		
 		// Exercise minutes
-		if (getIntent().getStringExtra("type").equals("bar"))
-			graphView = new BarGraphView(this, "Exercise");
+		
+		if (getIntent().getStringExtra("type").equals(""))
+			graphView = new BarGraphView(this, "Exercise Minutes");
 		else
-			graphView = new LineGraphView(this, "Exercise");
+			graphView = new LineGraphView(this, "Exercise Minutes");
 
 		graphView.addSeries(new GraphViewSeries("Exercise",
 				new GraphViewStyle(Color.BLUE, 3), exercise));
+		
+		// Set the graph's y upper bound as slightly greater than
+		// the max exercise minutes value for the given dates
+		double max = exercise[0].valueY;
+		for (int i = 1; i < exercise.length; i++){
+			if (exercise[1].valueY > max)
+				max = exercise[1].valueY;
+		}
+		
+		//int yUpper = (int)(max + max%5);
+		int yUpper = (int)(5 * Math.ceil(max/5.0) + 5);
+		System.out.println(yUpper);
+		graphView.setManualYAxisBounds(yUpper, 0);
+		
+		graphView.setShowLegend(true);
+		graphView.setLegendAlign(LegendAlign.TOP);
 		
 		horlabels = new String[dates.length];
 		for (int i = 0; i < horlabels.length; i++)
 			horlabels[i] = Integer.valueOf(dates[i].getDate()).toString();
 		graphView.setHorizontalLabels(horlabels);
 		
-		/*verlabels = new String[120];
-		for (int i = verlabels.length - 1; i >= 0; i--)
+		/*verlabels = new String[yUpper];
+		for (int i = verlabels.length - 1; i >= 0; i -= 5)
 			verlabels[verlabels.length - 1 - i] = Integer.valueOf(i).toString();
 		graphView.setVerticalLabels(verlabels);*/
+		
+		java.util.ArrayList<String> vertlabels = new java.util.ArrayList<String>();
+		for (int i = yUpper; i >= 0; i -=5)
+			vertlabels.add(Integer.valueOf(i).toString());
+		graphView.setVerticalLabels(vertlabels.toArray(new String[0]));
 		
 		layout = (LinearLayout) findViewById(R.id.graph6);
 		layout.removeAllViews();

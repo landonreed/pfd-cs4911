@@ -66,7 +66,7 @@ abstract public class GraphView extends LinearLayout {
 
 			float border = GraphViewConfig.BORDER;
 			float horstart = 0;
-			float height = getHeight();
+			float height = getHeight() - 20; //////////
 			float width = getWidth() - 1;
 			double maxY = getMaxY();
 			double minY = getMinY();
@@ -109,10 +109,14 @@ abstract public class GraphView extends LinearLayout {
 				paint.setTextSize(defaultFontHt);
 				canvas.drawText(horlabels[i], x, height - 4, paint);
 			}
+			
+			// X axis title
+			canvas.drawText("Days", (graphwidth / 2) + horstart, getHeight() - 4, paint);
 
 			paint.setTextAlign(Align.CENTER);
 			paint.setTextSize(defaultFontHt * 1.2f);
 			canvas.drawText(title, (graphwidth / 2) + horstart, border - 4, paint);
+			//canvas.drawText(title, border, graphheight, paint);
 
 			if (maxY != minY) {
 				paint.setStrokeCap(Paint.Cap.ROUND);
@@ -261,7 +265,7 @@ abstract public class GraphView extends LinearLayout {
 			paint.setStrokeWidth(0);
 
 			float border = GraphViewConfig.BORDER;
-			float height = getHeight();
+			float height = getHeight() - 20; ///////////////////////////
 			float graphheight = height - (2 * border);
 
 			if (verlabels == null) {
@@ -277,7 +281,7 @@ abstract public class GraphView extends LinearLayout {
 				paint.setColor(paintColor);
 				paint.setTextSize(defaultFontHt);
 				//canvas.drawText(verlabels[i], 0, y, paint);
-				canvas.drawText(verlabels[i], border - 5, y, paint);
+				canvas.drawText(verlabels[i], border, y, paint);
 			}
 		}
 	}
