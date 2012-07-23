@@ -85,12 +85,12 @@
                 android:paddingLeft="40dp"
                 android:text="•entertains with an upbeat narrative tone and colorful, real-life anecdotes"
                 android:textColor="@android:color/black" />
-
-            <!-- <TextView -->
-            <!-- android:layout_width="fill_parent" -->
-            <!-- android:layout_height="wrap_content" -->
-            <!-- android:text="You’ll learn causes of weight gain and how to resist them, tips for incorporating healthy eating and lifestyle changes into your daily routine, and tricks for keeping momentum. Best yet, you’ll have fun reading the book and making positive changes toward a happier, healthier you!" -->
-            <!-- android:textColor="@android:color/black" /> -->
+            
+            <ImageView
+                android:paddingTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_marcia_berlin_productions"/>
         </LinearLayout>
     </ScrollView>
 

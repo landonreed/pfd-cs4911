@@ -7,31 +7,57 @@
     <uses-sdk android:minSdkVersion="7" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name=".UserInterface.LifePreserverDiet"
         android:icon="@drawable/app_icon"
-        android:label="@string/app_name">
+        android:label="@string/app_name" >
         <activity
-            android:name=".UserInterface.Pages.Main"
-            android:label="@string/app_name" >
+            android:name=".UserInterface.Pages.Splash"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserInterface.Pages.PersonalFlotationDevice" />
-        <activity android:name=".UserInterface.Pages.ChartHistory" />
-        <activity android:name=".UserInterface.Pages.Book" />
-        <activity android:name=".UserInterface.Pages.About" />
-        <activity android:name=".UserInterface.Pages.Contact" />
-        <activity android:name=".UserInterface.Pages.TestDatabaseActivity" />
-        <activity android:name=".UserInterface.Pages.GraphViewDemo" />
-        <activity android:name=".UserInterface.Dialogs.PFDShareDialog"
+        <activity
+            android:name=".UserInterface.Pages.PersonalFlotationDevice"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserInterface.Pages.Main"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserInterface.Pages.ChartHistory"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserInterface.Pages.About"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserInterface.Pages.Contact"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserInterface.Pages.TestDatabaseActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserInterface.Pages.GraphViewDemo"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserInterface.Dialogs.PFDShareDialog"
+            android:configChanges="orientation"
             android:label="Personal Food-Tracking Device"
-            android:theme="@android:style/Theme.Dialog"/>
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" />
     </application>
 
 </manifest>
