@@ -379,7 +379,9 @@ public class GraphViewDemo extends ListActivity {
 			int fruit = shares[3];
 			int veggies = shares[4];
 			int extra = shares[5];
-			int exercise_minutes = shares[6];
+			
+			int exercise_minutes = 5 * (int)(Math.random()*22); //shares[6];
+			System.out.println("min exercise: " + exercise_minutes);
 			
 			boolean exercise = (exercise_minutes > 0) ? true : false;
 			
