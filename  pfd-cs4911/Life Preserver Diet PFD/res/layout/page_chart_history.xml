@@ -12,10 +12,18 @@
         android:layout_height="wrap_content"
         android:text="Chart your History!"
         android:textColor="@android:color/black" /> -->
+        
+<ScrollView android:id="@+id/ScrollView01"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical" >
     
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent"
-		android:layout_height="250dip"
+		android:layout_height="450dip"
 		android:paddingRight="20dip"
 		android:id="@+id/graph5" />
     
@@ -25,8 +33,11 @@
 	
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent"
-		android:layout_height="125dip"
+		android:layout_height="200dip"
 		android:paddingRight="20dip"
 		android:id="@+id/graph6" />
 
+</LinearLayout>
+</ScrollView>
+    
 </LinearLayout>

@@ -139,14 +139,20 @@ public class ChartHistory extends Activity {
 		return dates;
 	}
 	
+	/**
+	 * Creates and places a graph on the screen using for the week (Sun - Sat)
+	 * containing the given date.
+	 * 
+	 * @param date The chosen date
+	 * @param values The list of Day objects contained in the database
+	 */
 	private void makeGraph(Date date, List<Day> values){
 		//System.out.println("#days in db: " + values.size());
-		System.out.println("chosen date: " + date);
+		//System.out.println("chosen date: " + date);
 
 		Date[] dates = getWeek(date);
 		//Date[] dates = getMonth(date);
 		
-		//GraphViewData[][] data = new GraphViewData[shares.length][dates.length];
 		GraphViewData[] wholeGrains = new GraphViewData[dates.length];
 		GraphViewData[] dairy = new GraphViewData[dates.length];
 		GraphViewData[] meatBeans = new GraphViewData[dates.length];
@@ -183,7 +189,7 @@ public class ChartHistory extends Activity {
 				}
 			}
 		}
-		// Default data if the db is empty
+		// Default data if the database is empty
 		else{
 			for (int j = 0; j < dates.length; j++){
 				wholeGrains[j] = dairy[j] = meatBeans[j] = fruits[j] =
@@ -222,10 +228,11 @@ public class ChartHistory extends Activity {
 		graphView.addSeries(new GraphViewSeries("Veggies",
 				new GraphViewStyle(Color.GREEN, 3), veggies));
 		graphView.addSeries(new GraphViewSeries("Extra",
-				new GraphViewStyle(0xffaabbcc, 3), extra));
+				new GraphViewStyle(0xffaa5500, 3), extra));
 		
-		final int yUpperBound = 16;
+		final int yUpperBound = 9;
 		graphView.setManualYAxisBounds(yUpperBound - 1, 0);
+		
 		graphView.setShowLegend(true);
 		graphView.setLegendAlign(LegendAlign.TOP);
 		
@@ -259,32 +266,43 @@ public class ChartHistory extends Activity {
 		// the max exercise minutes value for the given dates
 		double max = exercise[0].valueY;
 		for (int i = 1; i < exercise.length; i++){
-			if (exercise[1].valueY > max)
-				max = exercise[1].valueY;
+			if (exercise[i].valueY > max)
+				max = exercise[i].valueY;
 		}
 		
 		//int yUpper = (int)(max + max%5);
-		int yUpper = (int)(5 * Math.ceil(max/5.0) + 5);
-		System.out.println(yUpper);
+		int yUpper = (int)(10 * Math.ceil(max/10.0) + 20);
+		//System.out.println("exercise max: " + max);
+		//System.out.println("yUpper: " + yUpper);
 		graphView.setManualYAxisBounds(yUpper, 0);
 		
-		graphView.setShowLegend(true);
-		graphView.setLegendAlign(LegendAlign.TOP);
+		//graphView.setShowLegend(true);
+		//graphView.setLegendAlign(LegendAlign.TOP);
 		
 		horlabels = new String[dates.length];
 		for (int i = 0; i < horlabels.length; i++)
 			horlabels[i] = Integer.valueOf(dates[i].getDate()).toString();
 		graphView.setHorizontalLabels(horlabels);
+
+		/*
+		java.util.ArrayList<String> vertlabels = new java.util.ArrayList<String>();
+		for (int i = 0; i < exercise.length; i++){
+			if (exercise[i].valueY > 0)
+				vertlabels.add(Integer.valueOf((int)exercise[i].valueY).toString());
+				//vertlabels.add("4");
+		}*/
+		//vertlabels.add(Integer.valueOf(yUpper).toString());
+		//graphView.setVerticalLabels(vertlabels.toArray(new String[0]));
 		
-		/*verlabels = new String[yUpper];
-		for (int i = verlabels.length - 1; i >= 0; i -= 5)
-			verlabels[verlabels.length - 1 - i] = Integer.valueOf(i).toString();
-		graphView.setVerticalLabels(verlabels);*/
+		
+		int interval = yUpper / ((int)(5 * Math.ceil(dates.length/5.0)));
+		interval = (int)(5 * Math.ceil(interval/5.0));
 		
 		java.util.ArrayList<String> vertlabels = new java.util.ArrayList<String>();
-		for (int i = yUpper; i >= 0; i -=5)
+		for (int i = yUpper; i >= 0; i -= interval )
 			vertlabels.add(Integer.valueOf(i).toString());
 		graphView.setVerticalLabels(vertlabels.toArray(new String[0]));
+		
 		
 		layout = (LinearLayout) findViewById(R.id.graph6);
 		layout.removeAllViews();

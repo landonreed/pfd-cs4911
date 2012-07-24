@@ -281,7 +281,7 @@ abstract public class GraphView extends LinearLayout {
 				paint.setColor(paintColor);
 				paint.setTextSize(defaultFontHt);
 				//canvas.drawText(verlabels[i], 0, y, paint);
-				canvas.drawText(verlabels[i], border, y, paint);
+				canvas.drawText(verlabels[i], border - 4, y, paint);
 			}
 		}
 	}
