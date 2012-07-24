@@ -2,96 +2,99 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background3"
+    android:background="@drawable/background"
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="fill_parent"
+        android:background="@drawable/background_overlay2"
+        android:orientation="vertical" >
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content" >
 
-            <ImageView
-                android:layout_width="330dp"
-                android:layout_height="190dp"
-                android:clickable="true"
-                android:onClick="youtube"
-                android:paddingTop="10dp"
-                android:src="@drawable/video_button" />
-
-            <ImageView
-                android:layout_width="225dp"
-                android:layout_height="100dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:src="@drawable/logo_2" >
-            </ImageView>
-
-            <!-- <TextView -->
-            <!-- android:layout_width="fill_parent" -->
-            <!-- android:layout_height="wrap_content" -->
-            <!-- android:gravity="center" -->
-            <!-- android:paddingBottom="10dp" -->
-            <!-- android:paddingTop="10dp" -->
-            <!-- android:text="The Life Preserver Diet" -->
-            <!-- android:textColor="@android:color/black" -->
-            <!-- android:textSize="20sp" -->
-            <!-- android:textStyle="bold" /> -->
-
-            <TextView
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="4dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="       The Life Preserver Diet offers a lifeline to those struggling with their weight. The Life Preserver Diet:"
-                android:textColor="@android:color/black" />
+                android:gravity="center"
+                android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="4dp"
-                android:paddingLeft="40dp"
-                android:paddingRight="10dp"
-                android:text="•informs you of the common challenges to healthy eating"
-                android:textColor="@android:color/black" />
+                <ImageView
+                    android:layout_width="220dp"
+                    android:layout_height="140dp"
+                    android:paddingLeft="22dp"
+                    android:paddingTop="25dp"
+                    android:src="@drawable/logo" >
+                </ImageView>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="4dp"
-                android:paddingLeft="40dp"
-                android:paddingRight="10dp"
-                android:text="•offers constructive guidelines for losing weight while following a nutritionist-designed program"
-                android:textColor="@android:color/black" />
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="105dp"
+                    android:clickable="true"
+                    android:onClick="youtube"
+                    android:paddingLeft="5dp"
+                    android:src="@drawable/video_image" >
+                </ImageView>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="4dp"
-                android:paddingLeft="40dp"
-                android:text="•instructs you in keeping track of meals with the Personal Food-Tracking Device® (PFD)"
-                android:textColor="@android:color/black" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/label_about" >
+                </ImageView>
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="4dp"
-                android:paddingLeft="40dp"
-                android:text="•entertains with an upbeat narrative tone and colorful, real-life anecdotes"
-                android:textColor="@android:color/black" />
-            
-            <ImageView
-                android:paddingTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_marcia_berlin_productions"/>
-        </LinearLayout>
-    </ScrollView>
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="28dp"
+                    android:text="       The Life Preserver Diet offers a lifeline to those struggling with their weight by:"
+                    android:textColor="#6d4919"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="45dp"
+                    android:paddingRight="28dp"
+                    android:text="•informing of common challenges to healthy eating"
+                    android:textColor="#6d4919"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="45dp"
+                    android:paddingRight="28dp"
+                    android:text="•offering guidelines for losing weight while following a nutritionist-designed program"
+                    android:textColor="#6d4919"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="45dp"
+                    android:paddingRight="28dp"
+                    android:text="•instructing in tracking meals with the Personal Food-Tracking Device®"
+                    android:textColor="#6d4919"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:src="@drawable/icon_marcia_berlin_productions" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
 </LinearLayout>
