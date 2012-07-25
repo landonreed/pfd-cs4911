@@ -111,7 +111,7 @@ abstract public class GraphView extends LinearLayout {
 			}
 			
 			// X axis title
-			canvas.drawText("Days", (graphwidth / 2) + horstart, getHeight() - 4, paint);
+			//canvas.drawText("Days", (graphwidth / 2) + horstart, getHeight() - 4, paint);
 
 			paint.setTextAlign(Align.CENTER);
 			paint.setTextSize(defaultFontHt * 1.2f);

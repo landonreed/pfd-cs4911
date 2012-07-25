@@ -399,6 +399,8 @@ public class GraphViewDemo extends ListActivity {
 				date.setYear(2012 - 1900);
 			}
 			
+			System.out.println("----- adding: " + date);
+			
 			// create new day
 			day = datasource.createDay(date, wholeGrains, dairy, meatBeans,
 					fruit, veggies, extra, exercise, exercise_minutes);
