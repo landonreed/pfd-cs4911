@@ -2,24 +2,21 @@ package com.lifePreserverDiet.PFD.UserInterface.Pages;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.jjoe64.graphview.GraphView.GraphViewData;
-import com.jjoe64.graphview.GraphView.GraphViewSeries;
 import com.jjoe64.graphview.BarGraphView;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GraphView.GraphViewData;
+import com.jjoe64.graphview.GraphView.GraphViewSeries;
 import com.jjoe64.graphview.GraphView.GraphViewStyle;
 import com.jjoe64.graphview.GraphView.LegendAlign;
 import com.jjoe64.graphview.LineGraphView;
-
 import com.lifePreserverDiet.PFD.Day;
 import com.lifePreserverDiet.PFD.R;
 import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
@@ -35,7 +32,7 @@ import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
  */
 public class ChartHistory extends Activity {
 	private DayDataSource datasource;
-	
+	private Date myDate;
 	
 	/**
 	 * @param savedInstanceState
@@ -48,14 +45,26 @@ public class ChartHistory extends Activity {
 		datasource = new DayDataSource(this);
 		datasource.open();
 
-		List<Day> values = datasource.getAllDays();
-
-		// Use the SimpleCursorAdapter to show the elements in a ListView
-		//ArrayAdapter<Day> adapter = 
-				//new ArrayAdapter<Day>(this, android.R.layout.simple_list_item_1, values);
-		//setListAdapter(adapter);
-
-		makeGraph(((Day) values.get(0)).getDate(), datasource.getAllDays());
+		myDate = new Date(); // The graph should start on today's week
+		makeGraph(myDate);
+	}
+	
+	/**
+	 * Move back or forward one week and display the new graph.
+	 * 
+	 * @param view The view
+	 */
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.prev:
+			myDate.setTime(myDate.getTime() - 7 * (24*60*60*1000));
+			makeGraph(myDate);
+			break;
+		case R.id.next:
+			myDate.setTime(myDate.getTime() + 7 * (24*60*60*1000));
+			makeGraph(myDate);
+			break;
+		}
 	}
 	
 	@Override
@@ -70,8 +79,14 @@ public class ChartHistory extends Activity {
 		super.onPause();
 	}
 
+	/**
+	 * Returns an array of Dates matching the Sunday - Saturday week
+	 * that contains the given date.
+	 * 
+	 * @param d The date whose week we want
+	 * @return an array of Dates for the desired week
+	 */
 	private Date[] getWeek(Date d){
-		//d.setTime(d.getTime() - 24*60*60*1000);
 		Date[] dates = new Date[7];
 		
 		// Calendar gives Sun - Sat as 1 - 7, so we get Mon - Sat first
@@ -87,16 +102,16 @@ public class ChartHistory extends Activity {
 		}
 
 		// Make sure the dates are actually a Mon - Sun set
+		/*
 		System.out.println("");
 		for (int i = 0; i < dates.length; i++)
 			System.out.println((dates[i].getDay() + 1 == (i+1)%dates.length+1) + ", " + dates[i]);
 		System.out.println("");
-		
+		*/
 		return dates;
 	}
 
 	private Date[] getMonth(Date d){
-		// Calendar.JANUARY = 0
 		Date[] dates;
 		switch (d.getMonth()){
 		case Calendar.JANUARY:
@@ -109,16 +124,16 @@ public class ChartHistory extends Activity {
 			dates = new Date[31];
 			break;
 		case Calendar.FEBRUARY:
-			dates = new Date[28];
+			int year = d.getYear() + 1900;
+			if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+				dates = new Date[29]; // Leap year
+			else
+				dates = new Date[28]; // Regular year
 			break;
 		default:
 			dates = new Date[30];
 			break;
 		}
-		
-		int year = d.getYear() + 1900;
-		if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
-			dates = new Date[29];
 		
 		for (int i = 1; i < dates.length + 1; i++){
 			if (d.getDate() == i)
@@ -144,14 +159,10 @@ public class ChartHistory extends Activity {
 	 * containing the given date.
 	 * 
 	 * @param date The chosen date
-	 * @param values The list of Day objects contained in the database
 	 */
-	private void makeGraph(Date date, List<Day> values){
-		//System.out.println("#days in db: " + values.size());
-		//System.out.println("chosen date: " + date);
-
+	private void makeGraph(Date date){
+		
 		Date[] dates = getWeek(date);
-		//Date[] dates = getMonth(date);
 		
 		GraphViewData[] wholeGrains = new GraphViewData[dates.length];
 		GraphViewData[] dairy = new GraphViewData[dates.length];
@@ -161,12 +172,10 @@ public class ChartHistory extends Activity {
 		GraphViewData[] extra = new GraphViewData[dates.length];
 		GraphViewData[] exercise = new GraphViewData[dates.length];
 		
-		if(values.size() > 0){
+		// Build the series
+		if(datasource.getAllDays().size() > 0){
 			for (int j = 0; j < wholeGrains.length; j++){
 				Day d = datasource.getDay(dates[j]);
-				
-				//System.out.println("day object for " + dates[j-1] + ": " + d);
-				
 				if(d != null){
 					wholeGrains[j] = new GraphViewData(j,
 							Integer.valueOf( d.getWholeGrains() ).doubleValue());
@@ -189,34 +198,40 @@ public class ChartHistory extends Activity {
 				}
 			}
 		}
-		// Default data if the database is empty
+		// Default series if the database is empty
 		else{
 			for (int j = 0; j < dates.length; j++){
 				wholeGrains[j] = dairy[j] = meatBeans[j] = fruits[j] =
-					veggies[j] = extra[j] = exercise[j] = new GraphViewData(j, 1.0d);
+					veggies[j] = extra[j] = exercise[j] = new GraphViewData(j, 0.0d);
 			}
 		}
 
-		String title = "";
+		// Generate this week's header
+		String headerString = "";
 		if (dates.length == 7){
 			java.text.SimpleDateFormat myFormat =
 					new java.text.SimpleDateFormat("EEE, MMM dd, yyyy");
 			String monday = myFormat.format(dates[0]);
 			String sunday = myFormat.format(dates[6]);
-			title = monday + " to " + sunday;
+			headerString = monday + " to " + sunday;
 		}
 		else{
 			String[] months = new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
 					"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-			title = months[ dates[0].getMonth() ] + ", " + (dates[0].getYear() + 1900);
+			headerString = months[ dates[0].getMonth() ] + ", " + (dates[0].getYear() + 1900);
 		}
+		TextView header = (TextView) findViewById(R.id.header);
+		header.setText(headerString);
 		
+		
+		// Create a GraphView for the regular shares
 		GraphView graphView;
 		if (getIntent().getStringExtra("type").equals("bar"))
-			graphView = new BarGraphView(this, title);
+			graphView = new BarGraphView(this, "Share Values");
 		else
-			graphView = new LineGraphView(this, title);
+			graphView = new LineGraphView(this, "Share Values");
 		
+		// Add the series to the GraphView
 		graphView.addSeries(new GraphViewSeries("Whole Grains",
 				new GraphViewStyle(Color.RED, 3), wholeGrains));
 		graphView.addSeries(new GraphViewSeries("Dairy",
@@ -230,80 +245,65 @@ public class ChartHistory extends Activity {
 		graphView.addSeries(new GraphViewSeries("Extra",
 				new GraphViewStyle(0xffaa5500, 3), extra));
 		
+		// Set graph bounds
 		final int yUpperBound = 9;
 		graphView.setManualYAxisBounds(yUpperBound - 1, 0);
 		
+		// Set graph legend
 		graphView.setShowLegend(true);
 		graphView.setLegendAlign(LegendAlign.TOP);
 		
-		String[] horlabels = new String[dates.length];
-		for (int i = 0; i < horlabels.length; i++)
-			horlabels[i] = Integer.valueOf(dates[i].getDate()).toString();
+		// Set x-axis labels
+		String[] horlabels = new String[] { "Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat" };
 		graphView.setHorizontalLabels(horlabels);
 		
+		// Set y-axis labels
 		String[] verlabels = new String[yUpperBound];
 		for (int i = verlabels.length - 1; i >= 0; i--)
 			verlabels[verlabels.length - 1 - i] = Integer.valueOf(i).toString();
 		graphView.setVerticalLabels(verlabels);
 
+		// Add GraphView to layout
 		LinearLayout layout = (LinearLayout) findViewById(R.id.graph5);
 		layout.removeAllViews();
 		layout.addView(graphView);
 		
 		
 		
-		// Exercise minutes
-		
+		// Create a GraphView for the exercise minutes
 		if (getIntent().getStringExtra("type").equals(""))
 			graphView = new BarGraphView(this, "Exercise Minutes");
 		else
 			graphView = new LineGraphView(this, "Exercise Minutes");
 
+		// Add the series to the GraphView
 		graphView.addSeries(new GraphViewSeries("Exercise",
 				new GraphViewStyle(Color.BLUE, 3), exercise));
 		
-		// Set the graph's y upper bound as slightly greater than
+		// Set the graph's y upper bound as 20 minutes greater than
 		// the max exercise minutes value for the given dates
 		double max = exercise[0].valueY;
 		for (int i = 1; i < exercise.length; i++){
 			if (exercise[i].valueY > max)
 				max = exercise[i].valueY;
 		}
-		
-		//int yUpper = (int)(max + max%5);
 		int yUpper = (int)(10 * Math.ceil(max/10.0) + 20);
-		//System.out.println("exercise max: " + max);
-		//System.out.println("yUpper: " + yUpper);
 		graphView.setManualYAxisBounds(yUpper, 0);
-		
 		//graphView.setShowLegend(true);
 		//graphView.setLegendAlign(LegendAlign.TOP);
-		
-		horlabels = new String[dates.length];
-		for (int i = 0; i < horlabels.length; i++)
-			horlabels[i] = Integer.valueOf(dates[i].getDate()).toString();
-		graphView.setHorizontalLabels(horlabels);
 
-		/*
-		java.util.ArrayList<String> vertlabels = new java.util.ArrayList<String>();
-		for (int i = 0; i < exercise.length; i++){
-			if (exercise[i].valueY > 0)
-				vertlabels.add(Integer.valueOf((int)exercise[i].valueY).toString());
-				//vertlabels.add("4");
-		}*/
-		//vertlabels.add(Integer.valueOf(yUpper).toString());
-		//graphView.setVerticalLabels(vertlabels.toArray(new String[0]));
+		// Set x-axis labels
+		graphView.setHorizontalLabels(horlabels);
 		
-		
+		// Set y-axis labels
 		int interval = yUpper / ((int)(5 * Math.ceil(dates.length/5.0)));
 		interval = (int)(5 * Math.ceil(interval/5.0));
-		
 		java.util.ArrayList<String> vertlabels = new java.util.ArrayList<String>();
 		for (int i = yUpper; i >= 0; i -= interval )
 			vertlabels.add(Integer.valueOf(i).toString());
 		graphView.setVerticalLabels(vertlabels.toArray(new String[0]));
-		
-		
+
+		// Add GraphView to layout
 		layout = (LinearLayout) findViewById(R.id.graph6);
 		layout.removeAllViews();
 		layout.addView(graphView);
