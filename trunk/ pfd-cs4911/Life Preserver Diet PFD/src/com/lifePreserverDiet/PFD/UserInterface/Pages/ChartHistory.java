@@ -245,25 +245,40 @@ public class ChartHistory extends Activity {
 		graphView.addSeries(new GraphViewSeries("Extra",
 				new GraphViewStyle(0xffaa5500, 3), extra));
 		
-		// Set graph bounds
-		final int yUpperBound = 9;
-		graphView.setManualYAxisBounds(yUpperBound - 1, 0);
+		// Set the graph's y upper bound
+		double max = exercise[0].valueY;
+		for (int i = 1; i < wholeGrains.length; i++){
+			if (wholeGrains[i].valueY > max)
+				max = wholeGrains[i].valueY;
+			if (dairy[i].valueY > max)
+				max = dairy[i].valueY;
+			if (meatBeans[i].valueY > max)
+				max = meatBeans[i].valueY;
+			if (fruits[i].valueY > max)
+				max = fruits[i].valueY;
+			if (veggies[i].valueY > max)
+				max = veggies[i].valueY;
+			if (extra[i].valueY > max)
+				max = extra[i].valueY;
+		}
+		int yUpper = (int)(Math.ceil(max) + 3);
+		graphView.setManualYAxisBounds(yUpper - 1, 0);
 		
 		// Set graph legend
 		graphView.setShowLegend(true);
 		graphView.setLegendAlign(LegendAlign.TOP);
 		
-		// Set x-axis labels
+		// Set the x-axis labels
 		String[] horlabels = new String[] { "Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat" };
 		graphView.setHorizontalLabels(horlabels);
 		
-		// Set y-axis labels
-		String[] verlabels = new String[yUpperBound];
+		// Set the  y-axis labels
+		String[] verlabels = new String[yUpper];
 		for (int i = verlabels.length - 1; i >= 0; i--)
 			verlabels[verlabels.length - 1 - i] = Integer.valueOf(i).toString();
 		graphView.setVerticalLabels(verlabels);
 
-		// Add GraphView to layout
+		// Add the GraphView to our layout
 		LinearLayout layout = (LinearLayout) findViewById(R.id.graph5);
 		layout.removeAllViews();
 		layout.addView(graphView);
@@ -282,12 +297,12 @@ public class ChartHistory extends Activity {
 		
 		// Set the graph's y upper bound as 20 minutes greater than
 		// the max exercise minutes value for the given dates
-		double max = exercise[0].valueY;
+		max = exercise[0].valueY;
 		for (int i = 1; i < exercise.length; i++){
 			if (exercise[i].valueY > max)
 				max = exercise[i].valueY;
 		}
-		int yUpper = (int)(10 * Math.ceil(max/10.0) + 20);
+		yUpper = (int)(10 * Math.ceil(max/10.0) + 20);
 		graphView.setManualYAxisBounds(yUpper, 0);
 		//graphView.setShowLegend(true);
 		//graphView.setLegendAlign(LegendAlign.TOP);
