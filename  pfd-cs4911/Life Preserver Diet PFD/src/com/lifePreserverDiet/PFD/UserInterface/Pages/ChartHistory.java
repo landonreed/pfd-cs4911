@@ -224,6 +224,7 @@ public class ChartHistory extends Activity {
 		header.setText(headerString);
 		
 		
+		
 		// Create a GraphView for the regular shares
 		GraphView graphView;
 		if (getIntent().getStringExtra("type").equals("bar"))
@@ -245,8 +246,9 @@ public class ChartHistory extends Activity {
 		graphView.addSeries(new GraphViewSeries("Extra",
 				new GraphViewStyle(0xffaa5500, 3), extra));
 		
-		// Set the graph's y upper bound
-		double max = exercise[0].valueY;
+		// Set the graph's y upper bound as 2 units higher than
+		// the highest share value entered for the current week
+		double max = wholeGrains[0].valueY;
 		for (int i = 1; i < wholeGrains.length; i++){
 			if (wholeGrains[i].valueY > max)
 				max = wholeGrains[i].valueY;
@@ -261,8 +263,9 @@ public class ChartHistory extends Activity {
 			if (extra[i].valueY > max)
 				max = extra[i].valueY;
 		}
-		int yUpper = (int)(Math.ceil(max) + 3);
-		graphView.setManualYAxisBounds(yUpper - 1, 0);
+		int yUpper = (int)(Math.ceil(max) + 2);
+		yUpper = (yUpper < 8) ? 8 : yUpper;
+		graphView.setManualYAxisBounds(yUpper, 0);
 		
 		// Set graph legend
 		graphView.setShowLegend(true);
@@ -273,7 +276,7 @@ public class ChartHistory extends Activity {
 		graphView.setHorizontalLabels(horlabels);
 		
 		// Set the  y-axis labels
-		String[] verlabels = new String[yUpper];
+		String[] verlabels = new String[yUpper + 1];
 		for (int i = verlabels.length - 1; i >= 0; i--)
 			verlabels[verlabels.length - 1 - i] = Integer.valueOf(i).toString();
 		graphView.setVerticalLabels(verlabels);
@@ -296,7 +299,7 @@ public class ChartHistory extends Activity {
 				new GraphViewStyle(Color.BLUE, 3), exercise));
 		
 		// Set the graph's y upper bound as 20 minutes greater than
-		// the max exercise minutes value for the given dates
+		// the max exercise minutes value for the current week
 		max = exercise[0].valueY;
 		for (int i = 1; i < exercise.length; i++){
 			if (exercise[i].valueY > max)
@@ -304,13 +307,11 @@ public class ChartHistory extends Activity {
 		}
 		yUpper = (int)(10 * Math.ceil(max/10.0) + 20);
 		graphView.setManualYAxisBounds(yUpper, 0);
-		//graphView.setShowLegend(true);
-		//graphView.setLegendAlign(LegendAlign.TOP);
 
-		// Set x-axis labels
+		// Set the x-axis labels
 		graphView.setHorizontalLabels(horlabels);
 		
-		// Set y-axis labels
+		// Set the y-axis labels
 		int interval = yUpper / ((int)(5 * Math.ceil(dates.length/5.0)));
 		interval = (int)(5 * Math.ceil(interval/5.0));
 		java.util.ArrayList<String> vertlabels = new java.util.ArrayList<String>();
@@ -318,7 +319,7 @@ public class ChartHistory extends Activity {
 			vertlabels.add(Integer.valueOf(i).toString());
 		graphView.setVerticalLabels(vertlabels.toArray(new String[0]));
 
-		// Add GraphView to layout
+		// Add the GraphView to our layout
 		layout = (LinearLayout) findViewById(R.id.graph6);
 		layout.removeAllViews();
 		layout.addView(graphView);
