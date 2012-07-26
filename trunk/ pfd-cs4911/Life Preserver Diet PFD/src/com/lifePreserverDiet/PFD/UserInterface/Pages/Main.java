@@ -50,10 +50,4 @@ public class Main extends Activity {
     	startActivity(intent);
     }
     
-    public void graph_view(View v) {
-    	Intent intent = new Intent(this, GraphViewDemo.class);
-		//intent.putExtra("type", "bar");
-		intent.putExtra("type", "line");
-    	startActivity(intent);
-    }
 }

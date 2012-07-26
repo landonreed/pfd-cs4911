@@ -20,7 +20,7 @@
             android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete First" 
+            android:text="Delete Last" 
             android:onClick="onClick"/>
         
     </LinearLayout>
@@ -30,16 +30,5 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="hello" />
-    
-    
-    
-    <com.androidplot.xy.XYPlot
-	    android:id="@+id/mySimpleXYPlot"
-	    android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-	    android:layout_marginTop="10px"
-	    android:layout_marginLeft="10px"
-	    android:layout_marginRight="10px"
-	    title="Yearly UFO Sightings" />
 
 </LinearLayout>

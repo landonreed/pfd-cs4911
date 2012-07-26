@@ -133,15 +133,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="test_database"
-        android:text="Test Database"
-        android:visibility="gone" >
-    </Button>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:onClick="graph_view"
-        android:text="Test Graph View" >
+        android:text="Test Database" >
+        <!-- android:visibility="gone" -->
     </Button>
 
 </LinearLayout>

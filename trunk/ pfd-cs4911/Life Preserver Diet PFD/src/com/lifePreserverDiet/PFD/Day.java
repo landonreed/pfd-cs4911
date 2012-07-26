@@ -13,6 +13,8 @@ public class Day {
 	private boolean exercise;
 	
 	private int exercise_minutes;
+	
+	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd yyyy");
 
 	public Day() {
 		date = new Date();
@@ -35,11 +37,7 @@ public class Day {
 	public Date getDate(){ return date; }
 	public void setDate(String dateString){
 		try{
-			//date = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy").parse(dateString);
 			date = new SimpleDateFormat("EEE MMM dd yyyy").parse(dateString);
-			
-			//System.out.println("dateString == date.toString(): " + 
-					//dateString.equals(date.toString()));
 		}catch(ParseException e){
 			e.printStackTrace();
 		}

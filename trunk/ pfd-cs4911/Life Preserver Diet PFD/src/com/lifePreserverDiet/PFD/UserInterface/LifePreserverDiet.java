@@ -20,6 +20,7 @@ public class LifePreserverDiet extends Application {
 		dataSource = new DayDataSource(this);
 		dataSource.open();
 
+		/*
 		List<Day> values = dataSource.getAllDays();
 		
 		if(values.size() > 0) {
@@ -33,7 +34,13 @@ public class LifePreserverDiet extends Application {
 		} 
 		else {
 			day = dataSource.createDay();
-		}
+		}*/
+		
+		Day today = dataSource.getDay(new Date());
+		if (today == null)
+			day = dataSource.createDay();
+		else
+			day = today;
 	}
 	
 	public Day getDay() {
