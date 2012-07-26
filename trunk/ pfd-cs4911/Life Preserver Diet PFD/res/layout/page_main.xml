@@ -130,7 +130,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="test_database"
-        android:text="Test Database" >
+        android:text="Test Database"
+        android:visibility="invisible" >
+
         <!-- android:visibility="gone" -->
     </Button>
 
