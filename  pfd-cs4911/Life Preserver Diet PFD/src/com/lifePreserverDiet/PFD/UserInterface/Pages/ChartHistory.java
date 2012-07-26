@@ -22,13 +22,12 @@ import com.lifePreserverDiet.PFD.R;
 import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
 
 /**
- * GraphViewDemo creates some dummy data to demonstrate the GraphView component.
- *
- * IMPORTANT: For examples take a look at GraphView-Demos (https://github.com/jjoe64/GraphView-Demos)
- *
- * Copyright (C) 2011 Jonas Gehring
- * Licensed under the GNU Lesser General Public License (LGPL)
- * http://www.gnu.org/licenses/lgpl.html
+ * ChartHistory displays a user's share history for a given week (the
+ * current week is displayed on page open but controls are provided
+ * to move backwards or forwards in time).
+ * 
+ * Minutes spent on exercise are displayed on the bottom graph.
+ * The other share types are displayed on the top graph.
  */
 public class ChartHistory extends Activity {
 	private DayDataSource datasource;
@@ -101,55 +100,13 @@ public class ChartHistory extends Activity {
 			}
 		}
 
-		// Make sure the dates are actually a Mon - Sun set
 		/*
+		// Make sure the dates are actually a Mon - Sun set
 		System.out.println("");
 		for (int i = 0; i < dates.length; i++)
 			System.out.println((dates[i].getDay() + 1 == (i+1)%dates.length+1) + ", " + dates[i]);
 		System.out.println("");
 		*/
-		return dates;
-	}
-
-	private Date[] getMonth(Date d){
-		Date[] dates;
-		switch (d.getMonth()){
-		case Calendar.JANUARY:
-		case Calendar.MARCH:
-		case Calendar.MAY:
-		case Calendar.JULY:
-		case Calendar.AUGUST:
-		case Calendar.OCTOBER:
-		case Calendar.DECEMBER:
-			dates = new Date[31];
-			break;
-		case Calendar.FEBRUARY:
-			int year = d.getYear() + 1900;
-			if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
-				dates = new Date[29]; // Leap year
-			else
-				dates = new Date[28]; // Regular year
-			break;
-		default:
-			dates = new Date[30];
-			break;
-		}
-		
-		for (int i = 1; i < dates.length + 1; i++){
-			if (d.getDate() == i)
-				dates[i-1] = d;
-			else {
-				Date d1 = new Date();
-				d1.setTime( d.getTime() - (d.getDate() - i)*(24*60*60*1000) );
-				dates[i-1] = d1;
-			}
-		}
-		
-		// Make sure the dates are a set for the right month
-		System.out.println("");
-		for (int i = 0; i < dates.length; i++)
-			System.out.println((dates[i].getDate() == i+1) + ", " + dates[i]);
-		System.out.println("");
 		
 		return dates;
 	}
@@ -162,8 +119,11 @@ public class ChartHistory extends Activity {
 	 */
 	private void makeGraph(Date date){
 		
+		// Get the Dates for the desired week
 		Date[] dates = getWeek(date);
 		
+		// Each array will contain a particular share's values for
+		// the desired week and act as a data series for the graph.
 		GraphViewData[] wholeGrains = new GraphViewData[dates.length];
 		GraphViewData[] dairy = new GraphViewData[dates.length];
 		GraphViewData[] meatBeans = new GraphViewData[dates.length];
@@ -172,7 +132,7 @@ public class ChartHistory extends Activity {
 		GraphViewData[] extra = new GraphViewData[dates.length];
 		GraphViewData[] exercise = new GraphViewData[dates.length];
 		
-		// Build the series
+		// Build the series if the database isn't empty
 		if(datasource.getAllDays().size() > 0){
 			for (int j = 0; j < wholeGrains.length; j++){
 				Day d = datasource.getDay(dates[j]);
@@ -207,21 +167,12 @@ public class ChartHistory extends Activity {
 		}
 
 		// Generate this week's header
-		String headerString = "";
-		if (dates.length == 7){
-			java.text.SimpleDateFormat myFormat =
-					new java.text.SimpleDateFormat("EEE, MMM dd, yyyy");
-			String monday = myFormat.format(dates[0]);
-			String sunday = myFormat.format(dates[6]);
-			headerString = monday + " to " + sunday;
-		}
-		else{
-			String[] months = new String[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-					"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-			headerString = months[ dates[0].getMonth() ] + ", " + (dates[0].getYear() + 1900);
-		}
+		java.text.SimpleDateFormat myFormat =
+				new java.text.SimpleDateFormat("EEE, MMM dd, yyyy");
+		String monday = myFormat.format(dates[0]);
+		String sunday = myFormat.format(dates[6]);
 		TextView header = (TextView) findViewById(R.id.header);
-		header.setText(headerString);
+		header.setText(monday + " to " + sunday);
 		
 		
 		

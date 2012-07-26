@@ -33,9 +33,6 @@ public class DayDataSource {
 			SQLiteDatabaseHelper.COLUMN_EXERCISE,
 			SQLiteDatabaseHelper.COLUMN_EXERCISE_MINUTES
 	};
-	
-	private java.text.SimpleDateFormat myFormat =
-			new java.text.SimpleDateFormat("EEE MMM dd yyyy");
 
 	/**
 	 * Creates a new database manager.
@@ -67,38 +64,7 @@ public class DayDataSource {
 	 */
 	public Day createDay()
 	{
-		Day day = new Day();
-		
-		/* Build value set for SQL query. */
-		ContentValues values = new ContentValues();
-
-		String dateString = myFormat.format(day.getDate());
-		
-	    //values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
-		values.put(SQLiteDatabaseHelper.COLUMN_DATE, dateString);
-		values.put(SQLiteDatabaseHelper.COLUMN_WHOLEGRAINS, day.getWholeGrains());
-		values.put(SQLiteDatabaseHelper.COLUMN_DAIRY, day.getDairy());
-		values.put(SQLiteDatabaseHelper.COLUMN_MEATBEANS, day.getMeatBeans());
-		values.put(SQLiteDatabaseHelper.COLUMN_FRUIT, day.getFruit());
-		values.put(SQLiteDatabaseHelper.COLUMN_VEGGIES, day.getVeggies());
-		values.put(SQLiteDatabaseHelper.COLUMN_EXTRA, day.getExtra());
-		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE, String.valueOf(day.getExercise()));
-		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE_MINUTES, day.getExerciseMinutes());
-				
-		/* Perform table insert and get the row id. */
-		long insertId = database.insert(SQLiteDatabaseHelper.TABLE_DAYS, null,
-				values);
-		
-		/* Get a cursor to the inserted row. */
-		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_DAYS,
-				allColumns, SQLiteDatabaseHelper.COLUMN_ID + " = " + insertId, null,
-				null, null, null);
-		
-		/* Close the cursor and return the resulting Day object. */
-		cursor.moveToFirst();
-		Day newDay = cursorToDay(cursor);
-		cursor.close();
-		return newDay;
+		return createDay(new Day());
 	}
 	
 	/**
@@ -112,7 +78,7 @@ public class DayDataSource {
 		/* Build value set for SQL query. */
 		ContentValues values = new ContentValues();
 
-		String dateString = myFormat.format(day.getDate());
+		String dateString = Day.dateFormat.format(day.getDate());
 		
 	    //values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
 		values.put(SQLiteDatabaseHelper.COLUMN_DATE, dateString);
@@ -124,54 +90,6 @@ public class DayDataSource {
 		values.put(SQLiteDatabaseHelper.COLUMN_EXTRA, day.getExtra());
 		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE, String.valueOf(day.getExercise()));
 		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE_MINUTES, day.getExerciseMinutes());
-				
-		/* Perform table insert and get the row id. */
-		long insertId = database.insert(SQLiteDatabaseHelper.TABLE_DAYS, null,
-				values);
-		
-		/* Get a cursor to the inserted row. */
-		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_DAYS,
-				allColumns, SQLiteDatabaseHelper.COLUMN_ID + " = " + insertId, null,
-				null, null, null);
-		
-		/* Close the cursor and return the resulting Day object. */
-		cursor.moveToFirst();
-		Day newDay = cursorToDay(cursor);
-		cursor.close();
-		return newDay;
-	}
-	
-	/**
-	 * Inserts a new Day into the the table.
-	 * 
-	 * @param date of this day
-	 * @param wholeGrains share amount entered for this day
-	 * @param dairy share amount entered for this day
-	 * @param meatBeans share amount entered for this day
-	 * @param fruit share amount entered for this day
-	 * @param veggies share amount entered for this day
-	 * @param extra share amount entered for this day
-	 * @param exercise share amount entered for this day
-	 * @return The Day object
-	 */
-	public Day createDay(Date date, int wholeGrains, int dairy, int meatBeans,
-			int fruit, int veggies, int extra, boolean exercise, int exercise_minutes)
-	{
-		/* Build value set for SQL query. */
-		ContentValues values = new ContentValues();
-
-		String dateString = myFormat.format(date);
-		
-	    //values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
-		values.put(SQLiteDatabaseHelper.COLUMN_DATE, dateString);
-		values.put(SQLiteDatabaseHelper.COLUMN_WHOLEGRAINS, wholeGrains);
-		values.put(SQLiteDatabaseHelper.COLUMN_DAIRY, dairy);
-		values.put(SQLiteDatabaseHelper.COLUMN_MEATBEANS, meatBeans);
-		values.put(SQLiteDatabaseHelper.COLUMN_FRUIT, fruit);
-		values.put(SQLiteDatabaseHelper.COLUMN_VEGGIES, veggies);
-		values.put(SQLiteDatabaseHelper.COLUMN_EXTRA, extra);
-		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE, String.valueOf(exercise));
-		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE_MINUTES, exercise_minutes);
 				
 		/* Perform table insert and get the row id. */
 		long insertId = database.insert(SQLiteDatabaseHelper.TABLE_DAYS, null,
@@ -230,10 +148,6 @@ public class DayDataSource {
 	 */
 	private Day cursorToDay(Cursor cursor) {
 		Day day = new Day();
-		
-		//for (int i = 0; i<cursor.getColumnCount(); i++)
-			//System.out.println(cursor.getString(i));
-		
 		day.setId(cursor.getLong(0));
 		day.setDate(cursor.getString(1));
 		day.setWholeGrains(cursor.getInt(2));
@@ -254,10 +168,9 @@ public class DayDataSource {
 	 * @return the Day object from the db matching the given date
 	 */
 	public Day getDay(Date date){
-		String dateString = myFormat.format(date);
+		String dateString = Day.dateFormat.format(date);
 		
 		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_DAYS,
-				//allColumns, MySQLiteHelper.COLUMN_DATE + " = '" + date.toString() + "'",
 				allColumns, SQLiteDatabaseHelper.COLUMN_DATE + " = '" + dateString + "'",
 				null, null, null, null);
 		
@@ -273,10 +186,9 @@ public class DayDataSource {
 	public boolean updateDay(Day day){
 		ContentValues values = new ContentValues();
 		
-		String dateString = myFormat.format(day.getDate());
+		String dateString = Day.dateFormat.format(day.getDate());
 		
 		values.put(SQLiteDatabaseHelper.COLUMN_DATE, dateString);
-		//values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
 		values.put(SQLiteDatabaseHelper.COLUMN_WHOLEGRAINS, day.getWholeGrains());
 		values.put(SQLiteDatabaseHelper.COLUMN_DAIRY, day.getDairy());
 		values.put(SQLiteDatabaseHelper.COLUMN_MEATBEANS, day.getMeatBeans());
@@ -288,43 +200,8 @@ public class DayDataSource {
 		
 		int rowsChanged = database.update(SQLiteDatabaseHelper.TABLE_DAYS, values,
 				SQLiteDatabaseHelper.COLUMN_DATE + " = '" + dateString + "'", null);
-				//MySQLiteHelper.COLUMN_DATE + " = '" + date.toString() + "'", null);
 		
 		return (rowsChanged > 0) ? true : false;
-	}
-	
-	public boolean updateDay(Date date, int wholeGrains, int dairy, int meatBeans,
-			int fruit, int veggies, int extra, boolean exercise, int exercise_minutes){
-		ContentValues values = new ContentValues();
-		
-		String dateString = myFormat.format(date);
-		
-		values.put(SQLiteDatabaseHelper.COLUMN_DATE, dateString);
-		//values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
-		values.put(SQLiteDatabaseHelper.COLUMN_WHOLEGRAINS, wholeGrains);
-		values.put(SQLiteDatabaseHelper.COLUMN_DAIRY, dairy);
-		values.put(SQLiteDatabaseHelper.COLUMN_MEATBEANS, meatBeans);
-		values.put(SQLiteDatabaseHelper.COLUMN_FRUIT, fruit);
-		values.put(SQLiteDatabaseHelper.COLUMN_VEGGIES, veggies);
-		values.put(SQLiteDatabaseHelper.COLUMN_EXTRA, extra);
-		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE, String.valueOf(exercise));
-		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE_MINUTES, exercise_minutes);
-		
-		int rowsChanged = database.update(SQLiteDatabaseHelper.TABLE_DAYS, values,
-				SQLiteDatabaseHelper.COLUMN_DATE + " = '" + dateString + "'", null);
-				//MySQLiteHelper.COLUMN_DATE + " = '" + date.toString() + "'", null);
-		
-		return (rowsChanged > 0) ? true : false;
-	}
-	
-	public boolean find(Date date){
-		String dateString = myFormat.format(date);
-		
-		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_DAYS,
-				allColumns, SQLiteDatabaseHelper.COLUMN_DATE + " = '" + dateString + "'",
-				null, null, null, null);
-		
-		return cursor.getCount() > 0;
 	}
 	
 }
