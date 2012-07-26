@@ -1,6 +1,5 @@
 package com.lifePreserverDiet.PFD.UserInterface.Pages;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import android.app.Activity;
@@ -215,7 +214,7 @@ public class ChartHistory extends Activity {
 				max = extra[i].valueY;
 		}
 		int yUpper = (int)(Math.ceil(max) + 2);
-		yUpper = (yUpper < 8) ? 8 : yUpper;
+		yUpper = (yUpper < 6) ? 6 : yUpper; // Set a minimum for the upper bound
 		graphView.setManualYAxisBounds(yUpper, 0);
 		
 		// Set graph legend
@@ -249,14 +248,14 @@ public class ChartHistory extends Activity {
 		graphView.addSeries(new GraphViewSeries("Exercise",
 				new GraphViewStyle(Color.BLUE, 3), exercise));
 		
-		// Set the graph's y upper bound as 20 minutes greater than
+		// Set the graph's y upper bound as 10 minutes greater than
 		// the max exercise minutes value for the current week
 		max = exercise[0].valueY;
 		for (int i = 1; i < exercise.length; i++){
 			if (exercise[i].valueY > max)
 				max = exercise[i].valueY;
 		}
-		yUpper = (int)(10 * Math.ceil(max/10.0) + 20);
+		yUpper = (int)(10 * Math.ceil(max/10.0) + 10);
 		graphView.setManualYAxisBounds(yUpper, 0);
 
 		// Set the x-axis labels
