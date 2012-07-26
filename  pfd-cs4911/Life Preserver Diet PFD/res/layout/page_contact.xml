@@ -27,8 +27,7 @@
                     android:layout_height="140dp"
                     android:paddingLeft="22dp"
                     android:paddingTop="25dp"
-                    android:src="@drawable/logo" >
-                </ImageView>
+                    android:src="@drawable/logo" />
 
                 <ImageView
                     android:layout_width="180dp"
@@ -60,9 +59,10 @@
                     android:paddingLeft="30dp"
                     android:paddingRight="28dp"
                     android:text="Registered dietitian Marcia Berlin, R.D., L.D. is available for online consultations via Skype or telephone."
-                    android:textColor="#6d4919"
-                    android:textStyle="bold"
-                    android:textSize="12sp" >
+                    android:textColor="#ff0000"
+                    android:textSize="12sp"
+                    android:textStyle="bold" >
+
                 </TextView>
 
                 <TextView
@@ -85,9 +85,10 @@
                     android:paddingLeft="30dp"
                     android:paddingRight="28dp"
                     android:text="Note: Skype is a free online video-calling program. It requires a camera to use."
-                    android:textColor="#6d4919"
-                    android:textStyle="bold"
-                    android:textSize="12sp" >
+                    android:textColor="#ff0000"
+                    android:textSize="12sp"
+                    android:textStyle="bold" >
+
                 </TextView>
 
                 <TextView

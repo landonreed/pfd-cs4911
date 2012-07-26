@@ -157,7 +157,7 @@
         android:gravity="center"
         android:paddingTop="10dp"
         android:text="Tap a food group to check in your shares."
-        android:textColor="@android:color/black" />
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/textView_pfd_sharesText"
@@ -168,7 +168,7 @@
         android:paddingBottom="2dp"
         android:paddingTop="9dp"
         android:text="Remaining Shares"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -504,6 +504,6 @@
         android:layout_alignParentBottom="true"
         android:checked="true"
         android:text="I am a female."
-        android:textColor="@android:color/black" />
+        android:textColor="@color/white" />
 
 </RelativeLayout>

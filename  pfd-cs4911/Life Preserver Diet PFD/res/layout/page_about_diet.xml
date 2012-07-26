@@ -52,7 +52,7 @@
                     android:paddingLeft="30dp"
                     android:paddingRight="28dp"
                     android:text="       The Life Preserver Diet offers a lifeline to those struggling with their weight by:"
-                    android:textColor="#6d4919"
+                    android:textColor="@color/blue"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
@@ -63,7 +63,7 @@
                     android:paddingLeft="45dp"
                     android:paddingRight="28dp"
                     android:text="•informing of common challenges to healthy eating"
-                    android:textColor="#6d4919"
+                    android:textColor="#ff0000"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
@@ -74,7 +74,7 @@
                     android:paddingLeft="45dp"
                     android:paddingRight="28dp"
                     android:text="•offering guidelines for losing weight while following a nutritionist-designed program"
-                    android:textColor="#6d4919"
+                    android:textColor="#ff0000"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
@@ -84,7 +84,7 @@
                     android:paddingLeft="45dp"
                     android:paddingRight="28dp"
                     android:text="•instructing in tracking meals with the Personal Food-Tracking Device®"
-                    android:textColor="#6d4919"
+                    android:textColor="#ff0000"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
