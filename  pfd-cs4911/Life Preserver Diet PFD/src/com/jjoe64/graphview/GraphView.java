@@ -34,6 +34,12 @@ abstract public class GraphView extends LinearLayout {
 	final float scale = getResources().getDisplayMetrics().density;
 	private int defaultFontHt = (int)(MIN_FONT_DIPS * scale + 0.5f);
 	private int paintColor = android.graphics.Color.BLACK;
+	private boolean dayHighlight = false;
+	
+	public void setDayHighlight(boolean b){
+		dayHighlight = b;
+	}
+	
 	
 	static final private class GraphViewConfig {
 		static final float BORDER = 20;
@@ -106,6 +112,8 @@ abstract public class GraphView extends LinearLayout {
 					paint.setTextAlign(Align.LEFT);
 				//paint.setColor(Color.WHITE);
 				paint.setColor(paintColor);
+				if(dayHighlight && i == new java.util.Date().getDay())
+					paint.setColor(Color.RED);
 				paint.setTextSize(defaultFontHt);
 				canvas.drawText(horlabels[i], x, height - 4, paint);
 			}

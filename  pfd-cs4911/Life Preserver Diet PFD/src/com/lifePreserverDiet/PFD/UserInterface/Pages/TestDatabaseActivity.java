@@ -25,10 +25,9 @@ public class TestDatabaseActivity extends ListActivity {
 
 		List<Day> values = datasource.getAllDays();
 
-		// Use the SimpleCursorAdapter to show the elements in a ListView
+		// Used to show the elements in a ListView
 		ArrayAdapter<Day> adapter = 
 				new ArrayAdapter<Day>(this, android.R.layout.simple_list_item_1, values);
-		
 		setListAdapter(adapter);
 	}
 		
@@ -49,7 +48,10 @@ public class TestDatabaseActivity extends ListActivity {
 			int fruit = shares[3];
 			int veggies = shares[4];
 			int extra = shares[5];
-			int exercise_minutes = shares[6];
+			//int exercise_minutes = shares[6];
+			
+			// random exercise minutes between 0 and 180
+			int exercise_minutes = 5 * (int)(Math.random() * 36);
 			
 			boolean exercise = (exercise_minutes > 0) ? true : false;
 			
@@ -85,6 +87,7 @@ public class TestDatabaseActivity extends ListActivity {
 			adapter.add(day);
 			break;
 		case R.id.delete:
+			// delete the day at the end of the database (bottom of the list)
 			if (getListAdapter().getCount() > 0) {
 				day = (Day) getListAdapter().getItem( getListAdapter().getCount() - 1 );
 				datasource.deleteDay(day);
