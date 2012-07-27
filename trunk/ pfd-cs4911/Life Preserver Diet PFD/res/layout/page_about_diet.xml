@@ -103,15 +103,19 @@
                     android:paddingTop="5dp" >
 
                     <ImageView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
                         android:clickable="true"
                         android:onClick="facebook"
                         android:src="@drawable/f_logo" />
 
                     <ImageView
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"/>
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
                         android:clickable="true"
                         android:onClick="twitter"
                         android:src="@drawable/t_logo" />
