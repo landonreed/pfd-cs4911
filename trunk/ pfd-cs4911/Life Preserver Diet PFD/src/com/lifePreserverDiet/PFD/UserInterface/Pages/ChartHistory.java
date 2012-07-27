@@ -307,6 +307,7 @@ public class ChartHistory extends Activity {
 				max = exercise[i].valueY;
 		}
 		yUpper = (int)(10 * Math.ceil(max/10.0) + 10);
+		yUpper = (yUpper < 60) ? 60 : yUpper; // Set a minimum for the upper bound
 		graphView.setManualYAxisBounds(yUpper, 0);
 
 		// Set the x-axis labels
