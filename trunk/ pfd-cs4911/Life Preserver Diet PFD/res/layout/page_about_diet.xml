@@ -34,6 +34,8 @@
                     android:layout_width="160dp"
                     android:layout_height="105dp"
                     android:layout_gravity="center"
+                    android:clickable="true"
+                    android:onClick="youtube"
                     android:background="@drawable/video_image"
                     android:paddingLeft="48dp"
                     android:paddingTop="20dp" >
