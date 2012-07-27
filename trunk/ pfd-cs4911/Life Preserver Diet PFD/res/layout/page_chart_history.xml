@@ -60,7 +60,11 @@
     
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="fill_parent"
-		android:layout_height="450dip"
+		android:layout_height="20dip" />
+    
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="300dip"
 		android:paddingRight="20dip"
 		android:id="@+id/graph5" />
     
