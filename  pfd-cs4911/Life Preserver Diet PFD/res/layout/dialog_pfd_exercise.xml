@@ -24,7 +24,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
-        android:text="There is a share for exercise on your PFD every day. That one share is just as important as the food shares. Any amount counts. It’s OK to start out slow. You will pick up momentum as you go."
+        android:text="There is one share for exercise. It is just as important as the food shares. Any amount counts. It’s OK to start out slow. You will pick up momentum as you go."
         android:textColor="@android:color/black" />
 
     <LinearLayout
@@ -50,6 +50,17 @@
                 android:textColor="@android:color/black"
                 android:textSize="17sp"
                 android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:visibility="invisible"
+                android:text="IMAT"
+                android:textColor="@android:color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" >
+            </TextView>
         </LinearLayout>
 
         <TextView
