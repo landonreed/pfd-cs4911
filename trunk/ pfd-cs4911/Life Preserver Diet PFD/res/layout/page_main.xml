@@ -132,8 +132,6 @@
         android:onClick="test_database"
         android:text="Test Database"
         android:visibility="invisible" >
-
-        <!-- android:visibility="gone" -->
     </Button>
 
 </LinearLayout>
