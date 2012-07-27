@@ -121,22 +121,33 @@ public class ChartHistory extends Activity {
 		// Get the Dates for the desired week
 		Date[] dates = getWeek(date);
 		
-		// Each array will contain a particular share's values for
+		/* // Each array will contain a particular share's values for
 		// the desired week and act as a data series for the graph.
 		GraphViewData[] wholeGrains = new GraphViewData[dates.length];
 		GraphViewData[] dairy = new GraphViewData[dates.length];
 		GraphViewData[] meatBeans = new GraphViewData[dates.length];
 		GraphViewData[] fruits = new GraphViewData[dates.length];
 		GraphViewData[] veggies = new GraphViewData[dates.length];
-		GraphViewData[] extra = new GraphViewData[dates.length];
+		GraphViewData[] extra = new GraphViewData[dates.length];*/
+		
 		GraphViewData[] exercise = new GraphViewData[dates.length];
+		
+		GraphViewData[] idealData = new GraphViewData[dates.length];
+		for (int i = 0; i < idealData.length; i++){
+			idealData[i] = new GraphViewData(i, 100.0d);
+		}
+		
+		GraphViewData[] actualData = new GraphViewData[dates.length];
+		
+		// Target number of shares for one day
+		double targetTotal = 3 + 3 + 3 + 3 + 4 + 3;
 		
 		// Build the series if the database isn't empty
 		if(datasource.getAllDays().size() > 0){
-			for (int j = 0; j < wholeGrains.length; j++){
+			for (int j = 0; j < dates.length; j++){
 				Day d = datasource.getDay(dates[j]);
 				if(d != null){
-					wholeGrains[j] = new GraphViewData(j,
+					/*wholeGrains[j] = new GraphViewData(j,
 							Integer.valueOf( d.getWholeGrains() ).doubleValue());
 					dairy[j] = new GraphViewData(j,
 							Integer.valueOf( d.getDairy() ).doubleValue());
@@ -148,20 +159,28 @@ public class ChartHistory extends Activity {
 							Integer.valueOf( d.getVeggies() ).doubleValue());
 					extra[j] = new GraphViewData(j,
 							Integer.valueOf( d.getExtra() ).doubleValue());
+					*/
 					exercise[j] = new GraphViewData(j,
 							Integer.valueOf( d.getExerciseMinutes() ).doubleValue());
+					int total = d.getWholeGrains() + d.getDairy() + d.getMeatBeans() +
+							d.getFruit() + d.getVeggies() + d.getExtra();
+					actualData[j] = new GraphViewData(j, total/targetTotal * 100);
 				}
 				else{
-					wholeGrains[j] = dairy[j] = meatBeans[j] = fruits[j] =
-						veggies[j] = extra[j] = exercise[j] = new GraphViewData(j, 0.0d);
+					//wholeGrains[j] = dairy[j] = meatBeans[j] = fruits[j] =
+						//veggies[j] = extra[j] = exercise[j] = new GraphViewData(j, 0.0d);
+					exercise[j] = new GraphViewData(j, 0.0d);
+					actualData[j] = new GraphViewData(j, 0.0d);
 				}
 			}
 		}
 		// Default series if the database is empty
 		else{
 			for (int j = 0; j < dates.length; j++){
-				wholeGrains[j] = dairy[j] = meatBeans[j] = fruits[j] =
-					veggies[j] = extra[j] = exercise[j] = new GraphViewData(j, 0.0d);
+				//wholeGrains[j] = dairy[j] = meatBeans[j] = fruits[j] =
+					//veggies[j] = extra[j] = exercise[j] = new GraphViewData(j, 0.0d);
+				exercise[j] = new GraphViewData(j, 0.0d);
+				actualData[j] = new GraphViewData(j, 0.0d);
 			}
 		}
 
@@ -178,10 +197,27 @@ public class ChartHistory extends Activity {
 		// Create a GraphView for the regular shares
 		GraphView graphView;
 		if (getIntent().getStringExtra("type").equals("bar"))
-			graphView = new BarGraphView(this, "Share Values");
+			graphView = new BarGraphView(this, "Share Percentage");
 		else
-			graphView = new LineGraphView(this, "Share Values");
+			graphView = new LineGraphView(this, "Share Percentage");
+
+		// Add the series to the GraphView
+		graphView.addSeries(new GraphViewSeries("Target",
+				new GraphViewStyle(Color.RED, 3), idealData));
+		graphView.addSeries(new GraphViewSeries("Actual",
+				new GraphViewStyle(Color.GREEN, 3), actualData));
 		
+		// Set the graph's y-axis upper bound
+		double max = actualData[0].valueY;
+		for (int i = 1; i < dates.length; i++){
+			if (actualData[i].valueY > max)
+				max = actualData[i].valueY;
+		}
+		int yUpper = (int)(Math.ceil(max) + 20);
+		yUpper = (yUpper < 150) ? 150 : yUpper; // Set a minimum for the upper bound
+		graphView.setManualYAxisBounds(yUpper, 0);
+		
+		/*
 		// Add the series to the GraphView
 		graphView.addSeries(new GraphViewSeries("Whole Grains",
 				new GraphViewStyle(Color.RED, 3), wholeGrains));
@@ -216,6 +252,7 @@ public class ChartHistory extends Activity {
 		int yUpper = (int)(Math.ceil(max) + 2);
 		yUpper = (yUpper < 6) ? 6 : yUpper; // Set a minimum for the upper bound
 		graphView.setManualYAxisBounds(yUpper, 0);
+		*/
 		
 		// Set graph legend
 		graphView.setShowLegend(true);
@@ -225,11 +262,25 @@ public class ChartHistory extends Activity {
 		String[] horlabels = new String[] { "Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat" };
 		graphView.setHorizontalLabels(horlabels);
 		
-		// Set the  y-axis labels
-		String[] verlabels = new String[yUpper + 1];
-		for (int i = verlabels.length - 1; i >= 0; i--)
-			verlabels[verlabels.length - 1 - i] = Integer.valueOf(i).toString();
+		// Set the y-axis labels
+		String[] verlabels = new String[yUpper/10 + 1];
+		for (int i = verlabels.length - 1; i >= 0; i--){
+			int tick = i*10;
+			if (tick >= 100)
+				verlabels[verlabels.length - 1 - i] = Integer.valueOf(tick).toString();
+			else if (tick >= 10)
+				verlabels[verlabels.length - 1 - i] = " " + Integer.valueOf(tick).toString();
+			else
+				verlabels[verlabels.length - 1 - i] = "  " + Integer.valueOf(tick).toString();
+		}
 		graphView.setVerticalLabels(verlabels);
+		
+		/* // Set the y-axis labels
+		String[] verlabels = new String[yUpper + 1];
+		for (int i = verlabels.length - 1; i >= 0; i--){
+			verlabels[verlabels.length - 1 - i] = Integer.valueOf(i).toString();
+		}
+		graphView.setVerticalLabels(verlabels); */
 
 		// Add the GraphView to our layout
 		LinearLayout layout = (LinearLayout) findViewById(R.id.graph5);
