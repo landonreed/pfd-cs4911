@@ -111,13 +111,8 @@ public class PersonalFlotationDevice extends Activity {
 		}
 		
 		if(day.getVeggies() >= 4) {
-			if(day.getVeggies() > 4) {
-				veggies.setImageResource(R.drawable.icon_pfd_vegetables_bad);
-				veggiesShares.setTextColor(Color.RED);
-			} else {
-				veggies.setImageResource(R.drawable.icon_pfd_vegetables_good);
-				veggiesShares.setTextColor(Color.GREEN);
-			}
+			veggies.setImageResource(R.drawable.icon_pfd_vegetables_good);
+			veggiesShares.setTextColor(Color.GREEN);
 			veggiesShares.setText("0");
 		} else {
 			veggies.setImageResource(R.drawable.icon_pfd_vegetables);

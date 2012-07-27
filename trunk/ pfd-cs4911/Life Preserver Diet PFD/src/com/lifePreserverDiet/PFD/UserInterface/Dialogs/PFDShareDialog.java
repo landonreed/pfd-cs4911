@@ -265,10 +265,8 @@ public class PFDShareDialog extends Activity {
 				shares.setTextColor(Color.BLACK);
 			}
 		} else {
-			if(num_shares == 4) {
+			if(num_shares >= 4) {
 				shares.setTextColor(Color.GREEN);
-			} else if (num_shares > 4) {
-				shares.setTextColor(Color.RED);
 			} else {
 				shares.setTextColor(Color.BLACK);
 			}

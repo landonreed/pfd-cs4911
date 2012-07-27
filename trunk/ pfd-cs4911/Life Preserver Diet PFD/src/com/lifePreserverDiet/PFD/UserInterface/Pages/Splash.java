@@ -22,7 +22,7 @@ public class Splash extends Activity {
 			@Override
 			public void onChronometerTick(Chronometer chronometer) {
 				counter++;
-				if(counter > 1) {
+				if(counter > 2) {
 					Intent intent = new Intent(Splash.this, Main.class);
 					Splash.this.startActivity(intent);
 					Splash.this.finish();
