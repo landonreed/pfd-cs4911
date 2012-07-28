@@ -123,25 +123,19 @@ public class ChartHistory extends Activity {
 		// Get the Dates for the desired week
 		Date[] dates = getWeek(date);
 		
+		// Arrays for the graph series
 		GraphViewData[] exercise = new GraphViewData[dates.length];
 		
 		GraphViewData[] actualData = new GraphViewData[dates.length];
 		
-		// Ideal 100% series
 		GraphViewData[] idealData = new GraphViewData[dates.length];
 		for (int i = 0; i < idealData.length; i++)
 			idealData[i] = new GraphViewData(i, 20.0d);
 		
 		// Target daily share values
-		double veggiesTotal = 4.0;
-		
 		double wholeGrainsTotal, dairyTotal, meatBeansTotal, fruitTotal, extraTotal;
 		wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 3.0;
 		
-		double exerciseTotal = 1.0;
-		
-		double targetTotal = wholeGrainsTotal + dairyTotal + meatBeansTotal +
-				fruitTotal + extraTotal + veggiesTotal + exerciseTotal;
 		
 		// Build the series if the database isn't empty
 		if (datasource.getAllDays().size() > 0){
@@ -151,7 +145,8 @@ public class ChartHistory extends Activity {
 					exercise[j] = new GraphViewData(j,
 							Integer.valueOf( d.getExerciseMinutes() ).doubleValue());
 					
-					// A share value is target - abs(target - actual)
+					// A share's value is target - abs(target - actual), except for
+					// veggies whose value is simply actual
 					double exerciseShare = 0.0;
 					if(d.getExerciseMinutes() > 0)
 						exerciseShare = 1.0;
