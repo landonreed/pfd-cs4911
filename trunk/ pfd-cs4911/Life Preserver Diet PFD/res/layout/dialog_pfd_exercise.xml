@@ -84,6 +84,16 @@
                 android:text="How Long?"
                 android:textColor="@android:color/black"
                 android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:paddingTop="5dp"
+                android:text="I-mat:"
+                android:textColor="@android:color/black"
+                android:textSize="17sp"
                 android:textStyle="bold" >
             </TextView>
 
@@ -135,16 +145,6 @@
                     android:src="@drawable/button_selector_up" >
                 </ImageView>
             </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="5dp"
-                android:text="IMAT"
-                android:textColor="@android:color/black"
-                android:textSize="17sp"
-                android:textStyle="bold" >
-            </TextView>
         </LinearLayout>
     </LinearLayout>
 
