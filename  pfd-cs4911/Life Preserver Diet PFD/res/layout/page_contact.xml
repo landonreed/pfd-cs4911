@@ -73,7 +73,7 @@
                     android:paddingBottom="10dp"
                     android:paddingLeft="30dp"
                     android:paddingRight="28dp"
-                    android:text="Arrange for your phone or video consultation now."
+                    android:text="Arrange for your phone, video, or in-person consultation now."
                     android:textColor="@color/blue"
                     android:textSize="12sp"
                     android:textStyle="bold" >

@@ -23,7 +23,7 @@ public class Contact extends Activity {
 			//
 			emailIntent.setType("plain/text");
 
-			emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "info@lifepreserverdiet.com" });
+			emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "marciaberlin@gmail.com" });
 
 			emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Consultation Request");
 
