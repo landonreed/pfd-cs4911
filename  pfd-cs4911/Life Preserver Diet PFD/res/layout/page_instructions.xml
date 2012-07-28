@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/background_overlay2"
+        android:orientation="vertical" >
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:layout_width="220dp"
+                    android:layout_height="130dp"
+                    android:paddingLeft="22dp"
+                    android:paddingTop="25dp"
+                    android:src="@drawable/logo" >
+                </ImageView>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="28dp"
+                    android:text="       How to Chart Your History:"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="45dp"
+                    android:paddingRight="28dp"
+                    android:text="The top graph helps you track your overall dietary progress by plotting your daily diet scores for the current week."
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="292dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="45dp"
+                    android:paddingRight="28dp"
+                    android:text="- Your score is calculated by the number of shares you check in each day on the PFD. There are 20 total shares on the PFD, making your target score 20."
+                    android:textColor="#ff0000"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="292dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="45dp"
+                    android:paddingRight="28dp"
+                    android:text="- You will earn a point for each share you check in, until you reach your target. For each share over your target (except for Veggies- eat as much veggies as you want!), you will lose one point."
+                    android:textColor="#ff0000"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="45dp"
+                    android:paddingRight="28dp"
+                    android:text="The bottom graph helps you track your exercise activity by plotting the amounts of minutes you check in each day for the current week."
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="45dp"
+                    android:paddingRight="28dp"
+                    android:text="You can always revisit previous weeks by tapping on the &quot;Previous&quot; button at the top of the screen. Move forward by tapping on the &quot;Next&quot; button."
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

@@ -3,6 +3,7 @@ package com.lifePreserverDiet.PFD.UserInterface.Pages;
 import java.util.Date;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -66,6 +67,11 @@ public class ChartHistory extends Activity {
 		}
 	}
 	
+	public void instructions(View v) {
+		Intent intent = new Intent(this, Instructions.class);
+		startActivity(intent);
+	}
+	
 	@Override
 	protected void onResume() {
 		datasource.open();
@@ -107,7 +113,7 @@ public class ChartHistory extends Activity {
 	 * Creates and places the graphs on the screen using for the week (Sun - Sat)
 	 * containing the given date.
 	 * 
-	 * The top graph shows a share percentage out of the target total (for all share types).
+	 * The top graph shows a total score for the user's progress each day.
 	 * The bottom graph shows the exercise minutes.
 	 * 
 	 * @param date The chosen date
@@ -124,7 +130,7 @@ public class ChartHistory extends Activity {
 		// Ideal 100% series
 		GraphViewData[] idealData = new GraphViewData[dates.length];
 		for (int i = 0; i < idealData.length; i++)
-			idealData[i] = new GraphViewData(i, 100.0d);
+			idealData[i] = new GraphViewData(i, 20.0d);
 		
 		// Target daily share values
 		double veggiesTotal = 4.0;
@@ -132,8 +138,10 @@ public class ChartHistory extends Activity {
 		double wholeGrainsTotal, dairyTotal, meatBeansTotal, fruitTotal, extraTotal;
 		wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 3.0;
 		
+		double exerciseTotal = 1.0;
+		
 		double targetTotal = wholeGrainsTotal + dairyTotal + meatBeansTotal +
-				fruitTotal + extraTotal + veggiesTotal;
+				fruitTotal + extraTotal + veggiesTotal + exerciseTotal;
 		
 		// Build the series if the database isn't empty
 		if (datasource.getAllDays().size() > 0){
@@ -144,16 +152,20 @@ public class ChartHistory extends Activity {
 							Integer.valueOf( d.getExerciseMinutes() ).doubleValue());
 					
 					// A share value is target - abs(target - actual)
+					double exerciseShare = 0.0;
+					if(d.getExerciseMinutes() > 0)
+						exerciseShare = 1.0;
 					double total =
 							wholeGrainsTotal - Math.abs(wholeGrainsTotal - d.getWholeGrains()) +
 							dairyTotal - Math.abs(dairyTotal - d.getDairy()) + 
 							meatBeansTotal - Math.abs(meatBeansTotal - d.getMeatBeans()) +
 							fruitTotal - Math.abs(fruitTotal - d.getFruit()) + 
-							veggiesTotal - Math.abs(veggiesTotal - d.getVeggies()) + 
-							extraTotal - Math.abs(extraTotal - d.getExtra());
-					// No negative percentages
+							d.getVeggies() + 
+							extraTotal - Math.abs(extraTotal - d.getExtra()) +
+							exerciseShare;
+					// No negative scores
 					total = (total < 0) ? 0 : total;
-					actualData[j] = new GraphViewData(j, total/targetTotal * 100);
+					actualData[j] = new GraphViewData(j, total);
 				}
 				else{
 					exercise[j] = new GraphViewData(j, 0.0d);
@@ -182,7 +194,7 @@ public class ChartHistory extends Activity {
 		///////////////////
 		
 		// Create a GraphView for the regular shares
-		GraphView graphView = new LineGraphView(this, "Share Percentage");
+		GraphView graphView = new LineGraphView(this, "Diet Score");
 		
 		// If we're displaying a week containing today's date then
 		// tell the graph to highlight today on the x-axis
@@ -193,7 +205,7 @@ public class ChartHistory extends Activity {
 		graphView.addSeries(new GraphViewSeries("Target",
 				new GraphViewStyle(Color.RED, 3), idealData));
 		graphView.addSeries(new GraphViewSeries("Actual",
-				new GraphViewStyle(Color.GREEN, 3), actualData));
+				new GraphViewStyle(Color.BLUE, 3), actualData));
 		
 		// Set the graph's y-axis upper bound
 		double max = actualData[0].valueY;
@@ -201,8 +213,8 @@ public class ChartHistory extends Activity {
 			if (actualData[i].valueY > max)
 				max = actualData[i].valueY;
 		}
-		int yUpper = (int)(Math.ceil(max) + 20);
-		yUpper = (yUpper < 150) ? 150 : yUpper; // Set a minimum for the upper bound
+		int yUpper = (int)(Math.ceil(max) + 5);
+		yUpper = (yUpper < 25) ? 25 : yUpper; // Set a minimum for the upper bound
 		graphView.setManualYAxisBounds(yUpper, 0);
 		
 		// Set graph legend
@@ -214,9 +226,9 @@ public class ChartHistory extends Activity {
 		graphView.setHorizontalLabels(horlabels);
 		
 		// Set the y-axis labels
-		String[] verlabels = new String[yUpper/10 + 1];
+		String[] verlabels = new String[yUpper + 1];
 		for (int i = verlabels.length - 1; i >= 0; i--){
-			int tick = i*10;
+			int tick = i;
 			if (tick >= 100)
 				verlabels[verlabels.length - 1 - i] = Integer.valueOf(tick).toString();
 			else if (tick >= 10)
