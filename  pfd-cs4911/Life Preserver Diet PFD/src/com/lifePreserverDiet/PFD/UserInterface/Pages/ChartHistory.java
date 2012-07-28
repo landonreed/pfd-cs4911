@@ -67,8 +67,8 @@ public class ChartHistory extends Activity {
 		}
 	}
 	
-	public void instructions(View v) {
-		Intent intent = new Intent(this, Instructions.class);
+	public void chInstructions(View v) {
+		Intent intent = new Intent(this, CHInstructions.class);
 		startActivity(intent);
 	}
 	

@@ -55,7 +55,7 @@
             android:layout_height="40dp"
             android:layout_weight="0"
             android:background="@drawable/button_selector_red"
-            android:onClick="instructions"
+            android:onClick="chInstructions"
             android:text="Instructions" />
         
         <Button
