@@ -172,10 +172,8 @@ public class ChartHistory extends Activity {
 		// Generate this week's header
 		java.text.SimpleDateFormat myFormat =
 				new java.text.SimpleDateFormat("EEE, MMM dd, yyyy");
-		String monday = myFormat.format(dates[0]);
-		String sunday = myFormat.format(dates[6]);
 		TextView header = (TextView) findViewById(R.id.header);
-		header.setText(monday + " to " + sunday);
+		header.setText(myFormat.format(dates[0]) + " to " + myFormat.format(dates[6]));
 		
 		
 		
@@ -184,11 +182,7 @@ public class ChartHistory extends Activity {
 		///////////////////
 		
 		// Create a GraphView for the regular shares
-		GraphView graphView;
-		if (getIntent().getStringExtra("type").equals("bar"))
-			graphView = new BarGraphView(this, "Share Percentage");
-		else
-			graphView = new LineGraphView(this, "Share Percentage");
+		GraphView graphView = new LineGraphView(this, "Share Percentage");
 		
 		// If we're displaying a week containing today's date then
 		// tell the graph to highlight today on the x-axis
@@ -244,10 +238,7 @@ public class ChartHistory extends Activity {
 		/////////////////////
 		
 		// Create a GraphView for the exercise minutes
-		if (getIntent().getStringExtra("type").equals(""))
-			graphView = new BarGraphView(this, "Exercise Minutes");
-		else
-			graphView = new LineGraphView(this, "Exercise Minutes");
+		graphView = new LineGraphView(this, "Exercise Minutes");
 		
 		// If we're displaying a week containing today's date then
 		// tell the graph to highlight today on the x-axis

@@ -22,8 +22,6 @@ public class Main extends Activity {
 	
 	public void chartHistory(View v) {
 		Intent intent = new Intent(this, ChartHistory.class);
-		//intent.putExtra("type", "bar");
-		intent.putExtra("type", "line");
 		startActivity(intent);
 	}
 	
