@@ -34,6 +34,11 @@ public class PersonalFlotationDevice extends Activity {
 		fillTable();
 	}
 	
+	public void pfdInstructions(View v) {
+		Intent intent = new Intent(this, PFDInstructions.class);
+		startActivity(intent);
+	}
+	
 	public void test(View v) {
 		Intent x = new Intent(this, PFDShareDialog.class);
 		x.putExtra("id", v.getId());

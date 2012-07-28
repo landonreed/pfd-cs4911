@@ -8,10 +8,10 @@ import android.view.View;
 
 import com.lifePreserverDiet.PFD.R;
 
-public class Instructions extends Activity {
+public class CHInstructions extends Activity {
 
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
-		setContentView(R.layout.page_instructions);
+		setContentView(R.layout.page_ch_instructions);
 	}
 }
