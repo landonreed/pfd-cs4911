@@ -122,6 +122,7 @@ abstract public class GraphView extends LinearLayout {
 			//canvas.drawText("Days", (graphwidth / 2) + horstart, getHeight() - 4, paint);
 
 			paint.setTextAlign(Align.CENTER);
+			paint.setColor(paintColor);
 			paint.setTextSize(defaultFontHt * 1.2f);
 			canvas.drawText(title, (graphwidth / 2) + horstart, border - 4, paint);
 			//canvas.drawText(title, border, graphheight, paint);
