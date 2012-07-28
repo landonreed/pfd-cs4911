@@ -24,7 +24,7 @@
 
                 <ImageView
                     android:layout_width="220dp"
-                    android:layout_height="130dp"
+                    android:layout_height="120dp"
                     android:paddingLeft="22dp"
                     android:paddingTop="25dp"
                     android:src="@drawable/logo" >
@@ -38,7 +38,7 @@
                     android:paddingRight="28dp"
                     android:text="       How to Chart Your History:"
                     android:textColor="@color/blue"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -58,7 +58,7 @@
                     android:paddingBottom="4dp"
                     android:paddingLeft="45dp"
                     android:paddingRight="28dp"
-                    android:text="- Your score is calculated by the number of shares you check in each day on the PFD. There are 20 total shares on the PFD, making your target score 20."
+                    android:text="- Your score is calculated by the number of shares you check in each day on the PFD. There are 20 total shares on the PFD- checking in all 20 shares will earn you a perfect score of 20."
                     android:textColor="#ff0000"
                     android:textSize="11sp"
                     android:textStyle="bold" />
@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="45dp"
                     android:paddingRight="28dp"
-                    android:text="- You will earn a point for each share you check in, until you reach your target. For each share over your target (except for Veggies- eat as much veggies as you want!), you will lose one point."
+                    android:text="- You will earn a point for each share you check in, until you reach your target. For each share over your target (except for Veggies- eat as many veggies as you want, they're the only way you can get extra credit!), you will lose one point."
                     android:textColor="#ff0000"
                     android:textSize="11sp"
                     android:textStyle="bold" />
