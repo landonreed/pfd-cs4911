@@ -120,6 +120,7 @@ public class DayDataSource {
 	}
 
 	/**
+	 * Returns a list of all Days contained in the table.
 	 * 
 	 * @return a list of all Days contained in the table
 	 */
@@ -183,6 +184,12 @@ public class DayDataSource {
 		return day;
 	}
 	
+	/**
+	 * Updates a given day in the database.
+	 * 
+	 * @param day The day to update.
+	 * @return true if the update was successful
+	 */
 	public boolean updateDay(Day day){
 		ContentValues values = new ContentValues();
 		
