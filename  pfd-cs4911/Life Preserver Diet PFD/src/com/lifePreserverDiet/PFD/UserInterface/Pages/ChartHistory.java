@@ -10,13 +10,13 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.jjoe64.graphview.BarGraphView;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphView.GraphViewSeries;
 import com.jjoe64.graphview.GraphView.GraphViewStyle;
 import com.jjoe64.graphview.GraphView.LegendAlign;
 import com.jjoe64.graphview.LineGraphView;
+
 import com.lifePreserverDiet.PFD.Day;
 import com.lifePreserverDiet.PFD.R;
 import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
@@ -30,12 +30,13 @@ import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
  * The other share types are displayed on the top graph.
  */
 public class ChartHistory extends Activity {
+	
+	/** Database access object. */
 	private DayDataSource datasource;
+	
+	/** Date determining which week to display. */
 	private Date myDate;
 	
-	/**
-	 * @param savedInstanceState
-	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,7 +53,7 @@ public class ChartHistory extends Activity {
 	/**
 	 * Move back or forward one week and display the new graph.
 	 * 
-	 * @param view The view
+	 * @param view The view we're using
 	 */
 	public void onClick(View view) {
 		switch (view.getId()) {
@@ -67,6 +68,11 @@ public class ChartHistory extends Activity {
 		}
 	}
 	
+	/**
+	 * Opens the instructions page.
+	 * 
+	 * @param v The view we're using
+	 */
 	public void chInstructions(View v) {
 		Intent intent = new Intent(this, CHInstructions.class);
 		startActivity(intent);
@@ -93,9 +99,7 @@ public class ChartHistory extends Activity {
 	 */
 	private Date[] getWeek(Date d){
 		Date[] dates = new Date[7];
-		
-		// Calendar gives Sun - Sat as 1 - 7, so we get Mon - Sat first
-		// and then find the next Sun
+		// java.util.Calendar maps Sun ... Sat as 0 ... 7
 		for (int i = 1; i < dates.length + 1; i++){
 			if(d.getDay() + 1 == i)
 				dates[i-1] = d;
@@ -105,7 +109,6 @@ public class ChartHistory extends Activity {
 				dates[i-1] = d1;
 			}
 		}
-		
 		return dates;
 	}
 	
@@ -145,11 +148,10 @@ public class ChartHistory extends Activity {
 					exercise[j] = new GraphViewData(j,
 							Integer.valueOf( d.getExerciseMinutes() ).doubleValue());
 					
-					// A share's value is target - abs(target - actual), except for
-					// veggies whose value is simply actual
-					double exerciseShare = 0.0;
-					if(d.getExerciseMinutes() > 0)
-						exerciseShare = 1.0;
+					// Points for exercise = 0 if the user did not exercise, 1 otherwise
+					// Points for veggies  = the number of veggies shares checked in
+					// Points for other    = target - |target - actual|
+					double exerciseShare = (d.getExerciseMinutes() > 0) ? 1.0 : 0.0;
 					double total =
 							wholeGrainsTotal - Math.abs(wholeGrainsTotal - d.getWholeGrains()) +
 							dairyTotal - Math.abs(dairyTotal - d.getDairy()) + 
