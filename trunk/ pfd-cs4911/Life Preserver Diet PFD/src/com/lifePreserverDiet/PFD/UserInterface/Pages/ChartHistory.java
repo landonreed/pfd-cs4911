@@ -209,7 +209,7 @@ public class ChartHistory extends Activity {
 				max = actualData[i].valueY;
 		}
 		int yUpper = (int)(Math.ceil(max) + 5);
-		yUpper = (yUpper < 25) ? 25 : yUpper; // Set a minimum for the upper bound
+		yUpper = (yUpper < 24) ? 24 : yUpper;
 		graphView.setManualYAxisBounds(yUpper, 0);
 		
 		// Set graph legend
@@ -221,9 +221,9 @@ public class ChartHistory extends Activity {
 		graphView.setHorizontalLabels(horlabels);
 		
 		// Set the y-axis labels
-		String[] verlabels = new String[yUpper + 1];
+		String[] verlabels = new String[yUpper/2 + 1];
 		for (int i = verlabels.length - 1; i >= 0; i--){
-			int tick = i;
+			int tick = i*2;
 			if (tick >= 100)
 				verlabels[verlabels.length - 1 - i] = Integer.valueOf(tick).toString();
 			else if (tick >= 10)
@@ -264,7 +264,7 @@ public class ChartHistory extends Activity {
 				max = exercise[i].valueY;
 		}
 		yUpper = (int)(10 * Math.ceil(max/10.0) + 10);
-		yUpper = (yUpper < 60) ? 60 : yUpper; // Set a minimum for the upper bound
+		yUpper = (yUpper < 60) ? 60 : yUpper;
 		graphView.setManualYAxisBounds(yUpper, 0);
 
 		// Set the x-axis labels
