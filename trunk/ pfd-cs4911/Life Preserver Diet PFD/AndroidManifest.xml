@@ -22,7 +22,6 @@
         </activity>
         <activity
             android:name=".UserInterface.Pages.CelebrationSplash"
-            android:theme="@style/Theme.Transparent"
             android:configChanges="orientation"
             android:screenOrientation="portrait" >
             <intent-filter>
