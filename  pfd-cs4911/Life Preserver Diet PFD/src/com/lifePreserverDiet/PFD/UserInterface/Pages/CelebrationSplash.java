@@ -27,7 +27,7 @@ public class CelebrationSplash extends Activity {
 		datasource.open();
 		
 		mydate = new Date();
-		//mydate.setTime(mydate.getTime() - (24*60*60*1000)); // set date to yesterday; to test today, check in all shares (get a score of at least 20.0) and then comment out this line.
+		mydate.setTime(mydate.getTime() - (24*60*60*1000)); // set date to yesterday; to test today, check in all shares (get a score of at least 20.0) and then comment out this line.
 		
 		d = datasource.getDay(mydate);
 		double wholeGrainsTotal, dairyTotal, meatBeansTotal, fruitTotal, extraTotal;
