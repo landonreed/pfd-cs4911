@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Foods in this Category: "
+        android:text="The bottom line: "
         android:textColor="@android:color/black"
         android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="7dp"
-        android:text="Whole raw fruits, apple sauce, juices, all-fruit popsicles, dried fruit"
+        android:text="On average, a 50-calorie share is a whole fruit. One small piece of fruit counts as 1 share. One half-cup juice or two tablespoons dried fruit counts as 1 share."
         android:textColor="@android:color/black" />
 
     <LinearLayout
