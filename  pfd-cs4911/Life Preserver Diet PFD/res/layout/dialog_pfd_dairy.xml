@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Foods include: "
+        android:text="The bottom line: "
         android:textColor="@android:color/black"
         android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="7dp"
-        android:text="Milk, yogurt and cheese."
+        android:text="In general, the denser the dairy product, the smaller the share size. Milk gives you the largest serving size, at 1 cup for 1 share. What a deal!"
         android:textColor="@android:color/black" />
 
     <LinearLayout

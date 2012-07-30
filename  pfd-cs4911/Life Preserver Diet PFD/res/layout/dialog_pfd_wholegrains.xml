@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Foods made primarily of: "
+        android:text="The bottom line: "
         android:textColor="@android:color/black"
         android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
-        android:text="barley, buckwheat, whole grain corn, whole oats, whole rye and whole wheat. (Look for “100 percent whole wheat”)"
+        android:text="On average, a 100-calorie share is about 1/2 cup cooked grains. When in doubt, “one serving” as described on the package nutritional information is 1 share."
         android:textColor="@android:color/black" />
 
     <LinearLayout

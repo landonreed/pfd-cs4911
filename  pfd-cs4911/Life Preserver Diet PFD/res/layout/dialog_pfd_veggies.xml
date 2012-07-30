@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Foods in this Category: "
+        android:text="The bottom line: "
         android:textColor="@android:color/black"
         android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
-        android:text="Nonstarchy and starchy vegetables (corn, potatoes and squash), raw dressed vegetables (salads), vegetable juice"
+        android:text="One share is about 1/2 cup cooked starchy or 1 cup cooked nonstarchy vegetables (including a small amount of fat for cooking), or 2 cups salad with 1 tablespoon dressing. Raw, undressed salads and vegetables are so low in calories, they don't even count as a share- you can eat an unlimited amount."
         android:textColor="@android:color/black" />
 
     <LinearLayout

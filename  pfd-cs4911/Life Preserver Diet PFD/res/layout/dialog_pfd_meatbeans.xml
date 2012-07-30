@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Foods in this Category: "
+        android:text="The bottom line: "
         android:textColor="@android:color/black"
         android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
-        android:text="Meat (especially lean meats, such as poultry and fish), legumes such as beans or lentils, eggs, soy protein, peanut butter"
+        android:text="On average, a 100-calorie share weighs about 2 ounces. An appropriate dinner portion of meat counts as 2 shares; a lunch portion counts as 1 share."
         android:textColor="@android:color/black" />
 
     <LinearLayout
