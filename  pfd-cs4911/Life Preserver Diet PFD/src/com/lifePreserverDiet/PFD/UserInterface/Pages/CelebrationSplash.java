@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.lifePreserverDiet.PFD.Day;
 import com.lifePreserverDiet.PFD.R;
@@ -27,7 +27,7 @@ public class CelebrationSplash extends Activity {
 		datasource.open();
 		
 		mydate = new Date();
-		mydate.setTime(mydate.getTime() - (24*60*60*1000));
+		//mydate.setTime(mydate.getTime() - (24*60*60*1000)); // set date to yesterday; to test today, check in all shares (get a score of at least 20.0) and then comment out this line.
 		
 		d = datasource.getDay(mydate);
 		double wholeGrainsTotal, dairyTotal, meatBeansTotal, fruitTotal, extraTotal;
@@ -63,7 +63,7 @@ public class CelebrationSplash extends Activity {
 				};
 				mSplashThread.start();
 				
-				final ImageView img = (ImageView)findViewById(R.id.congrats_splash);
+				final LinearLayout img = (LinearLayout)findViewById(R.id.linlayout);
 				img.setBackgroundResource(R.drawable.celebration_splash);
 				// Get the background, which has been compiled to an AnimationDrawable object.
 				final AnimationDrawable frameAnimation = (AnimationDrawable) img.getBackground();
