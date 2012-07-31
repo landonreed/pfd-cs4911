@@ -2,9 +2,11 @@ package com.lifePreserverDiet.PFD.UserInterface.Pages;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,8 +17,12 @@ import com.lifePreserverDiet.PFD.UserInterface.Dialogs.PFDShareDialog;
 
 public class PersonalFlotationDevice extends Activity {
 	
-	Day day;
+	private Day day;
+	private CheckBox femaleCheckBox;
+	private SharedPreferences settings;
 	
+	private static final String PREF_NAME = "PFDPrefsFile";
+	private static final String PREF_BOOL = "isFemale";
 
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
@@ -26,12 +32,36 @@ public class PersonalFlotationDevice extends Activity {
 		day = app.getDay();	
 		
 		fillTable();
+		
+		// User settings file (saves the check box state)
+		settings = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+		femaleCheckBox = (CheckBox) findViewById(R.id.female_checkbox);
 	}
 	
+	@Override
 	public void onResume() {
 		super.onResume();
-		
 		fillTable();
+		// Set the check box state to that of the settings file
+		femaleCheckBox.setChecked(settings.getBoolean(PREF_BOOL, true));
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		LifePreserverDiet app = (LifePreserverDiet) this.getApplication();
+		app.updateDay();
+		// Save the current check box state to the user settings file
+		settings.edit().putBoolean(PREF_BOOL, femaleCheckBox.isChecked()).commit();
+	}
+	
+	/**
+	 * Checks if the user has checked the female check box.
+	 * 
+	 * @return true if the user is a female
+	 */
+	public boolean isFemale(){
+		return settings.getBoolean(PREF_NAME, true);
 	}
 	
 	public void pfdInstructions(View v) {
@@ -43,13 +73,6 @@ public class PersonalFlotationDevice extends Activity {
 		Intent x = new Intent(this, PFDShareDialog.class);
 		x.putExtra("id", v.getId());
 		startActivity(x);
-	}
-	
-	public void onPause() {
-		super.onPause();
-		
-		LifePreserverDiet app = (LifePreserverDiet) this.getApplication();
-		app.updateDay();
 	}
 	
 	public void fillTable() {

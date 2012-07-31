@@ -10,6 +10,7 @@ import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
 public class LifePreserverDiet extends Application {
 	private Day day;
 	private DayDataSource dataSource;
+	public static final String PREFS_NAME = "PFDPrefsFile";
 	
 	@Override
 	public void onCreate() {
