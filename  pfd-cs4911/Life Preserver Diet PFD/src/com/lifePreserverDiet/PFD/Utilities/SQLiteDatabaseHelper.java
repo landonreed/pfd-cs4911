@@ -17,6 +17,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper{
 			COLUMN_EXTRA = "extra",
 			COLUMN_EXERCISE = "exercise",
 			COLUMN_EXERCISE_MINUTES = "exercise_minutes",
+			COLUMN_VISITED = "visited",
 			DATABASE_NAME = "days.db";
 	
 	private static final int DATABASE_VERSION = 1;
@@ -32,7 +33,8 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper{
 			+ COLUMN_VEGGIES + " integer, "
 			+ COLUMN_EXTRA + " integer, "
 			+ COLUMN_EXERCISE + " text, "
-			+ COLUMN_EXERCISE_MINUTES + " integer "
+			+ COLUMN_EXERCISE_MINUTES + " integer, "
+			+ COLUMN_VISITED + " text "
 			+ ");";
 
 	public SQLiteDatabaseHelper(Context context) {

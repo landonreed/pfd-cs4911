@@ -10,6 +10,7 @@ import com.lifePreserverDiet.PFD.R;
 import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class TestDatabaseActivity extends ListActivity {
@@ -56,7 +57,7 @@ public class TestDatabaseActivity extends ListActivity {
 			boolean exercise = (exercise_minutes > 0) ? true : false;
 			
 			// random date
-			java.util.Date date = new java.util.Date();
+			Date date = new Date();
 			date.setTime((long) (date.getTime()*Math.random()));
 			date.setMonth(Calendar.JULY);
 			date.setYear(2012 - 1900);
@@ -79,6 +80,8 @@ public class TestDatabaseActivity extends ListActivity {
 			day.setExtra(extra);
 			day.setExercise(exercise);
 			day.setExerciseMinutes(exercise_minutes);
+			if (date.before(new Date()))
+				day.setVisited(true);
 			
 			// insert the new day in the database
 			day = datasource.createDay(day);

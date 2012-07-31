@@ -31,7 +31,8 @@ public class DayDataSource {
 			SQLiteDatabaseHelper.COLUMN_VEGGIES,
 			SQLiteDatabaseHelper.COLUMN_EXTRA,
 			SQLiteDatabaseHelper.COLUMN_EXERCISE,
-			SQLiteDatabaseHelper.COLUMN_EXERCISE_MINUTES
+			SQLiteDatabaseHelper.COLUMN_EXERCISE_MINUTES,
+			SQLiteDatabaseHelper.COLUMN_VISITED
 	};
 
 	/**
@@ -54,7 +55,8 @@ public class DayDataSource {
 	 * Closes the database connection.
 	 */
 	public void close() {
-		dbHelper.close();
+		if (dbHelper != null)
+			dbHelper.close();
 	}
 	
 	/**
@@ -90,6 +92,7 @@ public class DayDataSource {
 		values.put(SQLiteDatabaseHelper.COLUMN_EXTRA, day.getExtra());
 		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE, String.valueOf(day.getExercise()));
 		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE_MINUTES, day.getExerciseMinutes());
+		values.put(SQLiteDatabaseHelper.COLUMN_VISITED, String.valueOf(day.getVisited()));
 				
 		/* Perform table insert and get the row id. */
 		long insertId = database.insert(SQLiteDatabaseHelper.TABLE_DAYS, null,
@@ -159,14 +162,15 @@ public class DayDataSource {
 		day.setExtra(cursor.getInt(7));
 		day.setExercise( cursor.getString(8).equals("true") );
 		day.setExerciseMinutes(cursor.getInt(9));
+		day.setVisited( cursor.getString(8).equals("true") );
 		return day;
 	}
 	
 	/**
-	 * Returns the Day object from the db matching the given date.
+	 * Returns the Day object from the database matching the given date.
 	 * 
 	 * @param date The date of the Day we want to get
-	 * @return the Day object from the db matching the given date
+	 * @return the Day object from the database matching the given date
 	 */
 	public Day getDay(Date date){
 		String dateString = Day.dateFormat.format(date);
@@ -175,8 +179,10 @@ public class DayDataSource {
 				allColumns, SQLiteDatabaseHelper.COLUMN_DATE + " = '" + dateString + "'",
 				null, null, null, null);
 		
-		if (cursor.getCount() < 1)
+		if (cursor.getCount() < 1){
+			cursor.close();
 			return null;
+		}
 		
 		cursor.moveToFirst();
 		Day day = cursorToDay(cursor);
@@ -204,11 +210,26 @@ public class DayDataSource {
 		values.put(SQLiteDatabaseHelper.COLUMN_EXTRA, day.getExtra());
 		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE, String.valueOf(day.getExercise()));
 		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE_MINUTES, day.getExerciseMinutes());
+		values.put(SQLiteDatabaseHelper.COLUMN_VISITED, String.valueOf(day.getVisited()));
 		
 		int rowsChanged = database.update(SQLiteDatabaseHelper.TABLE_DAYS, values,
 				SQLiteDatabaseHelper.COLUMN_DATE + " = '" + dateString + "'", null);
 		
 		return (rowsChanged > 0) ? true : false;
+	}
+	
+	/**
+	 * Checks if the database is empty.
+	 * 
+	 * @return true if the database is empty
+	 */
+	public boolean isEmpty(){
+		String query = String.format("select * from %s limit %s",
+				SQLiteDatabaseHelper.TABLE_DAYS, "1");
+		Cursor cursor = database.rawQuery(query, null);
+		int count = cursor.getCount();
+		cursor.close();
+		return count < 1;
 	}
 	
 }
