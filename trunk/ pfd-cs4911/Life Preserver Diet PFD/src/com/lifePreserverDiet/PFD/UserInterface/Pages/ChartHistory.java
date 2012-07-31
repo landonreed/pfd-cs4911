@@ -126,11 +126,9 @@ public class ChartHistory extends Activity {
 		// Get the Dates for the desired week
 		Date[] dates = getWeek(date);
 		
-		// Arrays for the graph series
+		// Arrays for the data series
 		GraphViewData[] exercise = new GraphViewData[dates.length];
-		
 		GraphViewData[] actualData = new GraphViewData[dates.length];
-		
 		GraphViewData[] idealData = new GraphViewData[dates.length];
 		for (int i = 0; i < idealData.length; i++)
 			idealData[i] = new GraphViewData(i, 20.0d);
@@ -140,43 +138,35 @@ public class ChartHistory extends Activity {
 		wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 3.0;
 		
 		
-		// Build the series if the database isn't empty
-		if (datasource.getAllDays().size() > 0){
-			for (int j = 0; j < dates.length; j++){
-				Day d = datasource.getDay(dates[j]);
-				if(d != null){
-					exercise[j] = new GraphViewData(j,
-							Integer.valueOf( d.getExerciseMinutes() ).doubleValue());
+		// Build the data series
+		for (int j = 0; j < dates.length; j++){
+			Day d = datasource.getDay(dates[j]);
+			if(d != null){
+				exercise[j] = new GraphViewData(j,
+						Integer.valueOf( d.getExerciseMinutes() ).doubleValue());
 					
-					// Points for exercise = 0 if the user did not exercise, 1 otherwise
-					// Points for veggies  = the number of veggies shares checked in
-					// Points for other    = target - |target - actual|
-					double exerciseShare = (d.getExerciseMinutes() > 0) ? 1.0 : 0.0;
-					double total =
-							wholeGrainsTotal - Math.abs(wholeGrainsTotal - d.getWholeGrains()) +
-							dairyTotal - Math.abs(dairyTotal - d.getDairy()) + 
-							meatBeansTotal - Math.abs(meatBeansTotal - d.getMeatBeans()) +
-							fruitTotal - Math.abs(fruitTotal - d.getFruit()) + 
-							d.getVeggies() + 
-							extraTotal - Math.abs(extraTotal - d.getExtra()) +
-							exerciseShare;
-					// No negative scores
-					total = (total < 0) ? 0 : total;
-					actualData[j] = new GraphViewData(j, total);
-				}
-				else{
-					exercise[j] = new GraphViewData(j, 0.0d);
-					actualData[j] = new GraphViewData(j, 0.0d);
-				}
+				// Points for exercise = 0 if the user did not exercise, 1 otherwise
+				// Points for veggies  = the number of shares checked in
+				// Points for other    = target - |target - actual|
+				double exerciseShare = (d.getExerciseMinutes() > 0) ? 1.0 : 0.0;
+				double total =
+						wholeGrainsTotal - Math.abs(wholeGrainsTotal - d.getWholeGrains()) +
+						dairyTotal - Math.abs(dairyTotal - d.getDairy()) + 
+						meatBeansTotal - Math.abs(meatBeansTotal - d.getMeatBeans()) +
+						fruitTotal - Math.abs(fruitTotal - d.getFruit()) + 
+						d.getVeggies() + 
+						extraTotal - Math.abs(extraTotal - d.getExtra()) +
+						exerciseShare;
+				// No negative scores
+				total = (total < 0) ? 0 : total;
+				actualData[j] = new GraphViewData(j, total);
 			}
-		}
-		// Default series if the database is empty
-		else {
-			for (int j = 0; j < dates.length; j++){
+			else{
 				exercise[j] = new GraphViewData(j, 0.0d);
 				actualData[j] = new GraphViewData(j, 0.0d);
 			}
 		}
+		
 
 		// Generate this week's header
 		java.text.SimpleDateFormat myFormat =
