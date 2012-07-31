@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Animation frames are .png files inside the res/drawable/ folder -->
+ <animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/congrats" android:oneshot="false">
+    <item android:drawable="@drawable/background_splash_congrats0" android:duration="100" />
+    <item android:drawable="@drawable/background_splash_congrats1" android:duration="100" />
+    <item android:drawable="@drawable/background_splash_congrats2" android:duration="100" />
+    <item android:drawable="@drawable/background_splash_congrats3" android:duration="100" />
+    <item android:drawable="@drawable/background_splash_congrats4" android:duration="100" />
+    <item android:drawable="@drawable/background_splash_congrats5" android:duration="100" />
+    <item android:drawable="@drawable/background_splash_congrats4" android:duration="100" />
+    <item android:drawable="@drawable/background_splash_congrats3" android:duration="100" />
+    <item android:drawable="@drawable/background_splash_congrats2" android:duration="100" />
+    <item android:drawable="@drawable/background_splash_congrats1" android:duration="100" />
+    <item android:drawable="@drawable/background_splash_congrats0" android:duration="100" />
+ </animation-list>
