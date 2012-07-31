@@ -63,7 +63,7 @@
                 android:layout_height="250dp"
                 android:layout_below="@id/textView_pfd_foodTrackingDevice"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/wheel">
+                android:background="@drawable/wheel" >
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -184,7 +184,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingBottom="2dp"
-                android:paddingTop="9dp"
+                android:paddingTop="6dp"
                 android:text="Remaining Shares"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
@@ -220,6 +220,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
+                        android:textSize="10sp"
                         android:text="Meats &amp; Beans"
                         android:textColor="@android:color/black" >
                     </TextView>
@@ -234,6 +235,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
+                        android:textSize="10sp"
                         android:text="Dairy"
                         android:textColor="@android:color/black" >
                     </TextView>
@@ -248,6 +250,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:paddingLeft="4dp"
+                        android:textSize="10sp"
                         android:text="Veggies"
                         android:textColor="@android:color/black" >
                     </TextView>
@@ -262,6 +265,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
+                        android:textSize="10sp"
                         android:text="Extra"
                         android:textColor="@android:color/black" >
                     </TextView>
@@ -297,6 +301,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textSize="10sp"
                         android:text="0/3"
                         android:textColor="@android:color/black" >
                     </TextView>
@@ -312,6 +317,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textSize="10sp"
                         android:text="0/3"
                         android:textColor="@android:color/black" >
                     </TextView>
@@ -327,6 +333,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center"
+                        android:textSize="10sp"
                         android:text="0/4"
                         android:textColor="@android:color/black" >
                     </TextView>
@@ -342,6 +349,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textSize="10sp"
                         android:text="0/3"
                         android:textColor="@android:color/black" >
                     </TextView>
@@ -377,6 +385,7 @@
                         android:layout_height="fill_parent"
                         android:paddingLeft="4dp"
                         android:text="Fruits"
+                        android:textSize="10sp"
                         android:textColor="@android:color/black" >
                     </TextView>
 
@@ -391,6 +400,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:text="Whole Grains"
+                        android:textSize="10sp"
                         android:textColor="@android:color/black" >
                     </TextView>
 
@@ -405,6 +415,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:text="Exercised"
+                        android:textSize="10sp"
                         android:textColor="@android:color/black" >
                     </TextView>
 
@@ -418,6 +429,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="22dp"
+                        android:textSize="10sp"
                         android:text="-how long?"
                         android:textColor="@android:color/black" >
                     </TextView>
@@ -453,6 +465,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center"
+                        android:textSize="10sp"
                         android:text="0/3"
                         android:textColor="@android:color/black" >
                     </TextView>
@@ -468,6 +481,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textSize="10sp"
                         android:text="0/3"
                         android:textColor="@android:color/black" >
                     </TextView>
@@ -483,6 +497,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textSize="10sp"
                         android:text="N"
                         android:textColor="@android:color/black" >
                     </TextView>
@@ -498,6 +513,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textSize="10sp"
                         android:text="0 min"
                         android:textColor="@android:color/black" >
                     </TextView>
