@@ -23,36 +23,35 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:layout_width="220dp"
-                    android:layout_height="140dp"
+                    android:layout_width="173dp"
+                    android:layout_height="110dp"
                     android:paddingLeft="22dp"
-                    android:paddingTop="25dp"
+                    android:paddingTop="20dp"
                     android:src="@drawable/logo" >
                 </ImageView>
 
                 <FrameLayout
-                    android:layout_width="160dp"
-                    android:layout_height="105dp"
+                    android:layout_width="116dp"
+                    android:layout_height="65dp"
                     android:layout_gravity="center"
+                    android:background="@drawable/video_image"
                     android:clickable="true"
                     android:onClick="youtube"
-                    android:background="@drawable/video_image"
-                    android:paddingLeft="48dp"
-                    android:paddingTop="20dp" >
+                    android:paddingLeft="42dp"
+                    android:paddingTop="15dp" >
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
                         android:clickable="true"
                         android:onClick="youtube"
-                        android:paddingLeft="5dp"
                         android:src="@drawable/button_selector_play" >
                     </ImageView>
                 </FrameLayout>
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="174dp"
+                    android:layout_height="45dp"
                     android:src="@drawable/label_about" >
                 </ImageView>
 
@@ -64,7 +63,7 @@
                     android:paddingRight="28dp"
                     android:text="       The Life Preserver Diet offers a lifeline to those struggling with their weight by:"
                     android:textColor="@color/blue"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -75,7 +74,7 @@
                     android:paddingRight="28dp"
                     android:text="•informing of common challenges to healthy eating"
                     android:textColor="#ff0000"
-                    android:textSize="11sp"
+                    android:textSize="10sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -86,7 +85,7 @@
                     android:paddingRight="28dp"
                     android:text="•offering guidelines for losing weight while following a nutritionist-designed program"
                     android:textColor="#ff0000"
-                    android:textSize="11sp"
+                    android:textSize="10sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -96,37 +95,37 @@
                     android:paddingRight="28dp"
                     android:text="•instructing in tracking meals with the Personal Food-Tracking Device®"
                     android:textColor="#ff0000"
-                    android:textSize="11sp"
+                    android:textSize="10sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="5dp" >
+                    android:paddingTop="2dp" >
 
                     <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:clickable="true"
                         android:onClick="facebook"
                         android:src="@drawable/f_logo" />
 
                     <ImageView
                         android:layout_width="5dp"
-                        android:layout_height="5dp"/>
+                        android:layout_height="5dp" />
 
                     <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:clickable="true"
                         android:onClick="twitter"
                         android:src="@drawable/t_logo" />
                 </LinearLayout>
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
+                    android:layout_width="144dp"
+                    android:layout_height="25dp"
+                    android:paddingTop="2dp"
                     android:src="@drawable/icon_marcia_berlin_productions" />
             </LinearLayout>
         </ScrollView>
