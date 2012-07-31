@@ -6,17 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
 import com.lifePreserverDiet.PFD.Day;
 import com.lifePreserverDiet.PFD.R;
 import com.lifePreserverDiet.PFD.UserInterface.LifePreserverDiet;
 
 public class PFDShareDialog extends Activity {
 	
-	Day day;
-	int id;
-	
-	TextView shares;
+	private Day day;
+	private int id;
+	private TextView shares;
 	
 	public void onCreate(Bundle b) {
 		super.onCreate(b);
@@ -149,13 +147,14 @@ public class PFDShareDialog extends Activity {
 		
 		shares.setText(count + "");
 		
-		if(count > 0) {			
+		if(count > 0) {
 			shares.setTextColor(Color.GREEN);
 		}
 	}
 	
-	public void onPause() {
-		super.onPause();
+	@Override
+	protected void onPause() {
+        super.onPause();
 		
 		switch(id) {
 		case R.id.imageView_pfd_dairy:

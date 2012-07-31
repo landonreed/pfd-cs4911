@@ -533,9 +533,9 @@
             </LinearLayout>
 
             <CheckBox
+                android:id="@+id/female_checkbox"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="I am a female."
                 android:textColor="@color/white" />
         </LinearLayout>
