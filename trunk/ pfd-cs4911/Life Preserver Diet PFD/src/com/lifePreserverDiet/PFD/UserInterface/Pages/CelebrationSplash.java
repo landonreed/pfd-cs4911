@@ -32,7 +32,7 @@ public class CelebrationSplash extends Activity {
 		d = datasource.getDay(mydate);
 		double wholeGrainsTotal, dairyTotal, meatBeansTotal, fruitTotal, extraTotal;
 		wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 3.0;
-		if(d != null){
+		if(d != null && !d.getVisited()){
 			double exerciseShare = (d.getExerciseMinutes() > 0) ? 1.0 : 0.0;
 			double total =
 					wholeGrainsTotal - Math.abs(wholeGrainsTotal - d.getWholeGrains()) +
@@ -86,5 +86,7 @@ public class CelebrationSplash extends Activity {
 			CelebrationSplash.this.startActivity(intent);
 			CelebrationSplash.this.finish();
 		}
+		
+		datasource.close();
 	}
 }

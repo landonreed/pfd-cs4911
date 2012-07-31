@@ -20,10 +20,10 @@ public class PFDShareDialog extends Activity {
 	
 	public void onCreate(Bundle b) {
 		super.onCreate(b);
-		//
+		
 		LifePreserverDiet application = (LifePreserverDiet) this.getApplication();
 		day = application.getDay();
-		//
+		
 		id = this.getIntent().getIntExtra("id", R.id.imageView_pfd_dairy);
 		switch(id) {
 		case R.id.imageView_pfd_dairy:

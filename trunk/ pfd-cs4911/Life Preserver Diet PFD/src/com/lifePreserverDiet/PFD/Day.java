@@ -8,11 +8,8 @@ public class Day {
 	/** Database column id */
 	private long id;
 	private Date date;
-	private int wholeGrains, dairy, meatBeans, fruit, veggies, extra;
-	
-	private boolean exercise;
-	
-	private int exercise_minutes;
+	private int wholeGrains, dairy, meatBeans, fruit, veggies, extra, exercise_minutes;
+	private boolean exercise, visited;
 	
 	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd yyyy");
 
@@ -24,9 +21,9 @@ public class Day {
 		fruit = 0;
 		veggies = 0;
 		extra = 0;
-		
 		exercise = false;
 		exercise_minutes = 0;
+		visited = false;
 	}
 	
 	@Override
@@ -69,4 +66,7 @@ public class Day {
 	
 	public int getExerciseMinutes(){ return exercise_minutes; }
 	public void setExerciseMinutes(int exerciseMinutes){ this.exercise_minutes = exerciseMinutes; }
+	
+	public boolean getVisited(){ return visited; }
+	public void setVisited(boolean visited){ this.visited = visited; }
 }
