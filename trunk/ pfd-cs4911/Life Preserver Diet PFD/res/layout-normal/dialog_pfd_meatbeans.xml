@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/icon_pfd_meatandbeans" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="Meat &amp; Beans"
+            android:textColor="@android:color/black"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="The bottom line: "
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="On average, a 100-calorie share weighs about 2 ounces. An appropriate dinner portion of meat counts as 2 shares; a lunch portion counts as 1 share."
+            android:textColor="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:weightSum="1.0" >
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="5dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="5dp"
+                    android:text="Daily Shares"
+                    android:textColor="@android:color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/dialog_textView_pfd_meatbeans_shares"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:text="##"
+                    android:textColor="@android:color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" >
+                </TextView>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="1px"
+                android:layout_height="fill_parent"
+                android:background="@android:color/black" >
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="5dp"
+                    android:text="Your Shares"
+                    android:textColor="@android:color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" >
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="5dp" >
+
+                    <ImageView
+                        android:id="@+id/dialog_imageView_pfd_meatbeans_downShares"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:clickable="true"
+                        android:onClick="decrementShares"
+                        android:src="@drawable/button_selector_down" >
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/dialog_editText_pfd_meatbeans_shares"
+                        android:layout_width="55dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingBottom="5dp"
+                        android:text="0"
+                        android:textColor="@android:color/black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" >
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/dialog_imageView_pfd_meatbeans_upShares"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:clickable="true"
+                        android:onClick="incrementShares"
+                        android:src="@drawable/button_selector_up" >
+                    </ImageView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
