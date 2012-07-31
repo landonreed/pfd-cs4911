@@ -34,7 +34,7 @@ public class Day {
 	public Date getDate(){ return date; }
 	public void setDate(String dateString){
 		try{
-			date = new SimpleDateFormat("EEE MMM dd yyyy").parse(dateString);
+			date = dateFormat.parse(dateString);
 		}catch(ParseException e){
 			e.printStackTrace();
 		}
