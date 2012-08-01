@@ -16,60 +16,66 @@ import com.lifePreserverDiet.PFD.UserInterface.LifePreserverDiet;
 import com.lifePreserverDiet.PFD.UserInterface.Dialogs.PFDShareDialog;
 
 public class PersonalFlotationDevice extends Activity {
-	
+
 	private Day day;
 	private CheckBox femaleCheckBox;
 	private SharedPreferences settings;
 
+	boolean isFemale;
+
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 		setContentView(R.layout.page_pfd);
-		
+
 		LifePreserverDiet app = (LifePreserverDiet) this.getApplication();
 		day = app.getDay();
-		
-		fillTable();
-		
+
 		// Get the user settings file (saves the check box state)
 		settings = app.getSharedPreferences(LifePreserverDiet.PREF_NAME, MODE_PRIVATE);
 		femaleCheckBox = (CheckBox) findViewById(R.id.female_checkbox);
+
+		fillTable();
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();
-		
+
 		fillTable();
-		
+
 		// Set the check box state to that of the user settings file
 		femaleCheckBox.setChecked(settings.getBoolean(LifePreserverDiet.PREF_BOOL, true));
 	}
-	
+
 	@Override
 	public void onPause() {
 		super.onPause();
-		
+
 		LifePreserverDiet app = (LifePreserverDiet) this.getApplication();
 		app.updateDay();
-		
+
 		// Save the current check box state to the user settings file
 		settings.edit()
-				.putBoolean(LifePreserverDiet.PREF_BOOL, femaleCheckBox.isChecked())
-				.commit();
+		.putBoolean(LifePreserverDiet.PREF_BOOL, femaleCheckBox.isChecked())
+		.commit();
 	}
-	
+
 	public void pfdInstructions(View v) {
 		Intent intent = new Intent(this, PFDInstructions.class);
 		startActivity(intent);
 	}
-	
+
 	public void pfdDialog(View v) {
-		Intent x = new Intent(this, PFDShareDialog.class);
-		x.putExtra("id", v.getId());
-		startActivity(x);
+		isFemale = femaleCheckBox.isChecked();
+		Intent intent = new Intent(this, PFDShareDialog.class);
+		intent.putExtra("id", v.getId());
+		intent.putExtra("isFemale", isFemale);
+		startActivity(intent);
 	}
-	
-	public void fillTable() {
+
+	public void fillTable() {		
+		isFemale = femaleCheckBox.isChecked();
+		
 		TextView meatBeansShares = (TextView) findViewById(R.id.textView_pfd_shares_meatbeans);
 		TextView dairyShares = (TextView) findViewById(R.id.textView_pfd_shares_dairy);
 		TextView veggiesShares = (TextView) findViewById(R.id.textView_pfd_shares_veggies);
@@ -101,9 +107,11 @@ public class PersonalFlotationDevice extends Activity {
 			exerciseTimeShares.setTextColor(Color.BLACK);
 			exerciseTimeShares.setText("0 min");
 		}
+
+		int maxNum = (isFemale) ? 3 : 4;
 		
-		if(day.getMeatBeans() >= 3) {
-			if(day.getMeatBeans() > 3) {
+		if(day.getMeatBeans() >= maxNum) {
+			if(day.getMeatBeans() > maxNum) {
 				meatbeans.setImageResource(R.drawable.icon_pfd_meatandbeans_bad);
 				meatBeansShares.setTextColor(Color.RED);
 			} else {
@@ -114,11 +122,11 @@ public class PersonalFlotationDevice extends Activity {
 		} else {
 			meatbeans.setImageResource(R.drawable.icon_pfd_meatandbeans);
 			meatBeansShares.setTextColor(Color.BLACK);
-			meatBeansShares.setText((3-day.getMeatBeans())+"");
+			meatBeansShares.setText((maxNum-day.getMeatBeans())+"");
 		}
-		
-		if(day.getDairy() >= 3) {
-			if(day.getDairy() > 3) {
+
+		if(day.getDairy() >= maxNum) {
+			if(day.getDairy() > maxNum) {
 				dairy.setImageResource(R.drawable.icon_pfd_dairy_bad);
 				dairyShares.setTextColor(Color.RED);
 			} else {
@@ -129,21 +137,21 @@ public class PersonalFlotationDevice extends Activity {
 		} else {
 			dairy.setImageResource(R.drawable.icon_pfd_dairy);
 			dairyShares.setTextColor(Color.BLACK);
-			dairyShares.setText((3-day.getDairy())+"");
+			dairyShares.setText((maxNum-day.getDairy())+"");
 		}
-		
-		if(day.getVeggies() >= 4) {
+
+		if(day.getVeggies() >= (maxNum+1)) {
 			veggies.setImageResource(R.drawable.icon_pfd_vegetables_good);
 			veggiesShares.setTextColor(Color.GREEN);
 			veggiesShares.setText("0");
 		} else {
 			veggies.setImageResource(R.drawable.icon_pfd_vegetables);
 			veggiesShares.setTextColor(Color.BLACK);
-			veggiesShares.setText((4-day.getVeggies())+"");
+			veggiesShares.setText(((maxNum+1)-day.getVeggies())+"");
 		}
-		
-		if(day.getExtra() >= 3) {
-			if(day.getExtra() > 3) {
+
+		if(day.getExtra() >= maxNum) {
+			if(day.getExtra() > maxNum) {
 				extra.setImageResource(R.drawable.icon_pfd_extra_bad);
 				extraShares.setTextColor(Color.RED);
 			} else {
@@ -154,11 +162,11 @@ public class PersonalFlotationDevice extends Activity {
 		} else {
 			extra.setImageResource(R.drawable.icon_pfd_extra);
 			extraShares.setTextColor(Color.BLACK);
-			extraShares.setText((3-day.getExtra())+"");
+			extraShares.setText((maxNum-day.getExtra())+"");
 		}
-		
-		if(day.getFruit() >= 3) {
-			if(day.getFruit() > 3) {
+
+		if(day.getFruit() >= maxNum) {
+			if(day.getFruit() > maxNum) {
 				fruit.setImageResource(R.drawable.icon_pfd_fruits_bad);
 				fruitsShares.setTextColor(Color.RED);
 			} else {
@@ -169,11 +177,11 @@ public class PersonalFlotationDevice extends Activity {
 		} else {
 			fruit.setImageResource(R.drawable.icon_pfd_fruits);
 			fruitsShares.setTextColor(Color.BLACK);
-			fruitsShares.setText((3-day.getFruit())+"");
+			fruitsShares.setText((maxNum-day.getFruit())+"");
 		}
-		
-		if(day.getWholeGrains() >= 3) {
-			if(day.getWholeGrains() > 3) {
+
+		if(day.getWholeGrains() >= maxNum) {
+			if(day.getWholeGrains() > maxNum) {
 				wholegrains.setImageResource(R.drawable.icon_pfd_wholegrains_bad);
 				wholeGrainsShares.setTextColor(Color.RED);
 			} else {
@@ -184,10 +192,14 @@ public class PersonalFlotationDevice extends Activity {
 		} else {
 			wholegrains.setImageResource(R.drawable.icon_pfd_wholegrains);
 			wholeGrainsShares.setTextColor(Color.BLACK);
-			wholeGrainsShares.setText((3-day.getWholeGrains())+"");
+			wholeGrainsShares.setText((maxNum-day.getWholeGrains())+"");
 		}
-		
-		
+	}
+	
+	public void onClick(View v) {
+		CheckBox chkbx = (CheckBox) v;
+		isFemale = chkbx.isChecked();
+		fillTable();
 	}
 
 }
