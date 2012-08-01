@@ -25,7 +25,7 @@
                 android:gravity="center"
                 android:text="Personal Flotation Device"
                 android:textColor="@android:color/black"
-                android:textSize="23dp"
+                android:textSize="55dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -34,46 +34,46 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView_pfd_flotationDevice"
                 android:gravity="center"
-                android:paddingBottom="10dp"
+                android:paddingBottom="35dp"
                 android:text="Personal Food-Tracking Device"
                 android:textColor="@android:color/black"
-                android:textSize="18dp"
+                android:textSize="40sp"
                 android:textStyle="bold" />
 
             <Button
-                android:layout_width="105dp"
-                android:layout_height="40dp"
+                android:layout_width="249dp"
+                android:layout_height="85dp"
                 android:layout_gravity="center"
-                android:layout_weight="0"
                 android:background="@drawable/button_selector_white"
                 android:onClick="pfdInstructions"
-                android:text="Instructions" />
+                android:text="Instructions"
+                android:textSize="35sp" />
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="10dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:background="@android:color/transparent"
                 android:clickable="false" />
 
             <FrameLayout
                 android:id="@+id/frameLayout_pfd_wheel"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
+                android:layout_width="673dp"
+                android:layout_height="647dp"
                 android:layout_below="@id/textView_pfd_foodTrackingDevice"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/wheel">
+                android:background="@drawable/wheel" >
 
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="33dp"
-                    android:paddingTop="158dp" >
+                    android:paddingLeft="85dp"
+                    android:paddingTop="395dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_extra"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="165dp"
+                        android:layout_height="165dp"
                         android:layout_gravity="center"
                         android:clickable="true"
                         android:onClick="test"
@@ -83,13 +83,13 @@
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingTop="98dp" >
+                    android:paddingLeft="20dp"
+                    android:paddingTop="250dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_vegetables"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="145dp"
+                        android:layout_height="145dp"
                         android:layout_gravity="center"
                         android:clickable="true"
                         android:onClick="test"
@@ -99,13 +99,13 @@
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="32dp"
-                    android:paddingTop="32dp" >
+                    android:paddingLeft="85dp"
+                    android:paddingTop="70dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_dairy"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="165dp"
+                        android:layout_height="165dp"
                         android:layout_gravity="center"
                         android:clickable="true"
                         android:onClick="test"
@@ -115,13 +115,13 @@
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="94dp"
+                    android:paddingLeft="255dp"
                     android:paddingTop="5dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_meatandbeans"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="155dp"
+                        android:layout_height="155dp"
                         android:layout_gravity="center"
                         android:clickable="true"
                         android:onClick="test"
@@ -131,13 +131,13 @@
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="159dp"
-                    android:paddingTop="38dp" >
+                    android:paddingLeft="425dp"
+                    android:paddingTop="95dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_fruits"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="145dp"
+                        android:layout_height="145dp"
                         android:layout_gravity="center"
                         android:clickable="true"
                         android:onClick="test"
@@ -147,13 +147,13 @@
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="185dp"
-                    android:paddingTop="94dp" >
+                    android:paddingLeft="495dp"
+                    android:paddingTop="235dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_wholegrains"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="155dp"
+                        android:layout_height="155dp"
                         android:layout_gravity="center"
                         android:clickable="true"
                         android:onClick="test"
@@ -163,13 +163,13 @@
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="163dp"
-                    android:paddingTop="156dp" >
+                    android:paddingLeft="435dp"
+                    android:paddingTop="385dp">
 
                     <ImageView
                         android:id="@+id/imageView_pfd_exercise"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="165dp"
+                        android:layout_height="165dp"
                         android:layout_gravity="center"
                         android:clickable="true"
                         android:onClick="test"
@@ -183,9 +183,10 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingBottom="2dp"
-                android:paddingTop="9dp"
+                android:paddingTop="35dp"
                 android:text="Remaining Shares"
                 android:textColor="@android:color/white"
+                android:textSize="45sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -193,11 +194,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView_pfd_sharesText"
                 android:gravity="center"
+                android:paddingBottom="20dp"
                 android:textColor="@android:color/black"
                 android:weightSum="1" >
 
                 <TextView
-                    android:layout_width="1px"
+                    android:layout_width="2px"
                     android:layout_height="fill_parent"
                     android:background="@android:color/black" >
                 </TextView>
@@ -211,7 +213,7 @@
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -220,12 +222,13 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:text="Meats &amp; Beans"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -234,12 +237,13 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:text="Dairy"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -248,12 +252,13 @@
                         android:layout_height="fill_parent"
                         android:paddingLeft="4dp"
                         android:text="Veggies"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -262,18 +267,19 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:text="Extra"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="1px"
+                    android:layout_width="2px"
                     android:layout_height="fill_parent"
                     android:background="@android:color/black" >
                 </TextView>
@@ -287,7 +293,7 @@
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -297,12 +303,13 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0/3"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -312,12 +319,13 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0/3"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -327,12 +335,13 @@
                         android:layout_height="fill_parent"
                         android:gravity="center"
                         android:text="0/4"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -342,18 +351,19 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0/3"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="1px"
+                    android:layout_width="2px"
                     android:layout_height="fill_parent"
                     android:background="@android:color/black" >
                 </TextView>
@@ -367,7 +377,7 @@
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -376,12 +386,13 @@
                         android:layout_height="fill_parent"
                         android:paddingLeft="4dp"
                         android:text="Fruits"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -390,12 +401,13 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:text="Whole Grains"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -404,12 +416,13 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:text="Exercised"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -418,18 +431,19 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="22dp"
                         android:text="-how long?"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="1px"
+                    android:layout_width="2px"
                     android:layout_height="fill_parent"
                     android:background="@android:color/black" >
                 </TextView>
@@ -443,7 +457,7 @@
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -453,12 +467,13 @@
                         android:layout_height="fill_parent"
                         android:gravity="center"
                         android:text="0/3"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -468,12 +483,13 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0/3"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -483,12 +499,13 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="N"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
 
@@ -498,18 +515,19 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0 min"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="34sp" >
                     </TextView>
 
                     <TextView
                         android:layout_width="fill_parent"
-                        android:layout_height="1px"
+                        android:layout_height="2px"
                         android:background="@android:color/black" >
                     </TextView>
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="1px"
+                    android:layout_width="2px"
                     android:layout_height="fill_parent"
                     android:background="@android:color/black" >
                 </TextView>
@@ -520,7 +538,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="I am a female."
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="34sp" />
         </LinearLayout>
     </ScrollView>
 
