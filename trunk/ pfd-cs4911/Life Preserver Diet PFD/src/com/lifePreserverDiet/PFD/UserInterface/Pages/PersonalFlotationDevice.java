@@ -15,28 +15,47 @@ import com.lifePreserverDiet.PFD.R;
 import com.lifePreserverDiet.PFD.UserInterface.LifePreserverDiet;
 import com.lifePreserverDiet.PFD.UserInterface.Dialogs.PFDShareDialog;
 
+/**
+ * An Activity that is the PFD.  
+ * The User checks in all their shares here.
+ * @author David Murray
+ */
 public class PersonalFlotationDevice extends Activity {
-
+	/**
+	 * The current Day.
+	 */
 	private Day day;
+	/**
+	 * The CheckBox for whether or not the user is female.
+	 */
 	private CheckBox femaleCheckBox;
+	/**
+	 * The SharedPreferences that stores the value of the femaleCheckBox.
+	 */
 	private SharedPreferences settings;
-
+	/**
+	 * Whether or not the user is female.
+	 */
 	boolean isFemale;
 
+	/**
+	 * Called on create of the Activity. Sets up the activity
+	 * with its layout.
+	 */
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 		setContentView(R.layout.page_pfd);
-
+		
+		//Get the reference to the Application in order to get the Day.
 		LifePreserverDiet app = (LifePreserverDiet) this.getApplication();
 		day = app.getDay();
 
-		// Get the user settings file (saves the check box state)
+		//Get the user settings file (saves the check box state)
 		settings = app.getSharedPreferences(LifePreserverDiet.PREF_NAME, MODE_PRIVATE);
 		femaleCheckBox = (CheckBox) findViewById(R.id.female_checkbox);
 
-		// Set the check box state to that of the user settings file
-		femaleCheckBox.setChecked(settings.getBoolean(LifePreserverDiet.PREF_BOOL, true));
-		
+		//Set the check box state to that of the user settings file
+		femaleCheckBox.setChecked(settings.getBoolean(LifePreserverDiet.PREF_BOOL, true));		
 	}
 
 	@Override
@@ -49,6 +68,7 @@ public class PersonalFlotationDevice extends Activity {
 	public void onPause() {
 		super.onPause();
 
+		//Updates the Day in the Application.
 		LifePreserverDiet app = (LifePreserverDiet) this.getApplication();
 		app.updateDay();
 
@@ -57,12 +77,21 @@ public class PersonalFlotationDevice extends Activity {
 		.putBoolean(LifePreserverDiet.PREF_BOOL, femaleCheckBox.isChecked())
 		.commit();
 	}
-
+	
+	/**
+	 * The method that opens the Instructions page for the PFD, on a button click.
+	 * @param v The Button that, when clicked, calls this method.
+	 */
 	public void pfdInstructions(View v) {
 		Intent intent = new Intent(this, PFDInstructions.class);
 		startActivity(intent);
 	}
-
+	
+	/**
+	 * The method that opens the PFD Dialog, based on the id of which ImageView
+	 * that was clicked.
+	 * @param v The Button that, when clicked, calls this method.
+	 */
 	public void pfdDialog(View v) {
 		isFemale = femaleCheckBox.isChecked();
 		Intent intent = new Intent(this, PFDShareDialog.class);
@@ -71,9 +100,23 @@ public class PersonalFlotationDevice extends Activity {
 		startActivity(intent);
 	}
 
+	/**
+	 * Fills out the details of the table and updates the wheel to 
+	 * put X's or check-marks over the shares.
+	 * 
+	 * The table shows how many shares are remaining of each type. 
+	 * For exercise, it shows whether or not they exercised with a Y or an N, 
+	 * and below that with how many minutes.
+	 * 
+	 * It will be a green 0 if they have had the right number of shares, and a 
+	 * red 0 if they went over.  Otherwise, the color is black.
+	 */
 	public void fillTable() {		
+		//Get the gender.
 		isFemale = femaleCheckBox.isChecked();
 		
+		//Get the TextView objects for the shares in the table, for each share type.
+		//Exercise is shown as two: whether they exercised, and how many minutes they exercised.
 		TextView meatBeansShares = (TextView) findViewById(R.id.textView_pfd_shares_meatbeans);
 		TextView dairyShares = (TextView) findViewById(R.id.textView_pfd_shares_dairy);
 		TextView veggiesShares = (TextView) findViewById(R.id.textView_pfd_shares_veggies);
@@ -83,6 +126,7 @@ public class PersonalFlotationDevice extends Activity {
 		TextView exerciseShares = (TextView) findViewById(R.id.textView_pfd_shares_exercise);
 		TextView exerciseTimeShares = (TextView) findViewById(R.id.textView_pfd_shares_exerciseMinutes);
 
+		//Get the ImageView for each of the share types.
 		ImageView meatbeans = (ImageView) findViewById(R.id.imageView_pfd_meatandbeans);
 		ImageView dairy = (ImageView) findViewById(R.id.imageView_pfd_dairy);
 		ImageView veggies = (ImageView) findViewById(R.id.imageView_pfd_vegetables);
@@ -105,7 +149,11 @@ public class PersonalFlotationDevice extends Activity {
 			exerciseTimeShares.setTextColor(Color.BLACK);
 			exerciseTimeShares.setText("0 min");
 		}
-
+		
+		//The max number of shares is generally 3 for female, and 4 for male.
+		//
+		//The only exception is Veggies, where they are one more (although going over
+		//isn't counted as a negative value).
 		int maxNum = (isFemale) ? 3 : 4;
 		
 		if(day.getMeatBeans() >= maxNum) {
@@ -194,6 +242,10 @@ public class PersonalFlotationDevice extends Activity {
 		}
 	}
 	
+	/**
+	 * The method updates the table whenever the femaleCheckBox is clicked.
+	 * @param v The CheckBox that, when clicked, calls this method.
+	 */
 	public void onClick(View v) {
 		CheckBox chkbx = (CheckBox) v;
 		isFemale = chkbx.isChecked();
