@@ -19,6 +19,7 @@ import com.jjoe64.graphview.LineGraphView;
 
 import com.lifePreserverDiet.PFD.Day;
 import com.lifePreserverDiet.PFD.R;
+import com.lifePreserverDiet.PFD.UserInterface.LifePreserverDiet;
 import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
 
 /**
@@ -40,10 +41,15 @@ public class ChartHistory extends Activity {
 	/** Date determining which week to display. */
 	private Date myDate;
 	
+	private boolean isFemale;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.page_chart_history);
+		LifePreserverDiet app = (LifePreserverDiet) this.getApplication();
+		isFemale = app.isFemale();
 
 		datasource = new DayDataSource(this);
 		datasource.open();
@@ -133,12 +139,19 @@ public class ChartHistory extends Activity {
 		GraphViewData[] exercise = new GraphViewData[dates.length];
 		GraphViewData[] actualData = new GraphViewData[dates.length];
 		GraphViewData[] idealData = new GraphViewData[dates.length];
-		for (int i = 0; i < idealData.length; i++)
-			idealData[i] = new GraphViewData(i, 20.0d);
+		if(isFemale){
+			for (int i = 0; i < idealData.length; i++)
+				idealData[i] = new GraphViewData(i, 20.0d);
+		}
+		else{
+			for (int i = 0; i < idealData.length; i++)
+				idealData[i] = new GraphViewData(i, 26.0d);
+		}
 		
 		// Target daily share values
 		double wholeGrainsTotal, dairyTotal, meatBeansTotal, fruitTotal, extraTotal;
-		wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 3.0;
+		if(isFemale) wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 3.0;
+		else wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 4.0;
 		
 		
 		// Build the data series
@@ -198,7 +211,9 @@ public class ChartHistory extends Activity {
 				new GraphViewStyle(Color.BLUE, 3), actualData));
 		
 		// Set the graph's y-axis upper bound
-		int yUpper = 24;
+		int yUpper;
+		if(isFemale) yUpper = 24;
+		else yUpper = 30;
 		graphView.setManualYAxisBounds(yUpper, 0);
 		
 		// Set graph legend

@@ -20,9 +20,13 @@ public class CelebrationSplash extends Activity {
 	private DayDataSource datasource;
 	private Day myDay;
 	private Day d;
+	private boolean isFemale;
 
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
+		
+		LifePreserverDiet app = (LifePreserverDiet) this.getApplication();
+		isFemale = app.isFemale();
 		
 		datasource = new DayDataSource(this);
 		datasource.open();
@@ -33,7 +37,8 @@ public class CelebrationSplash extends Activity {
 		
 		d = datasource.getDay(mydate);
 		double wholeGrainsTotal, dairyTotal, meatBeansTotal, fruitTotal, extraTotal;
-		wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 3.0;
+		if(isFemale) wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 3.0;
+		else wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 4.0;
 		if(d != null && !myDay.getVisited()){
 			myDay.setVisited(true);
 			datasource.updateDay(myDay);
@@ -47,7 +52,10 @@ public class CelebrationSplash extends Activity {
 					d.getVeggies() + 
 					extraTotal - Math.abs(extraTotal - d.getExtra()) +
 					exerciseShare;
-			if(total >= 20.0){
+			double compare;
+			if(isFemale) compare = 20.0;
+			else compare = 26.0;
+			if(total >= compare){
 				setContentView(R.layout.page_splash_congrats);
 				final CelebrationSplash splashScreen = this;
 				mSplashThread = new Thread(){

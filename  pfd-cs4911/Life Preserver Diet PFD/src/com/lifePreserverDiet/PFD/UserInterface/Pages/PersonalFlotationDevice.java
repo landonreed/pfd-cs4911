@@ -34,17 +34,15 @@ public class PersonalFlotationDevice extends Activity {
 		settings = app.getSharedPreferences(LifePreserverDiet.PREF_NAME, MODE_PRIVATE);
 		femaleCheckBox = (CheckBox) findViewById(R.id.female_checkbox);
 
-		fillTable();
+		// Set the check box state to that of the user settings file
+		femaleCheckBox.setChecked(settings.getBoolean(LifePreserverDiet.PREF_BOOL, true));
+		
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-
 		fillTable();
-
-		// Set the check box state to that of the user settings file
-		femaleCheckBox.setChecked(settings.getBoolean(LifePreserverDiet.PREF_BOOL, true));
 	}
 
 	@Override
