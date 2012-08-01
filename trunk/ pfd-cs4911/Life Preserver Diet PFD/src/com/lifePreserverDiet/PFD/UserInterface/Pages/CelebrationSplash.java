@@ -47,7 +47,7 @@ public class CelebrationSplash extends Activity {
 					d.getVeggies() + 
 					extraTotal - Math.abs(extraTotal - d.getExtra()) +
 					exerciseShare;
-			if(total >= 0.0){
+			if(total >= 20.0){
 				setContentView(R.layout.page_splash_congrats);
 				final CelebrationSplash splashScreen = this;
 				mSplashThread = new Thread(){
