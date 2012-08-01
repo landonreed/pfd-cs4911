@@ -11,17 +11,21 @@ import com.lifePreserverDiet.PFD.R;
 import com.lifePreserverDiet.PFD.UserInterface.LifePreserverDiet;
 
 public class PFDShareDialog extends Activity {
-	
+
 	private Day day;
 	private int id;
 	private TextView shares;
-	
+
+	boolean isFemale;
+
 	public void onCreate(Bundle b) {
 		super.onCreate(b);
-		
+
 		LifePreserverDiet application = (LifePreserverDiet) this.getApplication();
 		day = application.getDay();
-		
+
+		isFemale = this.getIntent().getBooleanExtra("isFemale", true);
+
 		id = this.getIntent().getIntExtra("id", R.id.imageView_pfd_dairy);
 		switch(id) {
 		case R.id.imageView_pfd_dairy:
@@ -50,112 +54,134 @@ public class PFDShareDialog extends Activity {
 
 	private void dairy() {
 		setContentView(R.layout.dialog_pfd_dairy);
-		
-		((TextView) findViewById(R.id.dialog_textView_pfd_dairy_shares)).setText("3");
-		
+		if(isFemale) {
+			((TextView) findViewById(R.id.dialog_textView_pfd_dairy_shares)).setText("3");
+		} else {
+			((TextView) findViewById(R.id.dialog_textView_pfd_dairy_shares)).setText("4");
+		}
 		shares = (TextView) findViewById(R.id.dialog_editText_pfd_dairy_shares);
-		
+
 		int count = day.getDairy();
-		
+
 		shares.setText(count + "");
-		
+
 		updateTextColor(count);
 	}
 
 	private void extra() {
 		setContentView(R.layout.dialog_pfd_extra);
-		
-		((TextView) findViewById(R.id.dialog_textView_pfd_extra_shares)).setText("3");
-		
+
+		if(isFemale) {
+			((TextView) findViewById(R.id.dialog_textView_pfd_extra_shares)).setText("3");
+		} else {
+			((TextView) findViewById(R.id.dialog_textView_pfd_extra_shares)).setText("4");
+		}
+
 		shares = (TextView) findViewById(R.id.dialog_editText_pfd_extra_shares);
-		
+
 		int count = day.getExtra();
-		
+
 		shares.setText(count + "");
-		
+
 		updateTextColor(count);
 	}
 
 	private void fruits() {
 		setContentView(R.layout.dialog_pfd_fruit);
-		
-		((TextView) findViewById(R.id.dialog_textView_pfd_fruit_shares)).setText("3");
-		
+
+		if(isFemale) {
+			((TextView) findViewById(R.id.dialog_textView_pfd_fruit_shares)).setText("3");
+		} else {
+			((TextView) findViewById(R.id.dialog_textView_pfd_fruit_shares)).setText("4");
+		}
+
 		shares = (TextView) findViewById(R.id.dialog_editText_pfd_fruit_shares);
-		
+
 		int count = day.getFruit();
-		
+
 		shares.setText(count + "");
-		
+
 		updateTextColor(count);
 	}
 
 	private void veggies() {
 		setContentView(R.layout.dialog_pfd_veggies);
-		
-		((TextView) findViewById(R.id.dialog_textView_pfd_veggies_shares)).setText("4");
-		
+
+		if(isFemale) {
+			((TextView) findViewById(R.id.dialog_textView_pfd_veggies_shares)).setText("4");
+		} else {
+			((TextView) findViewById(R.id.dialog_textView_pfd_veggies_shares)).setText("5");
+		}
+
 		shares = (TextView) findViewById(R.id.dialog_editText_pfd_veggies_shares);
-		
+
 		int count = day.getVeggies();	
-		
+
 		shares.setText(count + "");	
-		
+
 		updateTextColor(count);
 	}
 
 	private void meatbeans() {
 		setContentView(R.layout.dialog_pfd_meatbeans);
-		
-		((TextView) findViewById(R.id.dialog_textView_pfd_meatbeans_shares)).setText("3");
-		
+
+		if(isFemale) {
+			((TextView) findViewById(R.id.dialog_textView_pfd_meatbeans_shares)).setText("3");
+		} else {
+			((TextView) findViewById(R.id.dialog_textView_pfd_meatbeans_shares)).setText("4");
+		}
+
 		shares = (TextView) findViewById(R.id.dialog_editText_pfd_meatbeans_shares);
-		
+
 		int count = day.getMeatBeans();
-		
+
 		shares.setText(count + "");
-		
+
 		updateTextColor(count);
 	}
 
 	private void wholegrains() {
 		setContentView(R.layout.dialog_pfd_wholegrains);
-		
-		((TextView) findViewById(R.id.dialog_textView_pfd_wholegrains_shares)).setText("3");
-		
+
+		if(isFemale) {
+			((TextView) findViewById(R.id.dialog_textView_pfd_wholegrains_shares)).setText("3");
+		} else {
+			((TextView) findViewById(R.id.dialog_textView_pfd_wholegrains_shares)).setText("4");
+		}
+
 		shares = (TextView) findViewById(R.id.dialog_editText_pfd_wholegrains_shares);
-		
+
 		int count = day.getWholeGrains();
-		
+
 		shares.setText(count + "");
-		
+
 		updateTextColor(count);
 	}
 
 	private void exercise() {
 		setContentView(R.layout.dialog_pfd_exercise);
-		
+
 		boolean exercised = day.getExercise();
-		
+
 		if(exercised) {
 			((CheckBox) findViewById(R.id.dialog_checkBox_pfd_exercise)).setChecked(true);
 		}
-		
+
 		int count = day.getExerciseMinutes();
-		
+
 		shares = (TextView) findViewById(R.id.dialog_editText_pfd_exercise_minutes);
-		
+
 		shares.setText(count + "");
-		
+
 		if(count > 0) {
 			shares.setTextColor(Color.GREEN);
 		}
 	}
-	
+
 	@Override
 	protected void onPause() {
-        super.onPause();
-		
+		super.onPause();
+
 		switch(id) {
 		case R.id.imageView_pfd_dairy:
 			updateDairy();
@@ -183,13 +209,13 @@ public class PFDShareDialog extends Activity {
 
 	private void updateDairy() {
 		int count = Integer.parseInt(shares.getText().toString());
-		
+
 		day.setDairy(count);
 	}
 
 	private void updateExtra() {
 		int count = Integer.parseInt(shares.getText().toString());
-		
+
 		day.setExtra(count);
 	}
 
@@ -221,71 +247,90 @@ public class PFDShareDialog extends Activity {
 		int count = Integer.parseInt(shares.getText().toString());
 
 		day.setExerciseMinutes(count);
-		
+
 		if(((CheckBox) findViewById(R.id.dialog_checkBox_pfd_exercise)).isChecked()) {
 			day.setExercise(true);
 		} else {
 			day.setExercise(false);
 		}
-		
+
 		if(count == 0) {
 			day.setExercise(false);
 		}
 	}
-	
+
 	public void incrementShares(View v) {
 		int num_shares = Integer.parseInt(shares.getText().toString());
 		num_shares++;		
 		shares.setText(num_shares + "");
-		
+
 		updateTextColor(num_shares);
 	}
-	
+
 	public void decrementShares(View v) {
 		int num_shares = Integer.parseInt(shares.getText().toString());
 		num_shares--;
-		
+
 		if(num_shares < 0) {
 			num_shares = 0;
 		}
-		
+
 		shares.setText(num_shares + "");
-		
+
 		updateTextColor(num_shares);
 	}
-	
-	private void updateTextColor(int num_shares) {		
-		if(id != R.id.imageView_pfd_vegetables) {
-			if(num_shares == 3) {
-				shares.setTextColor(Color.GREEN);
-			} else if (num_shares > 3) {
-				shares.setTextColor(Color.RED);
+
+	private void updateTextColor(int num_shares) {	
+		if(isFemale) {
+			if(id != R.id.imageView_pfd_vegetables) {
+				if(num_shares == 3) {
+					shares.setTextColor(Color.GREEN);
+				} else if (num_shares > 3) {
+					shares.setTextColor(Color.RED);
+				} else {
+					shares.setTextColor(Color.BLACK);
+				}
 			} else {
-				shares.setTextColor(Color.BLACK);
+				if(num_shares >= 4) {
+					shares.setTextColor(Color.GREEN);
+				} else {
+					shares.setTextColor(Color.BLACK);
+				}
 			}
 		} else {
-			if(num_shares >= 4) {
-				shares.setTextColor(Color.GREEN);
+			if(id != R.id.imageView_pfd_vegetables) {
+				if(num_shares == 4) {
+					shares.setTextColor(Color.GREEN);
+				} else if (num_shares > 4) {
+					shares.setTextColor(Color.RED);
+				} else {
+					shares.setTextColor(Color.BLACK);
+				}
 			} else {
-				shares.setTextColor(Color.BLACK);
+				if(num_shares >= 5) {
+					shares.setTextColor(Color.GREEN);
+				} else {
+					shares.setTextColor(Color.BLACK);
+				}
 			}
 		}
 	}
-	
+
+
 	public void incrementExercise(View v) {
 		int num_shares = Integer.parseInt(shares.getText().toString());
 		num_shares+=5;		
 		shares.setText(num_shares + "");
-		
+
 		((CheckBox) findViewById(R.id.dialog_checkBox_pfd_exercise)).setChecked(true);
-		
+
 		shares.setTextColor(Color.GREEN);
 	}
-	
+
 	public void decrementExercise(View v) {
 		int num_shares = Integer.parseInt(shares.getText().toString());
 		num_shares-=5;
-		
+
 		if(num_shares <= 0) {
 			num_shares = 0;				
 			((CheckBox) findViewById(R.id.dialog_checkBox_pfd_exercise)).setChecked(false);		
@@ -294,7 +339,7 @@ public class PFDShareDialog extends Activity {
 			((CheckBox) findViewById(R.id.dialog_checkBox_pfd_exercise)).setChecked(true);
 			shares.setTextColor(Color.GREEN);
 		}
-		
+
 		shares.setText(num_shares + "");
 	}
 
