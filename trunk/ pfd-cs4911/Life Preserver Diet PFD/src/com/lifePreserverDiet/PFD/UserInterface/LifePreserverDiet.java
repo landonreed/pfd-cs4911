@@ -48,7 +48,7 @@ public class LifePreserverDiet extends Application {
 	 * @return true if the user is a female
 	 */
 	public boolean isFemale(){
-		return getSharedPreferences(PREF_NAME, MODE_PRIVATE).getBoolean(PREF_NAME, true);
+		return getSharedPreferences(PREF_NAME, MODE_PRIVATE).getBoolean(PREF_BOOL, true);
 	}
 	
 }
