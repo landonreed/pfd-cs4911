@@ -18,6 +18,7 @@ public class CelebrationSplash extends Activity {
 	private Thread mSplashThread;
 	private Date mydate;
 	private DayDataSource datasource;
+	private Day myDay;
 	private Day d;
 
 	public void onCreate(Bundle bundle) {
@@ -27,12 +28,16 @@ public class CelebrationSplash extends Activity {
 		datasource.open();
 		
 		mydate = new Date();
+		myDay = datasource.getDay(mydate);
 		mydate.setTime(mydate.getTime() - (24*60*60*1000)); // set date to yesterday; to test today, check in all shares (get a score of at least 20.0) and then comment out this line.
 		
 		d = datasource.getDay(mydate);
 		double wholeGrainsTotal, dairyTotal, meatBeansTotal, fruitTotal, extraTotal;
 		wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 3.0;
-		if(d != null && !d.getVisited()){
+		if(d != null && !myDay.getVisited()){
+			myDay.setVisited(true);
+			datasource.updateDay(myDay);
+			
 			double exerciseShare = (d.getExerciseMinutes() > 0) ? 1.0 : 0.0;
 			double total =
 					wholeGrainsTotal - Math.abs(wholeGrainsTotal - d.getWholeGrains()) +
@@ -42,7 +47,7 @@ public class CelebrationSplash extends Activity {
 					d.getVeggies() + 
 					extraTotal - Math.abs(extraTotal - d.getExtra()) +
 					exerciseShare;
-			if(total >= 20.0){
+			if(total >= 0.0){
 				setContentView(R.layout.page_splash_congrats);
 				final CelebrationSplash splashScreen = this;
 				mSplashThread = new Thread(){
@@ -55,6 +60,7 @@ public class CelebrationSplash extends Activity {
 						catch(InterruptedException ex){
 						}
 						finish();
+						datasource.close();
 						Intent intent = new Intent();
 						intent.setClass(splashScreen,  Splash.class);
 						startActivity(intent);
@@ -76,17 +82,17 @@ public class CelebrationSplash extends Activity {
 				}
 			}
 			else{
+				datasource.close();
 				Intent intent = new Intent(CelebrationSplash.this, Splash.class);
 				CelebrationSplash.this.startActivity(intent);
 				CelebrationSplash.this.finish();
 			}
 		}
 		else{
+			datasource.close();
 			Intent intent = new Intent(CelebrationSplash.this, Splash.class);
 			CelebrationSplash.this.startActivity(intent);
 			CelebrationSplash.this.finish();
 		}
-		
-		datasource.close();
 	}
 }

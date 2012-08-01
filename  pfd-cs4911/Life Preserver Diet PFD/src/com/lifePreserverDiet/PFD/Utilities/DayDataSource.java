@@ -162,7 +162,7 @@ public class DayDataSource {
 		day.setExtra(cursor.getInt(7));
 		day.setExercise( cursor.getString(8).equals("true") );
 		day.setExerciseMinutes(cursor.getInt(9));
-		day.setVisited( cursor.getString(8).equals("true") );
+		day.setVisited( cursor.getString(10).equals("true") );
 		return day;
 	}
 	
