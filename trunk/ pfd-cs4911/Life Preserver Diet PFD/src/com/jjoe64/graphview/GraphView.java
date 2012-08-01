@@ -22,11 +22,15 @@ import com.jjoe64.graphview.compatible.ScaleGestureDetector;
  * Use {@link LineGraphView} for creating a line chart.
  *
  * @author jjoe64 - jonas gehring - http://www.jjoe64.com
- * @author Lamine Sissoko (display changes)
  *
  * Copyright (C) 2011 Jonas Gehring
  * Licensed under the GNU Lesser General Public License (LGPL)
  * http://www.gnu.org/licenses/lgpl.html
+ * 
+ * --------------------------------------------------------------------------------
+ * 
+ * @author Lamine Sissoko			(display changes)
+ * 
  */
 abstract public class GraphView extends LinearLayout {
 	

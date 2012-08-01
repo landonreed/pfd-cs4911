@@ -12,6 +12,15 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+/**
+ * DayDataSource acts as a database access object for the application.
+ * 
+ * It uses a SQLiteDatabaseHelper object for the initial database setup
+ * and provides convenience methods for database handling.
+ * 
+ * @author Lamine Sissoko
+ * 
+ */
 public class DayDataSource {
 
 	/** Database */
@@ -64,8 +73,7 @@ public class DayDataSource {
 	 * 
 	 * @return The Day object retrieved from the database.
 	 */
-	public Day createDay()
-	{
+	public Day createDay() {
 		return createDay(new Day());
 	}
 	
@@ -75,15 +83,9 @@ public class DayDataSource {
 	 * @param day The Day object to copy into the database.
 	 * @return The Day object retrieved from the database.
 	 */
-	public Day createDay(Day day)
-	{
-		/* Build value set for SQL query. */
+	public Day createDay(Day day) {
 		ContentValues values = new ContentValues();
-
-		String dateString = Day.dateFormat.format(day.getDate());
-		
-	    //values.put(MySQLiteHelper.COLUMN_DATE, date.toString());
-		values.put(SQLiteDatabaseHelper.COLUMN_DATE, dateString);
+		values.put(SQLiteDatabaseHelper.COLUMN_DATE, Day.dateFormat.format(day.getDate()));
 		values.put(SQLiteDatabaseHelper.COLUMN_WHOLEGRAINS, day.getWholeGrains());
 		values.put(SQLiteDatabaseHelper.COLUMN_DAIRY, day.getDairy());
 		values.put(SQLiteDatabaseHelper.COLUMN_MEATBEANS, day.getMeatBeans());
@@ -93,17 +95,14 @@ public class DayDataSource {
 		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE, String.valueOf(day.getExercise()));
 		values.put(SQLiteDatabaseHelper.COLUMN_EXERCISE_MINUTES, day.getExerciseMinutes());
 		values.put(SQLiteDatabaseHelper.COLUMN_VISITED, String.valueOf(day.getVisited()));
-				
-		/* Perform table insert and get the row id. */
+		
 		long insertId = database.insert(SQLiteDatabaseHelper.TABLE_DAYS, null,
 				values);
 		
-		/* Get a cursor to the inserted row. */
 		Cursor cursor = database.query(SQLiteDatabaseHelper.TABLE_DAYS,
 				allColumns, SQLiteDatabaseHelper.COLUMN_ID + " = " + insertId, null,
 				null, null, null);
 		
-		/* Close the cursor and return the resulting Day object. */
 		cursor.moveToFirst();
 		Day newDay = cursorToDay(cursor);
 		cursor.close();
@@ -201,7 +200,7 @@ public class DayDataSource {
 		
 		String dateString = Day.dateFormat.format(day.getDate());
 		
-		values.put(SQLiteDatabaseHelper.COLUMN_DATE, dateString);
+		values.put(SQLiteDatabaseHelper.COLUMN_DATE, Day.dateFormat.format(day.getDate()));
 		values.put(SQLiteDatabaseHelper.COLUMN_WHOLEGRAINS, day.getWholeGrains());
 		values.put(SQLiteDatabaseHelper.COLUMN_DAIRY, day.getDairy());
 		values.put(SQLiteDatabaseHelper.COLUMN_MEATBEANS, day.getMeatBeans());

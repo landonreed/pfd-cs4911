@@ -13,6 +13,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * TestDatabaseActivity is a debugging class. It lets you add days to the
+ * database to better test the graph functionality of {@link ChartHistory}.
+ * 
+ * @author Lamine Sissoko
+ *
+ */
 public class TestDatabaseActivity extends ListActivity {
 	private DayDataSource datasource;
 
