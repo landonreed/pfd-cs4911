@@ -7,10 +7,30 @@ import android.app.Application;
 import com.lifePreserverDiet.PFD.Day;
 import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
 
+/**
+ * The application class. Called on startup.
+ * 
+ * It creates a new Day object is this is the first time that the
+ * application is being run on this day.
+ * 
+ * Allows quick updates for the current day object and saves the user's
+ * gender in a SharedPreferences file.
+ * 
+ * @author David Murray, Lamine Sissoko
+ *
+ */
 public class LifePreserverDiet extends Application {
+	
+	/** Current day object. */
 	private Day day;
+	
+	/** Database access object. */
 	private DayDataSource dataSource;
 	
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Application#onCreate()
+	 */
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -27,10 +47,18 @@ public class LifePreserverDiet extends Application {
 		dataSource.close();
 	}
 	
+	/**
+	 * Returns the current Day object.
+	 * 
+	 * @return the current Day object
+	 */
 	public Day getDay() {
 		return day;
 	}
 	
+	/**
+	 * Updates the current Day object.
+	 */
 	public void updateDay() {
 		dataSource.open();
 		dataSource.updateDay(day);
@@ -38,7 +66,7 @@ public class LifePreserverDiet extends Application {
 	}
 	
 
-	/** User settings file fields */
+	/** Static fields for the user settings file. */
 	public static final String PREF_NAME = "PFDPrefsFile";
 	public static final String PREF_BOOL = "isFemale";
 
