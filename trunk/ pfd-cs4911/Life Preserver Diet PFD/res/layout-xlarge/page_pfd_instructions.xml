@@ -23,8 +23,8 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:layout_width="220dp"
-                    android:layout_height="120dp"
+                    android:layout_width="540dp"
+                    android:layout_height="344dp"
                     android:paddingLeft="22dp"
                     android:paddingTop="25dp"
                     android:src="@drawable/logo" >
