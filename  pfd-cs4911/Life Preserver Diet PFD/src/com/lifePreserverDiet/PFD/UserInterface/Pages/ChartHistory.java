@@ -41,8 +41,13 @@ public class ChartHistory extends Activity {
 	/** Date determining which week to display. */
 	private Date myDate;
 	
+	/** Flag for the user's gender. */
 	private boolean isFemale;
 	
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -87,12 +92,20 @@ public class ChartHistory extends Activity {
 		startActivity(intent);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onResume()
+	 */
 	@Override
 	protected void onResume() {
 		datasource.open();
 		super.onResume();
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onPause()
+	 */
 	@Override
 	protected void onPause() {
 		datasource.close();
@@ -126,6 +139,7 @@ public class ChartHistory extends Activity {
 	 * containing the given date.
 	 * 
 	 * The top graph shows a total score for the user's progress each day.
+	 * 
 	 * The bottom graph shows the exercise minutes.
 	 * 
 	 * @param date The chosen date
