@@ -20,48 +20,42 @@ public class PersonalFlotationDevice extends Activity {
 	private Day day;
 	private CheckBox femaleCheckBox;
 	private SharedPreferences settings;
-	
-	private static final String PREF_NAME = "PFDPrefsFile";
-	private static final String PREF_BOOL = "isFemale";
 
 	public void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 		setContentView(R.layout.page_pfd);
 		
 		LifePreserverDiet app = (LifePreserverDiet) this.getApplication();
-		day = app.getDay();	
+		day = app.getDay();
 		
 		fillTable();
 		
-		// User settings file (saves the check box state)
-		settings = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+		// Get the user settings file (saves the check box state)
+		settings = app.getSharedPreferences(LifePreserverDiet.PREF_NAME, MODE_PRIVATE);
 		femaleCheckBox = (CheckBox) findViewById(R.id.female_checkbox);
 	}
 	
 	@Override
 	public void onResume() {
 		super.onResume();
+		
 		fillTable();
-		// Set the check box state to that of the settings file
-		femaleCheckBox.setChecked(settings.getBoolean(PREF_BOOL, true));
+		
+		// Set the check box state to that of the user settings file
+		femaleCheckBox.setChecked(settings.getBoolean(LifePreserverDiet.PREF_BOOL, true));
 	}
 	
 	@Override
 	public void onPause() {
 		super.onPause();
+		
 		LifePreserverDiet app = (LifePreserverDiet) this.getApplication();
 		app.updateDay();
+		
 		// Save the current check box state to the user settings file
-		settings.edit().putBoolean(PREF_BOOL, femaleCheckBox.isChecked()).commit();
-	}
-	
-	/**
-	 * Checks if the user has checked the female check box.
-	 * 
-	 * @return true if the user is a female
-	 */
-	public boolean isFemale(){
-		return settings.getBoolean(PREF_NAME, true);
+		settings.edit()
+				.putBoolean(LifePreserverDiet.PREF_BOOL, femaleCheckBox.isChecked())
+				.commit();
 	}
 	
 	public void pfdInstructions(View v) {
