@@ -13,8 +13,8 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/icon_pfd_exercise" />
 
         <TextView
@@ -23,16 +23,17 @@
             android:paddingBottom="5dp"
             android:text="Exercise"
             android:textColor="@android:color/black"
-            android:textSize="23sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
+            android:paddingLeft="7dp"
             android:text="There is one share for exercise. It is just as important as the food shares. Any amount counts. It’s OK to start out slow. You will pick up momentum as you go."
             android:textColor="@android:color/black"
-            android:textSize="13sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -55,7 +56,7 @@
                     android:button="@android:drawable/btn_radio"
                     android:text="I exercised today!"
                     android:textColor="@android:color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -64,7 +65,7 @@
                     android:paddingBottom="5dp"
                     android:text="IMAT"
                     android:textColor="@android:color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:visibility="invisible" >
                 </TextView>
@@ -90,7 +91,7 @@
                     android:paddingTop="5dp"
                     android:text="How Long?"
                     android:textColor="@android:color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -100,7 +101,7 @@
                     android:paddingTop="5dp"
                     android:text="I-mat:"
                     android:textColor="@android:color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" >
                 </TextView>
 
@@ -111,8 +112,8 @@
 
                     <ImageView
                         android:id="@+id/dialog_imageView_pfd_dairy_downShares"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:clickable="true"
                         android:onClick="decrementExercise"
                         android:src="@drawable/button_selector_down" >
@@ -127,7 +128,7 @@
                         android:paddingLeft="4dp"
                         android:text="0"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp"
+                        android:textSize="35sp"
                         android:textStyle="bold" >
                     </TextView>
 
@@ -139,14 +140,14 @@
                         android:paddingRight="4dp"
                         android:text=" min"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp"
+                        android:textSize="30sp"
                         android:textStyle="bold" >
                     </TextView>
 
                     <ImageView
                         android:id="@+id/dialog_imageView_pfd_dairy_upShares"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:clickable="true"
                         android:onClick="incrementExercise"
                         android:src="@drawable/button_selector_up" >
