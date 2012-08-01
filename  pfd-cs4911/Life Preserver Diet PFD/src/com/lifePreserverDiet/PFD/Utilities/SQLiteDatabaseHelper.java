@@ -13,6 +13,7 @@ import android.util.Log;
  */
 public class SQLiteDatabaseHelper extends SQLiteOpenHelper{
 	
+	/** The table schema. */
 	public static final String TABLE_DAYS = "days",
 			COLUMN_ID = "_id",
 			COLUMN_DATE = "date",
@@ -27,8 +28,10 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper{
 			COLUMN_VISITED = "visited",
 			DATABASE_NAME = "days.db";
 	
+	/** The database version. */
 	private static final int DATABASE_VERSION = 1;
 	
+	/** The database creation query. */
 	private static final String DATABASE_CREATE = "create table " + TABLE_DAYS
 			+ "("
 			+ COLUMN_ID + " integer primary key autoincrement, "
@@ -53,11 +56,19 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper{
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see android.database.sqlite.SQLiteOpenHelper#onCreate(android.database.sqlite.SQLiteDatabase)
+	 */
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		database.execSQL(DATABASE_CREATE);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see android.database.sqlite.SQLiteOpenHelper#onUpgrade(android.database.sqlite.SQLiteDatabase, int, int)
+	 */
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		Log.w(SQLiteDatabaseHelper.class.getName(),

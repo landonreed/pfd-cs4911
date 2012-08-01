@@ -21,8 +21,13 @@ import java.util.List;
  *
  */
 public class TestDatabaseActivity extends ListActivity {
+	/** Database access object. */
 	private DayDataSource datasource;
 
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,7 +43,14 @@ public class TestDatabaseActivity extends ListActivity {
 				new ArrayAdapter<Day>(this, android.R.layout.simple_list_item_1, values);
 		setListAdapter(adapter);
 	}
-		
+	
+	/**
+	 * This method either adds a new random day to the database or removes
+	 * the day at the bottom of the database depending on the pressed
+	 * button (either "Add" or "Delete").
+	 * 
+	 * @param view The Button that, when clicked, calls this method.
+	 */
 	public void onClick(View view) {
 		@SuppressWarnings("unchecked")
 		ArrayAdapter<Day> adapter = (ArrayAdapter<Day>) getListAdapter();
@@ -48,7 +60,7 @@ public class TestDatabaseActivity extends ListActivity {
 		case R.id.add:
 			// random share values
 			int[] shares = new int[7];
-			for (int i=0; i<shares.length; i++)
+			for (int i = 0; i < shares.length - 1; i++)
 				shares[i] = (int) (Math.random() * 4 + 1);
 			int wholeGrains = shares[0];
 			int dairy = shares[1];
@@ -56,7 +68,6 @@ public class TestDatabaseActivity extends ListActivity {
 			int fruit = shares[3];
 			int veggies = shares[4];
 			int extra = shares[5];
-			//int exercise_minutes = shares[6];
 			
 			// random exercise minutes between 0 and 180
 			int exercise_minutes = 5 * (int)(Math.random() * 36);
@@ -109,12 +120,20 @@ public class TestDatabaseActivity extends ListActivity {
 		adapter.notifyDataSetChanged();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onResume()
+	 */
 	@Override
 	protected void onResume() {
 		datasource.open();
 		super.onResume();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onPause()
+	 */
 	@Override
 	protected void onPause() {
 		datasource.close();

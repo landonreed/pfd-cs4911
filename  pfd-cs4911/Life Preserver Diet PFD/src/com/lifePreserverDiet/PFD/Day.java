@@ -4,15 +4,32 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Day is an object that holds a user's share data for a given day and
+ * will be stored in the SQLite database.
+ * 
+ * @author David Murray, Lamine Sissoko
+ *
+ */
 public class Day {
 	/** Database column id */
 	private long id;
+	
+	/** The day's date. */
 	private Date date;
+	
+	/** The day's share values. */
 	private int wholeGrains, dairy, meatBeans, fruit, veggies, extra, exercise_minutes;
+	
+	/** Flags for if the user exercised and if the application has been used on this day. */
 	private boolean exercise, visited;
 	
+	/** The formatting used for Dates in the database. */
 	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd yyyy");
 
+	/**
+	 * Constructor that initializes a new day with no share data.
+	 */
 	public Day() {
 		date = new Date();
 		wholeGrains = 0;
@@ -26,10 +43,19 @@ public class Day {
 		visited = false;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return date.toString();
 	}
+	
+	
+	//////////////////////////
+	// GETTERS & SETTERS
+	//////////////////////////
 	
 	public Date getDate(){ return date; }
 	public void setDate(String dateString){
