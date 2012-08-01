@@ -71,7 +71,7 @@
                     android:paddingBottom="4dp"
                     android:paddingLeft="65dp"
                     android:paddingRight="40dp"
-                    android:text="- Checking in all shares on the PFD gives you a perfect score (20 for women, 24 for men)."
+                    android:text="- Checking in all shares on the PFD gives you a perfect score (20 for women, 26 for men)."
                     android:textColor="#ff0000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
