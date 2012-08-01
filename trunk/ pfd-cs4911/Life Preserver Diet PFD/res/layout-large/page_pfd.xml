@@ -14,6 +14,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:background="@drawable/background_ocean1"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:paddingLeft="5dp" >
@@ -25,7 +26,7 @@
                 android:gravity="center"
                 android:text="Personal Flotation Device"
                 android:textColor="@android:color/black"
-                android:textSize="23dp"
+                android:textSize="38sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -37,17 +38,18 @@
                 android:paddingBottom="10dp"
                 android:text="Personal Food-Tracking Device"
                 android:textColor="@android:color/black"
-                android:textSize="18dp"
+                android:textSize="28dp"
                 android:textStyle="bold" />
 
             <Button
-                android:layout_width="105dp"
-                android:layout_height="40dp"
+                android:layout_width="115dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_weight="0"
                 android:background="@drawable/button_selector_white"
                 android:onClick="pfdInstructions"
-                android:text="Instructions" />
+                android:text="Instructions"
+                android:textSize="20sp" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -58,121 +60,121 @@
 
             <FrameLayout
                 android:id="@+id/frameLayout_pfd_wheel"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
+                android:layout_width="wrap_content"
+                android:layout_height="330dp"
                 android:layout_below="@id/textView_pfd_foodTrackingDevice"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/wheel">
+                android:background="@drawable/wheel" >
 
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="33dp"
-                    android:paddingTop="158dp" >
+                    android:paddingLeft="42dp"
+                    android:paddingTop="190dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_extra"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="65dp"
+                        android:layout_height="95dp"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:onClick="pfdDialog"
+                        android:onClick="test"
                         android:src="@drawable/icon_pfd_extra" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingTop="98dp" >
+                    android:paddingLeft="15dp"
+                    android:paddingTop="120dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_vegetables"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="65dp"
+                        android:layout_height="85dp"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:onClick="pfdDialog"
+                        android:onClick="test"
                         android:src="@drawable/icon_pfd_vegetables" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="32dp"
+                    android:paddingLeft="35dp"
                     android:paddingTop="32dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_dairy"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="75dp"
+                        android:layout_height="95dp"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:onClick="pfdDialog"
+                        android:onClick="test"
                         android:src="@drawable/icon_pfd_dairy" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="94dp"
-                    android:paddingTop="5dp" >
+                    android:paddingLeft="109dp"
+                    android:paddingTop="0dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_meatandbeans"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="75dp"
+                        android:layout_height="105dp"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:onClick="pfdDialog"
+                        android:onClick="test"
                         android:src="@drawable/icon_pfd_meatandbeans" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="159dp"
-                    android:paddingTop="38dp" >
+                    android:paddingLeft="190dp"
+                    android:paddingTop="32dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_fruits"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="65dp"
+                        android:layout_height="95dp"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:onClick="pfdDialog"
+                        android:onClick="test"
                         android:src="@drawable/icon_pfd_fruits" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="185dp"
-                    android:paddingTop="94dp" >
+                    android:paddingLeft="210dp"
+                    android:paddingTop="114dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_wholegrains"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:onClick="pfdDialog"
+                        android:onClick="test"
                         android:src="@drawable/icon_pfd_wholegrains" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="163dp"
-                    android:paddingTop="156dp" >
+                    android:paddingLeft="185dp"
+                    android:paddingTop="195dp" >
 
                     <ImageView
                         android:id="@+id/imageView_pfd_exercise"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
+                        android:layout_width="85dp"
+                        android:layout_height="fill_parent"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:onClick="pfdDialog"
+                        android:onClick="test"
                         android:src="@drawable/icon_pfd_exercise" />
                 </FrameLayout>
             </FrameLayout>
@@ -180,12 +182,13 @@
             <TextView
                 android:id="@+id/textView_pfd_sharesText"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="84dp"
                 android:gravity="center"
-                android:paddingBottom="2dp"
-                android:paddingTop="9dp"
+                android:paddingBottom="12dp"
+                android:paddingTop="39dp"
                 android:text="Remaining Shares"
                 android:textColor="@android:color/white"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -220,7 +223,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:text="Meats &amp; Beans"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -234,7 +238,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:text="Dairy"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -248,7 +253,8 @@
                         android:layout_height="fill_parent"
                         android:paddingLeft="4dp"
                         android:text="Veggies"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -262,7 +268,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:text="Extra"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -297,7 +304,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0/3"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -312,7 +320,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0/3"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -327,7 +336,8 @@
                         android:layout_height="fill_parent"
                         android:gravity="center"
                         android:text="0/4"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -342,7 +352,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0/3"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -376,7 +387,8 @@
                         android:layout_height="fill_parent"
                         android:paddingLeft="4dp"
                         android:text="Fruits"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -390,7 +402,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:text="Whole Grains"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -404,7 +417,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:text="Exercised"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -418,7 +432,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="22dp"
                         android:text="-how long?"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -453,7 +468,8 @@
                         android:layout_height="fill_parent"
                         android:gravity="center"
                         android:text="0/3"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -468,7 +484,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0/3"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -483,7 +500,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="N"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -498,7 +516,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0 min"
-                        android:textColor="@android:color/black" >
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" >
                     </TextView>
 
                     <TextView
@@ -516,12 +535,12 @@
             </LinearLayout>
 
             <CheckBox
-                android:id="@+id/female_checkbox"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:onClick="onClick"
+                android:checked="true"
                 android:text="I am a female."
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="22sp" />
         </LinearLayout>
     </ScrollView>
 

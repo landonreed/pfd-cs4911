@@ -609,7 +609,7 @@ abstract public class GraphView extends LinearLayout {
 		if (scalable == true && scaleDetector == null) {
 			scrollable = true; // automatically forces this
 			scaleDetector = new ScaleGestureDetector(getContext(), new ScaleGestureDetector.SimpleOnScaleGestureListener() {
-				@Override
+				
 				public boolean onScale(ScaleGestureDetector detector) {
 					double center = viewportStart + viewportSize / 2;
 					viewportSize /= detector.getScaleFactor();

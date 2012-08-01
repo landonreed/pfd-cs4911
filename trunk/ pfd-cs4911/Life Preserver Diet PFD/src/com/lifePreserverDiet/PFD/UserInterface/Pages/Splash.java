@@ -19,7 +19,6 @@ public class Splash extends Activity {
 		Chronometer chrono = (Chronometer) findViewById(R.id.chronometer_splash_chrono);
 		chrono.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
 			
-			@Override
 			public void onChronometerTick(Chronometer chronometer) {
 				counter++;
 				if(counter > 2) {
