@@ -7,8 +7,8 @@
     android:orientation="vertical" >
 
     <ImageView
-        android:layout_width="300dp"
-        android:layout_height="145dp"
+        android:layout_width="373dp"
+        android:layout_height="wrap_content"
         android:paddingTop="38dp"
         android:src="@drawable/logo_2" >
     </ImageView>
@@ -21,19 +21,20 @@
         android:weightSum="1" >
 
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:paddingRight="5dp"
             android:src="@drawable/icon_pfd" />
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_weight=".7"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.71"
             android:background="@drawable/button_selector_white"
             android:onClick="personalFlotationDevice"
             android:padding="0dp"
-            android:text="Personal Flotation Device" />
+            android:text="Personal Flotation Device"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -44,20 +45,21 @@
         android:weightSum="1" >
 
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:paddingRight="5dp"
             android:src="@drawable/icon_history" >
         </ImageView>
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_weight=".7"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.71"
             android:background="@drawable/button_selector_red"
             android:onClick="chartHistory"
             android:padding="0dp"
-            android:text="Chart your History" >
+            android:text="Chart your History"
+            android:textSize="20sp" >
         </Button>
     </LinearLayout>
 
@@ -69,20 +71,21 @@
         android:weightSum="1" >
 
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:paddingRight="5dp"
             android:src="@drawable/icon_about" >
         </ImageView>
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_weight=".7"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.70"
             android:background="@drawable/button_selector_white"
             android:onClick="about"
             android:padding="0dp"
-            android:text="About the Diet" >
+            android:text="About the Diet"
+            android:textSize="20sp" >
         </Button>
     </LinearLayout>
 
@@ -94,20 +97,21 @@
         android:weightSum="1" >
 
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:paddingRight="5dp"
             android:src="@drawable/icon_book" >
         </ImageView>
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_weight=".7"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.71"
             android:background="@drawable/button_selector_red"
             android:onClick="book"
             android:padding="0dp"
-            android:text="Buy the Book" >
+            android:text="Buy the Book"
+            android:textSize="20sp" >
         </Button>
     </LinearLayout>
 
@@ -119,20 +123,21 @@
         android:weightSum="1" >
 
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:paddingRight="5dp"
             android:src="@drawable/icon_contact" >
         </ImageView>
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_weight=".7"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.70"
             android:background="@drawable/button_selector_white"
             android:onClick="contact"
             android:padding="0dp"
-            android:text="Contact Us" >
+            android:text="Contact Us"
+            android:textSize="20sp" >
         </Button>
     </LinearLayout>
 
