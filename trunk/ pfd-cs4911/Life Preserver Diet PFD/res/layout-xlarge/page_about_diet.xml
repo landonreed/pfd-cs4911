@@ -23,110 +23,108 @@
                 android:orientation="vertical" >
 
                 <ImageView
-                    android:layout_width="220dp"
-                    android:layout_height="140dp"
+                    android:layout_width="540dp"
+                    android:layout_height="344dp"
                     android:paddingLeft="22dp"
                     android:paddingTop="25dp"
-                    android:src="@drawable/logo" >
-                </ImageView>
+                    android:src="@drawable/logo" />
 
                 <FrameLayout
-                    android:layout_width="160dp"
-                    android:layout_height="105dp"
+                    android:layout_width="407dp"
+                    android:layout_height="317dp"
                     android:layout_gravity="center"
-                    android:clickable="true"
-                    android:onClick="youtube"
                     android:background="@drawable/video_image"
-                    android:paddingLeft="48dp"
-                    android:paddingTop="20dp" >
+                    android:clickable="true"
+                    android:onClick="youtube">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center_vertical|center_horizontal"
                         android:clickable="true"
                         android:onClick="youtube"
-                        android:paddingLeft="5dp"
-                        android:src="@drawable/button_selector_play" >
-                    </ImageView>
+                        android:src="@drawable/button_selector_play" />
+
                 </FrameLayout>
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="407dp"
+                    android:layout_height="100dp"
                     android:src="@drawable/label_about" >
                 </ImageView>
 
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="4dp"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="28dp"
+                    android:paddingLeft="100dp"
+                    android:paddingRight="100dp"
+                    android:paddingTop="30dp"
                     android:text="       The Life Preserver Diet offers a lifeline to those struggling with their weight by:"
                     android:textColor="@color/blue"
-                    android:textSize="12sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="4dp"
-                    android:paddingLeft="45dp"
-                    android:paddingRight="28dp"
+                    android:paddingLeft="100dp"
+                    android:paddingRight="100dp"
                     android:text="•informing of common challenges to healthy eating"
                     android:textColor="#ff0000"
-                    android:textSize="11sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="4dp"
-                    android:paddingLeft="45dp"
-                    android:paddingRight="28dp"
+                    android:paddingLeft="100dp"
+                    android:paddingRight="100dp"
                     android:text="•offering guidelines for losing weight while following a nutritionist-designed program"
                     android:textColor="#ff0000"
-                    android:textSize="11sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="45dp"
-                    android:paddingRight="28dp"
+                    android:paddingLeft="100dp"
+                    android:paddingRight="100dp"
                     android:text="•instructing in tracking meals with the Personal Food-Tracking Device®"
                     android:textColor="#ff0000"
-                    android:textSize="11sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="5dp" >
+                    android:paddingTop="45dp" >
 
                     <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:clickable="true"
                         android:onClick="facebook"
                         android:src="@drawable/f_logo" />
 
                     <ImageView
-                        android:layout_width="5dp"
-                        android:layout_height="5dp"/>
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"/>
 
                     <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:clickable="true"
                         android:onClick="twitter"
                         android:src="@drawable/t_logo" />
                 </LinearLayout>
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
+                    android:layout_width="300dp"
+                    android:layout_height="100dp"
+                    android:paddingTop="20dp"
                     android:src="@drawable/icon_marcia_berlin_productions" />
             </LinearLayout>
         </ScrollView>

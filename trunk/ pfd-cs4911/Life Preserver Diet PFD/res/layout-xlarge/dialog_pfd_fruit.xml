@@ -13,8 +13,8 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/icon_pfd_fruits" />
 
         <TextView
@@ -23,22 +23,26 @@
             android:paddingBottom="5dp"
             android:text="Fruits"
             android:textColor="@android:color/black"
-            android:textSize="23sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="7dp"
             android:text="The bottom line: "
             android:textColor="@android:color/black"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="7dp"
+            android:paddingLeft="7dp"
             android:text="On average, a 50-calorie share is a whole fruit. One small piece of fruit counts as 1 share. One half-cup juice or two tablespoons dried fruit counts as 1 share."
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -61,7 +65,7 @@
                     android:paddingTop="5dp"
                     android:text="Daily Shares"
                     android:textColor="@android:color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" >
                 </TextView>
 
@@ -72,7 +76,7 @@
                     android:paddingBottom="5dp"
                     android:text="##"
                     android:textColor="@android:color/black"
-                    android:textSize="30sp"
+                    android:textSize="40sp"
                     android:textStyle="bold" >
                 </TextView>
             </LinearLayout>
@@ -97,7 +101,7 @@
                     android:paddingTop="5dp"
                     android:text="Your Shares"
                     android:textColor="@android:color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" >
                 </TextView>
 
@@ -109,8 +113,8 @@
 
                     <ImageView
                         android:id="@+id/dialog_imageView_pfd_fruit_downShares"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:clickable="true"
                         android:onClick="decrementShares"
                         android:src="@drawable/button_selector_down" >
@@ -124,14 +128,14 @@
                         android:paddingBottom="5dp"
                         android:text="0"
                         android:textColor="@android:color/black"
-                        android:textSize="30sp"
+                        android:textSize="40sp"
                         android:textStyle="bold" >
                     </TextView>
 
                     <ImageView
                         android:id="@+id/dialog_imageView_pfd_fruit_upShares"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:clickable="true"
                         android:onClick="incrementShares"
                         android:src="@drawable/button_selector_up" >
