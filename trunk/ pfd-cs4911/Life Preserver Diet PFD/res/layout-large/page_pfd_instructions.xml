@@ -36,9 +36,10 @@
                     android:paddingBottom="4dp"
                     android:paddingLeft="30dp"
                     android:paddingRight="28dp"
+                    android:paddingTop="30dp"
                     android:text="       How to Use the PFD:"
                     android:textColor="@color/blue"
-                    android:textSize="25sp"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -47,9 +48,10 @@
                     android:paddingBottom="14dp"
                     android:paddingLeft="45dp"
                     android:paddingRight="28dp"
+                    android:paddingTop="30dp"
                     android:text="- The PFD is meant to be used in conjunction with the book as a meal plan."
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -60,7 +62,7 @@
                     android:paddingRight="28dp"
                     android:text="- Mark off everything you eat by tapping on the appropriate share."
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -71,7 +73,7 @@
                     android:paddingRight="28dp"
                     android:text="- Add shares by pressing on the + button. Subtract shares by pressing on the - button. The PFD will automatically save any changes you make."
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -82,7 +84,7 @@
                     android:paddingRight="28dp"
                     android:text="- Meet your nutrient needs for the day. Eat low-fat, low-calorie, high-fiber foods without having to think much about it."
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -93,7 +95,7 @@
                     android:paddingRight="28dp"
                     android:text="- The PFD will reset at the beginning of each day. However, you can always revisit past days by Charting Your History."
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </ScrollView>
