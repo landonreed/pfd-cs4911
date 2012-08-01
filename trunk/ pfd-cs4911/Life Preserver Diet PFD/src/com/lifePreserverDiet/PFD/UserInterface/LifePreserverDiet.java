@@ -25,11 +25,6 @@ public class LifePreserverDiet extends Application {
 		else
 			day = today;
 		
-		if (!day.getVisited()){
-			day.setVisited(true);
-			dataSource.updateDay(day);
-		}
-		
 		dataSource.close();
 	}
 	
