@@ -5,7 +5,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * SQLiteDatabaseHelper allows us to create, open, and/or manage a database.
+ * 
+ * @author Lamine Sissoko
+ *
+ */
 public class SQLiteDatabaseHelper extends SQLiteOpenHelper{
+	
 	public static final String TABLE_DAYS = "days",
 			COLUMN_ID = "_id",
 			COLUMN_DATE = "date",
@@ -35,8 +42,13 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper{
 			+ COLUMN_EXERCISE + " text, "
 			+ COLUMN_EXERCISE_MINUTES + " integer, "
 			+ COLUMN_VISITED + " text "
-			+ ");";
+			+ ");" ;
 
+	/**
+	 * Constructor that creates a helper object to create, open, and/or manage a database.
+	 * 
+	 * @param context to use to open or create the database
+	 */
 	public SQLiteDatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}

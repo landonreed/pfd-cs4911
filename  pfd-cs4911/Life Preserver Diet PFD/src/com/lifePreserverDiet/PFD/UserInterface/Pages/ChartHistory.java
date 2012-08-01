@@ -28,6 +28,9 @@ import com.lifePreserverDiet.PFD.Utilities.DayDataSource;
  * 
  * Minutes spent on exercise are displayed on the bottom graph.
  * The other share types are displayed on the top graph.
+ * 
+ * @author Lamine Sissoko
+ * 
  */
 public class ChartHistory extends Activity {
 	
