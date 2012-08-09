@@ -226,8 +226,16 @@ public class ChartHistory extends Activity {
 		
 		// Set the graph's y-axis upper bound
 		int yUpper;
-		if(isFemale) yUpper = 24;
-		else yUpper = 30;
+		double max = actualData[0].valueY;
+		for (int i = 1; i < exercise.length; i++){
+			if (actualData[i].valueY > max)
+				max = actualData[i].valueY;
+		}
+		yUpper = (int)(2 * Math.ceil(max/2) + 2);
+		if (isFemale && yUpper < 24)
+			yUpper = 24;
+		else if (!isFemale && yUpper < 30)
+			yUpper = 30;
 		graphView.setManualYAxisBounds(yUpper, 0);
 		
 		// Set graph legend
@@ -276,7 +284,7 @@ public class ChartHistory extends Activity {
 		
 		// Set the graph's y upper bound as 10 minutes greater than
 		// the max exercise minutes value for the current week
-		double max = exercise[0].valueY;
+		max = exercise[0].valueY;
 		for (int i = 1; i < exercise.length; i++){
 			if (exercise[i].valueY > max)
 				max = exercise[i].valueY;
