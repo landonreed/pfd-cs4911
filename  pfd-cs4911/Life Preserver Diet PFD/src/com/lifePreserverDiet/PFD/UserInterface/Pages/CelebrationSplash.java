@@ -68,16 +68,24 @@ public class CelebrationSplash extends Activity {
 		datasource = new DayDataSource(this);
 		datasource.open();
 		
-		mydate = new Date();
-		myDay = datasource.getDay(mydate); // myDay holds today's data
 		
-		mydate.setTime(mydate.getTime() - (24*60*60*1000)); // set date to yesterday; to test today, check in all shares (get a score of at least 20.0) and then comment out this line.
-		d = datasource.getDay(mydate); // d holds yesterday's data
+		// Day object for today
+		myDay = app.getDay();
+		
+		// Set date to yesterday; to test today, check in all shares
+		// (get a score of at least 20.0) and then comment out this line.
+		mydate = new Date();
+		mydate.setTime(mydate.getTime() - (24*60*60*1000));
+		
+		// Day object for yesterday
+		d = datasource.getDay(mydate);
+		
 		
 		// get the target total shares for each food group based on gender
 		double wholeGrainsTotal, dairyTotal, meatBeansTotal, fruitTotal, extraTotal;
 		if(isFemale) wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 3.0;
 		else wholeGrainsTotal = dairyTotal = meatBeansTotal = fruitTotal = extraTotal = 4.0;
+
 		
 		// only play the splash screen if yesterday's data exists and
 		// the user is opening the app for the first time today
@@ -122,7 +130,6 @@ public class CelebrationSplash extends Activity {
 						}
 						finish();
 						datasource.close();
-						
 						// Move on to the regular Splash screen
 						Intent intent = new Intent();
 						intent.setClass(splashScreen,  Splash.class);
@@ -163,5 +170,6 @@ public class CelebrationSplash extends Activity {
 			CelebrationSplash.this.startActivity(intent);
 			CelebrationSplash.this.finish();
 		}
+
 	}
 }
